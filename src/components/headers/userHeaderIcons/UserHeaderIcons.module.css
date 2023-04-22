@@ -1,0 +1,15 @@
+.header__icons {
+  width: 150px;
+  display: flex;
+}
+
+.header__link {
+  width: 24px;
+  height: 24px;
+  padding: 7px;
+}
+
+.header__icon {
+  width: 24px;
+  height: 24px;
+}
