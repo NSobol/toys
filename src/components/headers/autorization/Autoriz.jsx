@@ -4,7 +4,7 @@ import style from './autoriz.module.css';
 export const Autoriz = (props) => {
   return (
     <div>
-      <button className={style.autorizBtn} onClick={props}>
+      <button className={style.autorizBtn} >
         Вход
       </button>
     </div>
