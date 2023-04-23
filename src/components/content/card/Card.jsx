@@ -1,19 +1,21 @@
 import React from 'react'
 import { ReactComponent as Like } from '../../../images/like.svg'
+import style from './Card.module.css'
 
 export const Card = ({props}) => {
   
   return (
-    <div class='create-edit-modal-form'>
+    <div className = {style.cardItem}>
      
-        <img src="https://raw.githubusercontent.com/MerkucioZemba/Pictures/main/images/ufo.jpg" alt="картинка" />
-        <br />
+        <img className = {style.imageItem} src="https://raw.githubusercontent.com/MerkucioZemba/Pictures/main/images/ufo.jpg" alt="картинка" />
+        <p>Название: </p>
         <p>НЛО</p>
-        <br />
+        <p>Ед. измерения: шт</p>
+        <p>Цена: </p>
         <p>1300р</p>
         <br />
      
-      <button class='button'>Купить</button>
+      <button className = "buttonItem">В корзину</button>
     </div>
   )
 }
