@@ -9,6 +9,7 @@ const baseData = {
 };
 
 const resp = (res) => {
+  console.log(res);
   return res.json();
 };
 
@@ -30,6 +31,14 @@ class Api {
       headers: this.headers,
     }).then(resp);
   }
+  getRegisteredUser(data) {
+    return fetch(`${this.baseUrl}/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).then(resp);
+  }
+
   /*методы для товаров*/
   getAllProducts() {
     return fetch(`${this.baseUrl}/products`, {

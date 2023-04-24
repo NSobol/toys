@@ -1,8 +1,10 @@
-.form{
-	color:black
+.formContainer {
+  color: black;
+}
+.form {
+  color: black;
 }
 .hidden {
-  display: none;
   visibility: hidden;
-  overflow: hidden;
+  opacity: 0;
 }
