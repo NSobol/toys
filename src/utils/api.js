@@ -9,7 +9,6 @@ const baseData = {
 };
 
 const resp = (res) => {
-  console.log(res);
   return res.json();
 };
 
@@ -44,7 +43,9 @@ class Api {
     return fetch(`${this.baseUrl}/products`, {
       method: 'GET',
       headers: this.headers,
-    }).then(resp);
+    }).then((res) => {
+      return res.json()
+    });
   }
 
   getSearchProduct(desiredValue) {

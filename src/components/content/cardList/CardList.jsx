@@ -1,10 +1,18 @@
-import React from 'react'
-import {Card} from '../card/Card'
+import React from 'react';
+import { Card } from '../card/Card';
 
-export const CardList = () => {
+export const CardList = ({ products, userId }) => {
   return (
-    <div>
-        <Card/>
+    <div className='products'>
+      {products.map((item) => {
+        return (
+          <Card
+            key={item.updated_at}
+            {...item}
+            product={item}
+          />
+        );
+      })}
     </div>
-  )
-}
+  );
+};

@@ -1,14 +1,14 @@
-import React from 'react'
-import { BannerContent } from './bannerContent/BannerContent'
-import { CardList } from './cardList/CardList'
-import { Advantages } from './advantages/Advantages'
+import React from 'react';
+import { BannerContent } from './bannerContent/BannerContent';
+import { CardList } from './cardList/CardList';
+import { Advantages } from './advantages/Advantages';
 
-export const Content = () => {
+export const Content = ( props ) => {
   return (
     <div>
-        <BannerContent/>
-        <CardList/>
-        <Advantages/>
+      <BannerContent />
+      <CardList products={props.products}  />
+      <Advantages />
     </div>
-  )
-}
+  );
+};
