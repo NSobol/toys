@@ -3,9 +3,34 @@
     border: 1px solid black;
     border-radius: 5px;
     padding: 20px;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: stretch;
+	align-content: center;
 }
 
 .imageItem {
     height: 250px;
     width: 250px;
 }
+
+.buttonItem {
+   text-decoration: none;
+   display: inline-block;
+   padding: 0 12px;
+   background: #0087b0;
+   color: white;
+   text-transform: uppercase;
+   font-size: 12px;
+   line-height: 28px;
+   cursor: pointer;
+   border: none;
+   border-radius: 7px;
+}
+
+.buttonItem:hover {
+    background: #ff7a39;
+    transition: .15s ease-in;
+  }

@@ -15,13 +15,13 @@ function App() {
     //функция отбора наших карточек
     return products.filter(
       (e) =>
-        e.author._id === '6442d2653291d790b3fcf266' ||
+        e.author._id === '6442d2653291d790b3fcf266' || 
         e.author._id === '6442bd8d3291d790b3fce3c6'
     );
   };
 
   useEffect(() => {
-    //получение занных пользователя и карточек товара
+    //получение данных пользователя и карточек товара
     Promise.all([api.getMyUserInfo(), api.getAllProducts()]).then(
       ([userData, data]) => {
         setUser(userData);
