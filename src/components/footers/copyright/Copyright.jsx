@@ -3,6 +3,6 @@ import style from './Copyright.module.css'
 
 export const Copyright = () => {
   return (
-      <div className={style.copyr}>&#169; 2023год</div>
+      <div className={style.copyr}>&#169; 2023 год</div>
   )
 }
