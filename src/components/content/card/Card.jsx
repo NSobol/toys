@@ -5,12 +5,15 @@ import style from './Card.module.css';
 export const Card = (props) => {
   return (
     <div className={style.cardItem}>
-      <img className={style.imageItem} src={props.pictures} alt='картинка' />
-      <p>Название: {props.name}</p>
-      <p>Ед. измерения: {props.wight}</p>
-      <p>Цена: {props.price}p</p>
-      <br />
-
+      <div className={style.cardPictures}>
+        <img className={style.imageItem} src={props.pictures} alt='картинка' />
+      </div>
+      <div className={style.cardText}>
+        <p className={style.titleItem}>Название: {props.name}</p>
+        <p>Ед. измерения: {props.wight}</p>
+        <p>Цена: <b>{props.price} p</b></p>
+        <br />
+      </div>
       <button className={style.buttonItem}>В корзину</button>
     </div>
   );
