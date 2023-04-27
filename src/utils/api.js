@@ -44,10 +44,20 @@ class Api {
       method: 'GET',
       headers: this.headers,
     }).then((res) => {
-      return res.json()
+      return res.json();
     });
   }
-
+  getAddProduct(data) {
+    return fetch(`${this.baseUrl}/products`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify(data)
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      });
+  }
   getSearchProduct(desiredValue) {
     return fetch(`${this.baseUrl}/products/search?query=${desiredValue}`, {
       headers: this.headers,
