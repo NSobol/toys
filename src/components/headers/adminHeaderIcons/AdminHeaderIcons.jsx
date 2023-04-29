@@ -1,16 +1,21 @@
-import React from 'react';
-import { ButtonIcon } from '../button/ButtonIcon';
-import './adminHeaderIcons.module.css';
+import { useState } from 'react';
+import style from './adminHeaderIcons.module.css';
 import add from './../../../images/add.png';
-import updates from './../../../images/update.png';
-import deletes from './../../../images/delete.png';
+import { Modal } from './../../modal/Modal';
+import './../../modal/modal.css';
+import { PopapAddCartProduct } from './../../popapAddCartProduct/PopapAddCartProduct';
 
 export const AdminHeaderIcons = () => {
+  const [modalActive, setModalActive] = useState(false);
   return (
     <div>
-      <ButtonIcon src={add} alt='Добавить' />
-      <ButtonIcon src={updates} alt='Изменить' />
-      <ButtonIcon src={deletes} alt='Удалить' />
+      <button className={style.btn} onClick={() => setModalActive(true)}>
+        <img src={add} alt='Добавить' />
+      </button>
+
+      <Modal active={modalActive} setActive={setModalActive}>
+        <PopapAddCartProduct />
+      </Modal>
     </div>
   );
 };

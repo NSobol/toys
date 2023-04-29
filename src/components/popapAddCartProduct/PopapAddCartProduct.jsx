@@ -1,41 +1,80 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { api } from './../../utils/api.js';
+import './popapAddCartProduct.css';
 
 export const PopapAddCartProduct = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    api.getAddProduct(data);
+  };
   return (
-    <div class='create-edit-modal-form'>
-      <h2 class='create-edit-modal-title'>Создание</h2>
-      <form action='/target/' class='modal-form'>
-        <label for='available'>Доступность</label> <br />
-        <input type='checkbox' id='available' name='available' />
+    <div className='createModalForm'>
+      <h2 className='createModalFormTitle'>Создание</h2>
+      <form className='modalForm' onSubmit={handleSubmit(onSubmit)}>
+        <label>Доступность</label>
+        <input
+          type='checkbox'
+          id='available'
+          name='available'
+          {...register('available')}
+        />
         <br />
-        <label for='image'>Ссылка на изображение</label> <br />
-        <input type='text' id='image' name='image' />
+        <label>Ссылка на изображение</label>
+        <input
+          type='text'
+          id='pictures'
+          name='pictures'
+          {...register('pictures')}
+        />
         <br />
-        <label for='name'>Название товара</label> <br />
-        <input id='name' name='name' type='text' required />
+        <label>Название товара</label>
+        <input
+          id='name'
+          name='name'
+          type='text'
+          {...register('name', { required: true })}
+        />
         <br />
-        <label for='price'>Цена</label> <br />
-        <input id='price' name='price' type='number' />
+        <label>Цена</label>
+        <input
+          id='price'
+          name='price'
+          type='number'
+          {...register('price', { required: true })}
+        />
         <br />
-        <label for='discount'>Скидка</label>
-        <input id='discount' name='discount' type='number' />
+        <label>Скидка</label>
+        <input
+          id='discount'
+          name='discount'
+          type='number'
+          {...register('discount')}
+        />
         <br />
-        <label for='stock'>Количество на складе</label>
-        <input id='stock' name='stock' type='number' />
+        <label>Количество на складе</label>
+        <input id='stock' name='stock' type='number' {...register('stock')} />
         <br />
-        <label for='wight'>Единицы измерения</label> <br />
-        <input id='wight' name='wight' type='text' />
+        <label>Единицы измерения</label>
+        <input id='wight' name='wight' type='text' {...register('wight')} />
         <br />
-        <label for='description'>Описание товара</label> <br />
-        <input id='description' name='description' type='text' required />
+        <label>Описание товара</label>
+        <input
+          id='description'
+          name='description'
+          type='text'
+          {...register('description', { required: true })}
+        />
         <br />
+        <button type='submit' className='button-form-submit'>
+          Ok
+        </button>
+        <button type='reset' className='button-form-close'>
+          Очистить
+        </button>
       </form>
-      <label for='token'>Токен:</label> <br />
-      <input id='token' name='token' type='text' required />
-      <button type='submit' class='button-form-submit'>
-        Ok
-      </button>
-      <button type='reset' class='button-form-close'></button>
     </div>
   );
 };
