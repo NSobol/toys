@@ -24,6 +24,18 @@ function App() {
 
   const scanValueInApp = useScan(search);
 
+  const getHandlerLiks = async (product, isLiks) => {
+    const alteredCard = await api.changeProductLike(product._id, isLiks);
+    const index = products.findIndex((e) => e._id === alteredCard._id);
+    if (index !== -1) {
+      setProducts((state) => [
+        ...state.slice(0, index),
+        alteredCard,
+        ...state.slice(index + 1),
+      ]);
+    }
+  };
+
   useEffect(() => {
     //получение данных пользователя и карточек товара
     Promise.all([api.getMyUserInfo(), api.getAllProducts()]).then(
@@ -44,9 +56,12 @@ function App() {
   return (
     <div className='App'>
       <Header setSearch={setSearch} />
-	
-			 
-        <Content products={products} user={user} />
+
+      <Content
+        products={products}
+        user={user}
+        getHandlerLiks={getHandlerLiks}
+      />
 
       <Footer />
     </div>

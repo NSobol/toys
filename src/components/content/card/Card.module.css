@@ -72,6 +72,16 @@
 }
 
 .card__сhosen {
-	border: none;
-	background: none;
+  border: none;
+  background: none;
+}
+
+.card__сhosen > svg {
+width: 24px;
+height: 24px;
+
+}
+.card__сhosen_active > svg {
+  stroke: red;
+  fill: red;
 }

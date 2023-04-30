@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReactComponent as Like } from '../../../images/like.svg'
+import { ReactComponent as Like } from '../../../images/red_heart.svg';
 import style from './Card.module.css';
 
 export const Card = (props) => {
-	const {
+  const {
     name,
     price,
     wight,
@@ -14,17 +14,18 @@ export const Card = (props) => {
     product,
     getHandlerLiks
   } = props;
-	const isСhosen = likes.some((e) => e === props.userId);
-	const getClickLiks = () => {
+
+  const isСhosen = likes.some((e) => e === props.userId);
+
+  const getClickLiks = () => {
     getHandlerLiks(product, isСhosen);
   };
+  const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
+
   return (
     <div className={style.cardItem}>
       <div className='card_header'>
-        <button
-          onClick={getClickLiks}
-          className={`card__сhosen ${isСhosen ? 'card__сhosen_active' : ''}`}
-        >
+        <button onClick={getClickLiks} className={style[`${сhosen}`]}>
           <Like />
         </button>
       </div>

@@ -3,11 +3,11 @@ import { BannerContent } from './bannerContent/BannerContent';
 import { CardList } from './cardList/CardList';
 import { Advantages } from './advantages/Advantages';
 
-export const Content = ( props ) => {
+export const Content = ({ products, getHandlerLiks }) => {
   return (
     <div>
       <BannerContent />
-      <CardList products={props.products}  />
+      <CardList products={products} onclick={getHandlerLiks} />
       <Advantages />
     </div>
   );
