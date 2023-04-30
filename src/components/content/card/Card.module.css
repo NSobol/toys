@@ -70,3 +70,29 @@
   background: #ff7a39;
   transition: 0.15s ease-in;
 }
+
+.card__сhosen {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  stroke: red;
+  fill: transparent;
+}
+
+.card__сhosen > svg {
+  width: 24px;
+  height: 24px;
+  stroke: red;
+}
+.card__сhosen_active {
+  background: none;
+  border: none;
+}
+.card__сhosen_active > svg {
+  stroke: red;
+  fill: red;
+}

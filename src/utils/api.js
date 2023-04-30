@@ -5,7 +5,6 @@ const baseData = {
     authorization:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQyYmQ4ZDMyOTFkNzkwYjNmY2UzYzYiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyMDk2NTM1LCJleHAiOjE3MTM2MzI1MzV9.fnI9mFVbrNioCqFbAEJO9ff5O7P_ubWbkht64eNY4V8',
   },
-  _id: '6442bd8d3291d790b3fce3c6',
 };
 
 const resp = (res) => {
@@ -109,7 +108,8 @@ class Api {
   getSearchProduct(desiredValue) {
     return fetch(`${this.baseUrl}/products/search?query=${desiredValue}`, {
       headers: this.headers,
-    }).then((e) => console.log(e));
+    }).then(resp)
+      .catch((e) => console.log(e));
   }
 
   getAddLikeOfproduct(productId) {

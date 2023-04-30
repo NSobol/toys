@@ -5,16 +5,12 @@ import { AdminHeaderIcons } from '../adminHeaderIcons/AdminHeaderIcons.jsx';
 import style from './headerMain.module.css';
   
 
-export const HeaderMain = (props) => {
-
-  const setScanQuery = (way) => {
-    props.setSearch(way);
-}
-  return (
+export const HeaderMain = () => {
+   return (
     <div className={style.headerMain}>
       <div className={style.container}>
         <Logo />
-        <Search setSearch={setScanQuery}/>
+        <Search />
         <AdminHeaderIcons />
       </div>
     </div>
