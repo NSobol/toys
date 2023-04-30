@@ -13,11 +13,12 @@ function App() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState(undefined);
   const [user, setUser] = useState({});
+  const [selected, setSelected]=useState([]);
 
   const scanValueInApp = useScan(search);
 
   const getHandlerLiks = async (product, isLiks) => {
-    const alteredCard = await api.changeProductLike(product._id, isLiks);
+    const alteredCard = await api.getChangeLikeProduct(product._id, isLiks);
     const index = products.findIndex((e) => e._id === alteredCard._id);
     if (index !== -1) {
       setProducts((state) => [
@@ -26,6 +27,12 @@ function App() {
         ...state.slice(index + 1),
       ]);
     }
+   isLiks ?
+      setSelected((state) => state.filter(f => f._id !== alteredCard._id))
+      :
+      setSelected((state) => [alteredCard, ...state])
+    console.log(product);
+    console.log(isLiks);
   };
 
   useEffect(() => {

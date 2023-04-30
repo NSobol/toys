@@ -11,7 +11,7 @@ export const CardList = ({ products, userId, getHandlerLiks }) => {
             key={item.updated_at}
             {...item}
             product={item}
-            getHandlerLiks={getHandlerLiks}
+            handlerLiks={getHandlerLiks}
           />
         );
       })}
