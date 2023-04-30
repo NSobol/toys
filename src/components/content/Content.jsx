@@ -7,7 +7,7 @@ export const Content = ({ products, getHandlerLiks }) => {
   return (
     <div>
       <BannerContent />
-      <CardList products={products} onclick={getHandlerLiks} />
+      <CardList products={products} getHandlerLiks={getHandlerLiks} />
       <Advantages />
     </div>
   );

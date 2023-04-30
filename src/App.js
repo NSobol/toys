@@ -17,7 +17,7 @@ function App() {
   const scanValueInApp = useScan(search);
 
   const getHandlerLiks = async (product, isLiks) => {
-    const alteredCard = await api.changeProductLike(product._id, isLiks);
+    const alteredCard = await api.getChangeLikeProduct(product._id, isLiks);
     const index = products.findIndex((e) => e._id === alteredCard._id);
     if (index !== -1) {
       setProducts((state) => [
