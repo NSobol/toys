@@ -75,3 +75,8 @@
 	border: none;
 	background: none;
 }
+
+.card__сhosen_active {
+  fill: red;
+  stroke: red;
+}
