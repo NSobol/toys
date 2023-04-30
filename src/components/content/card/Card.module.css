@@ -71,32 +71,28 @@
   transition: 0.15s ease-in;
 }
 
-button.card__сhosen {
+.card__сhosen {
   cursor: pointer;
   background: none;
-  border: transparent;
+  border: none;
   padding: 0;
   display: flex;
+  width: 24px;
+  height: 24px;
+  stroke: red;
+  fill: transparent;
 }
 
 .card__сhosen > svg {
   width: 24px;
   height: 24px;
-  fill: transparent;
   stroke: red;
 }
-button.card__сhosen.card__сhosen_active > svg {
-  width: 24px;
-  height: 24px;
+.card__сhosen_active {
+  background: none;
+  border: none;
+}
+.card__сhosen_active > svg {
+  stroke: red;
   fill: red;
-  stroke: red;
 }
-svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* .card__сhosen_active {
-  fill: red;
-  stroke: red;
-} */

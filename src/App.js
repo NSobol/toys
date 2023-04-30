@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/headers/header/Header.jsx';
 import Footer from './components/footers/footer/Footer.jsx';
-// import { Content } from "./components/content/Content";
 import { api } from './utils/api';
 import { useScan } from './hooks/Hooks';
 import { filteredProducts } from './utils/function';
@@ -21,8 +20,6 @@ function App() {
   const [search, setSearch] = useState(undefined);
   const [user, setUser] = useState({});
   const [selected, setSelected] = useState([]);
-//   const [favorites, setFavorites] = useState([]);
-  const [isLiks, setIsLiks] = useState(false);
 
   const scanValueInApp = useScan(search);
 
@@ -30,16 +27,17 @@ function App() {
     const alteredCard = await api.getChangeLikeProduct(product._id, isLiks);
     const index = products.findIndex((e) => e._id === alteredCard._id);
     if (index !== -1) {
-      setProducts((state) => [
-        ...state.slice(0, index),
+      setProducts((products) => [
+        ...products.slice(0, index),
         alteredCard,
-        ...state.slice(index + 1),
+        ...products.slice(index + 1),
       ]);
     }
     isLiks
-      ? setSelected((state) => state.filter((f) => f._id !== alteredCard._id))
-      : setSelected((state) => [alteredCard, ...state]);
-    if (isLiks) setIsLiks(true);
+      ? setSelected((products) =>
+          products.filter((f) => f._id !== alteredCard._id)
+        )
+      : setSelected((products) => [alteredCard, ...products]);
   };
 
   useEffect(() => {
@@ -47,11 +45,14 @@ function App() {
     Promise.all([api.getMyUserInfo(), api.getAllProducts()]).then(
       ([userData, data]) => {
         setUser(userData);
-        const filtered = filteredProducts(data.products);
+        const filtered = filteredProducts(data.products).filter((e) =>
+          e.likes.some((el) => el === userData._id)
+        );
         setProducts(filtered);
-        // const fav = filtered.filter((e) => findLiked(e, userData._id));
-        // const fav = filtered.filter(e => e.likes.some(el => el === userData._id));
-        // setFavorites(fav);
+        // const selected = filtered.filter((e) =>
+        //   e.likes.some((el) => el === userData._id)
+        // );
+        // setSelected(selected);
       }
     );
   }, []);
@@ -65,12 +66,11 @@ function App() {
 
   const productsValue = {
     handlerLiks: getHandlerLiks,
-    products,
+    products: products,
     search,
     setSearch,
     selected,
     user,
-    isLiks,
     // onSort,
   };
 
@@ -82,7 +82,7 @@ function App() {
           {/* {isAuthorized ? ( */}
           <Routes>
             <Route path='/' element={<CatalogPage />} />
-            <Route path='/favorites' element={<FavoritesPage />} />
+            <Route path='/selectes' element={<FavoritesPage />} />
             <Route path='/product/:id' element={<ProductPage />} />
             <Route path='/basket' element={<BasketPage />} />
             <Route path='/orus' element={<OrUsPage />} />

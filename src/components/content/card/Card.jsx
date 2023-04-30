@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Like } from './../../../images/likeheart.svg';
+import { ReactComponent as Like } from './../../../images/like.svg';
 import style from './Card.module.css';
 import { ProductsContext } from '../../../context/productsContext';
 import { useContext } from 'react';
@@ -13,7 +13,7 @@ export const Card = ({ product }) => {
     handlerLiks(product, isСhosen);
   };
 
-	const сhosen = isСhosen ? 'card__сhosen card__сhosen_active' : 'card__сhosen';
+	const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
   return (
     <div className={style.cardItem}>
       <div className='card_header'>
