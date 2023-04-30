@@ -72,11 +72,13 @@
 }
 
 .card__сhosen {
+  cursor: pointer;
   border: none;
   background: none;
 }
 
 .card__сhosen > svg {
+fill: red;
 width: 24px;
 height: 24px;
 
@@ -86,7 +88,7 @@ height: 24px;
   fill: red;
 }
 
-.card__сhosen_active {
+/* .card__сhosen_active {
   fill: red;
   stroke: red;
-}
+} */

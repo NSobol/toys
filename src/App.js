@@ -1,18 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Header from './components/headers/header/Header.jsx';
-import Footer from './components/footers/footer/Footer.jsx';
-import { Content } from './components/content/Content';
-import { api } from './utils/api';
-import { useScan } from './hooks/Hooks';
-import { filteredProducts } from './utils/function';
-// import { Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Header from "./components/headers/header/Header.jsx";
+import Footer from "./components/footers/footer/Footer.jsx";
+import { Content } from "./components/content/Content";
+import { api } from "./utils/api";
+import { useScan } from "./hooks/Hooks";
+import { filteredProducts } from "./utils/function";
+import { ProductsContext } from "./context/productsContext";
+import { Route, Routes } from "react-router-dom";
+import {CatalogPage} from "./pages/catalogPage/CatalogPage"
+import {BasketPage} from "./pages/basketPage/BasketPage"
+import {FavoritesPage} from "./pages/favoritesPage/FavoritesPage"
+import {MainPage} from "./pages/mainPage/MainPage"
+import {OrUsPage} from "./pages/orUsPage/OrUsPage"
+import {ProductPage} from "./pages/productPage/ProductPage"
+
 
 function App() {
   //установка начальных состояний
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState(undefined);
   const [user, setUser] = useState({});
+  const [selected, setSelected] = useState([]);
 
   const scanValueInApp = useScan(search);
 
@@ -26,6 +35,11 @@ function App() {
         ...state.slice(index + 1),
       ]);
     }
+    isLiks
+      ? setSelected((state) => state.filter((f) => f._id !== alteredCard._id))
+      : setSelected((state) => [alteredCard, ...state]);
+    console.log(product);
+    console.log(isLiks);
   };
 
   useEffect(() => {
@@ -45,17 +59,39 @@ function App() {
       .then((data) => setProducts(filteredProducts(data)));
   }, [scanValueInApp]);
 
+  const productsValue = {
+    getHandlerLiks,
+    products,
+    search,
+    selected,
+    // onSort,
+  };
+
   return (
-    <div className='App'>
-      <Header setSearch={setSearch} />
-
-      <Content
-        products={products}
-        user={user}
-        getHandlerLiks={getHandlerLiks}
-      />
-
-      <Footer />
+    <div className="App">
+      <ProductsContext.Provider value={productsValue}>
+        <Header setSearch={setSearch}></Header>
+        <div className="content">
+          {/* {isAuthorized ? ( */}
+            <Routes>
+              <Route path="/" element={<CatalogPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/product/:id" element={<ProductPage />} />
+              <Route path="/basket" element={<BasketPage />} />
+              <Route path="/orus" element={<OrUsPage />} />
+              <Route path="*" element={<div>NOT FOUND 404</div>} />
+            </Routes>
+          {/* ) : (
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/product/:id" element={<ProductPage />} />
+              <Route path="/orus" element={<OrUsPage />} />
+              <Route path="*" element={<div>NOT FOUND 404</div>} />
+            </Routes>
+          )} */}
+        </div>
+        <Footer />
+      </ProductsContext.Provider>
     </div>
   );
 }

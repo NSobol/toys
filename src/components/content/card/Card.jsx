@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Like } from '../../../images/red_heart.svg';
+import { ReactComponent as Like } from '../../../images/likeheart.svg';
 import style from './Card.module.css';
 
 export const Card = (props) => {
@@ -12,16 +12,17 @@ export const Card = (props) => {
     discount,
     userId,
     product,
-    getHandlerLiks
+    handlerLiks
   } = props;
 
-  const isСhosen = likes.some((e) => e === props.userId);
+  const isСhosen = likes.some((e) => e === userId);
 
   const getClickLiks = () => {
-    getHandlerLiks(product, isСhosen);
+   handlerLiks(product, isСhosen);
   };
-  const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
 
+  const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
+ 
   return (
     <div className={style.cardItem}>
       <div className='card_header'>
