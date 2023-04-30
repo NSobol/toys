@@ -5,7 +5,7 @@ import { Advantages } from './advantages/Advantages';
 
 export const Content = ({ products, getHandlerLiks }) => {
   return (
-    <div>
+    <div className='content'>
       <BannerContent />
       <CardList products={products} getHandlerLiks={getHandlerLiks} />
       <Advantages />
