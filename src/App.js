@@ -5,7 +5,7 @@ import Footer from './components/footers/footer/Footer.jsx';
 import { Content } from './components/content/Content';
 import { api } from './utils/api';
 import { useScan } from './hooks/Hooks';
-import { Route, Routes } from 'react-router-dom';
+// import { Route, Routes } from 'react-router-dom';
 
 function App() {
   //установка начальных состояний
@@ -44,10 +44,10 @@ function App() {
   return (
     <div className='App'>
       <Header setSearch={setSearch} />
-		  <Routes>
-			  <Route></Route>
+	
+			 
         <Content products={products} user={user} />
-      </Routes>
+
       <Footer />
     </div>
   );
