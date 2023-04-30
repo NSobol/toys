@@ -22,20 +22,38 @@ class Api {
   getMyUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
-    }).then(resp);
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
   }
 
   getAllUsersInfo() {
     return fetch(`${this.baseUrl}/users`, {
       headers: this.headers,
-    }).then(resp);
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
   }
+
+  /*Методы регистрации/авторизации/сброса пароля*/
   getRegisteredUser(data) {
     return fetch(`${this.baseUrl}/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
-    }).then(resp);
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
+  }
+
+  getAuthorizedUser(data) {
+    return fetch(`${this.baseUrl}/signin`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
   }
 
   /*методы для товаров*/
@@ -43,36 +61,82 @@ class Api {
     return fetch(`${this.baseUrl}/products`, {
       method: 'GET',
       headers: this.headers,
-    }).then((res) => {
-      return res.json()
-    });
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
   }
 
+  getAddProduct(data) {
+    return fetch(`${this.baseUrl}/products`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .catch((e) => console.log(e));
+  }
+
+  getAddReviewOfProduct(productId, data) {
+    return fetch(`${this.baseUrl}/products/review/${productId}`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify(data),
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
+  }
+
+  getAllReviewOfProduct(productId) {
+    return fetch(`${this.baseUrl}/products/review/${productId}`, {
+      method: 'GET',
+      headers: this.headers,
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
+  }
+
+  getAllReviewsProducts(productId) {
+    return fetch(`${this.baseUrl}/products/review/`, {
+      method: 'GET',
+      headers: this.headers,
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
+  }
   getSearchProduct(desiredValue) {
     return fetch(`${this.baseUrl}/products/search?query=${desiredValue}`, {
       headers: this.headers,
-    }).then((e) => resp(e));
+    }).then((e) => console.log(e));
   }
 
-  getAddLike(productId) {
+  getAddLikeOfproduct(productId) {
     return fetch(`${this.baseUrl}/products/likes/${productId}`, {
       headers: this.headers,
       method: 'PUT',
-    }).then(resp);
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
   }
 
-  getDeleteLike(productId) {
+  getDeleteLikeOfProduct(productId) {
     return fetch(`${this.baseUrl}/products/likes/${productId}`, {
       headers: this.headers,
       method: 'DELETE',
-    }).then(resp);
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
   }
 
   getChangeLikeProduct(productId, isLiked) {
     return fetch(`${this.baseUrl}/products/likes/${productId}`, {
       headers: this.headers,
       method: isLiked ? 'DELETE' : 'PUT',
-    }).then(resp);
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
   }
 }
 

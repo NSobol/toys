@@ -16,7 +16,7 @@ export const Registr = () => {
   };
   return (
     <div className='formContainer'>
-      <h2>Регистрация</h2>
+      <h2 className='formTitle'>Регистрация</h2>
       <form className='form' onSubmit={handleSubmit(onSubmit)}>
         <label> Ваше имя: </label> <br />
         <input
@@ -24,7 +24,6 @@ export const Registr = () => {
           id='name'
           name='name'
           placeholder='Ваше имя'
-          required
           {...register('name')}
         />
         <br />
@@ -47,7 +46,7 @@ export const Registr = () => {
           id='password'
           name='password'
           required
-          {...register('password')}
+          {...register('password', { required: true })}
         />
         <br />
         <label> О себе: </label> <br />
@@ -67,7 +66,7 @@ export const Registr = () => {
           value='group-12'
           {...register('group')}
         />
-        <input type='submit' />
+        <input type='submit' className='formBtnSub' />
         <input type='reset' />
       </form>
     </div>

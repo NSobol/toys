@@ -1,5 +1,11 @@
 .formContainer {
   color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0;
+  
 }
 .form {
   color: black;
@@ -7,4 +13,13 @@
 .hidden {
   visibility: hidden;
   opacity: 0;
+}
+
+.formTitle {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.formBtnSub{
+	margin-right: 10px;
 }
