@@ -108,7 +108,8 @@ class Api {
   getSearchProduct(desiredValue) {
     return fetch(`${this.baseUrl}/products/search?query=${desiredValue}`, {
       headers: this.headers,
-    }).then((e) => console.log(e));
+    }).then(resp)
+      .catch((e) => console.log(e));
   }
 
   getAddLikeOfproduct(productId) {
