@@ -1,28 +1,19 @@
 import React from 'react';
-import { ReactComponent as Like } from '../../../images/likeheart.svg';
+import { ReactComponent as Like } from './../../../images/likeheart.svg';
 import style from './Card.module.css';
+import { ProductsContext } from '../../../context/productsContext';
+import { useContext } from 'react';
 
-export const Card = (props) => {
-  const {
-    name,
-    price,
-    wight,
-    pictures,
-    likes,
-    discount,
-    userId,
-    product,
-    handlerLiks
-  } = props;
-
-  const isСhosen = likes.some((e) => e === userId);
-
+export const Card = ({ product }) => {
+	const { handlerLiks, user } = useContext(ProductsContext);
+	
+	let isСhosen = product.likes.some((e) => e === user._id);
+	
   const getClickLiks = () => {
-   handlerLiks(product, isСhosen);
+    handlerLiks(product, isСhosen);
   };
 
-  const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
- 
+	const сhosen = isСhosen ? 'card__сhosen card__сhosen_active' : 'card__сhosen';
   return (
     <div className={style.cardItem}>
       <div className='card_header'>
@@ -32,13 +23,17 @@ export const Card = (props) => {
       </div>
 
       <div className={style.cardPictures}>
-        <img className={style.imageItem} src={pictures} alt='картинка' />
+        <img
+          className={style.imageItem}
+          src={product.pictures}
+          alt='картинка'
+        />
       </div>
       <div className={style.cardText}>
-        <p className={style.titleItem}>Название: {name}</p>
-        <p>Ед. измерения: {wight}</p>
+        <p className={style.titleItem}>Название: {product.name}</p>
+        <p>Ед. измерения: {product.wight}</p>
         <p>
-          Цена: <b>{price} p</b>
+          Цена: <b>{product.price} p</b>
         </p>
         <br />
       </div>

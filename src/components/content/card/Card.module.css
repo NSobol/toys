@@ -71,21 +71,29 @@
   transition: 0.15s ease-in;
 }
 
-.card__сhosen {
+button.card__сhosen {
   cursor: pointer;
-  border: none;
   background: none;
+  border: transparent;
+  padding: 0;
+  display: flex;
 }
 
 .card__сhosen > svg {
-fill: red;
-width: 24px;
-height: 24px;
-
-}
-.card__сhosen_active > svg {
+  width: 24px;
+  height: 24px;
+  fill: transparent;
   stroke: red;
+}
+button.card__сhosen.card__сhosen_active > svg {
+  width: 24px;
+  height: 24px;
   fill: red;
+  stroke: red;
+}
+svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* .card__сhosen_active {

@@ -6,7 +6,7 @@ import { useContext } from 'react'
 
 export const CardList = () => {
 
-  const { products, userId, getHandlerLiks }=useContext(ProductsContext);
+  const { products}=useContext(ProductsContext);
 
   return (
     <div className={style.products}>
@@ -15,8 +15,7 @@ export const CardList = () => {
           <Card
             key={item.updated_at}
             {...item}
-            product={item}
-            handlerLiks={getHandlerLiks}
+            product={item}				
           />
         );
       })}
