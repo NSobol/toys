@@ -13,6 +13,7 @@ import { FavoritesPage } from './pages/favoritesPage/FavoritesPage';
 // import {MainPage} from "./pages/mainPage/MainPage"
 import { OrUsPage } from './pages/orUsPage/OrUsPage';
 import { ProductPage } from './pages/productPage/ProductPage';
+import { NotFound } from './components/notFound/NotFound';
 
 function App() {
   //установка начальных состояний
@@ -86,14 +87,14 @@ function App() {
             <Route path='/product/:id' element={<ProductPage />} />
             <Route path='/basket' element={<BasketPage />} />
             <Route path='/orus' element={<OrUsPage />} />
-            <Route path='*' element={<div>NOT FOUND 404</div>} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
           {/* ) : (
             <Routes>
               <Route path="/" element={<MainPage />} />
               <Route path="/product/:id" element={<ProductPage />} />
               <Route path="/orus" element={<OrUsPage />} />
-              <Route path="*" element={<div>NOT FOUND 404</div>} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           )} */}
         </div>
