@@ -46,14 +46,12 @@ function App() {
     Promise.all([api.getMyUserInfo(), api.getAllProducts()]).then(
       ([userData, data]) => {
         setUser(userData);
-        const filtered = filteredProducts(data.products).filter((e) =>
+        const filtered = filteredProducts(data.products);
+        setProducts(filtered);
+        const selected = filtered.filter((e) =>
           e.likes.some((el) => el === userData._id)
         );
-        setProducts(filtered);
-        // const selected = filtered.filter((e) =>
-        //   e.likes.some((el) => el === userData._id)
-        // );
-        // setSelected(selected);
+        setSelected(selected);
       }
     );
   }, []);

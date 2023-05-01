@@ -4,13 +4,11 @@ import style from './CardLics.module.css';
 import { ProductsContext } from '../../../context/productsContext'
 import { useContext } from 'react'
 
-export const CardList = () => {
+export const CardList = (props) => {
 
-  const { products}=useContext(ProductsContext);
-
-  return (
+   return (
     <div className={style.products}>
-      {products.map((item) => {
+      {props.products.map((item) => {
         return (
           <Card
             key={item.updated_at}

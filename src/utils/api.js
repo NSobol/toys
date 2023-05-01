@@ -78,6 +78,14 @@ class Api {
       .catch((e) => console.log(e));
   }
 
+  getProductInfo(id) {
+    return fetch(`${this.baseUrl}/products/${id}`, {
+      headers: this.headers,
+    })
+      .then(resp)
+      .catch((e) => console.log(e));
+  }
+
   getAddReviewOfProduct(productId, data) {
     return fetch(`${this.baseUrl}/products/review/${productId}`, {
       method: 'POST',
@@ -108,7 +116,8 @@ class Api {
   getSearchProduct(desiredValue) {
     return fetch(`${this.baseUrl}/products/search?query=${desiredValue}`, {
       headers: this.headers,
-    }).then(resp)
+    })
+      .then(resp)
       .catch((e) => console.log(e));
   }
 
