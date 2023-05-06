@@ -22,6 +22,15 @@ function App() {
   const [user, setUser] = useState({});
   const [selected, setSelected] = useState([]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productPerPage, setProductPerPage] = useState(8);
+
+  const lastProductIndex = currentPage * productPerPage;
+  const firstProductIndex = lastProductIndex - productPerPage;
+  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
+
+  const navigate = (pageNumber) => setCurrentPage(pageNumber);
+
   const scanValueInApp = useScan(search);
 
   const getHandlerLiks = async (product, isLiks) => {
@@ -40,6 +49,46 @@ function App() {
         )
       : setSelected((products) => [alteredCard, ...products]);
   };
+
+  // 	const onSort = (sortId) => {
+  //     if (sortId === CHEAPEST) {
+  //       const newProduts = products.sort((a, b) => a.price - b.price);
+  //       setProducts([...newProduts]);
+  //       return;
+  //     }
+  //     if (sortId === EXPENSIVE) {
+  //       const newProduts = products.sort((a, b) => b.price - a.price);
+  //       setProducts([...newProduts]);
+  //       return;
+  //     }
+  //     if (sortId === POPULAR) {
+  //       const newProduts = products.sort(
+  //         (a, b) => b.likes.length - a.likes.length
+  //       );
+  //       setProducts([...newProduts]);
+  //       return;
+  //     }
+  //     if (sortId === NEWEST) {
+  //       const newProduts = products.sort(
+  //         (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  //       );
+  //       setProducts([...newProduts]);
+  //       return;
+  //     }
+
+  //     if (sortId === SALE) {
+  //       const newProduts = products.sort((a, b) => b.discount - a.discount);
+  //       setProducts([...newProduts]);
+  //       return;
+  //     }
+  //     if (sortId === RATE) {
+  //       const newProduts = products.sort(
+  //         (a, b) => productRating(b.reviews) - productRating(a.reviews)
+  //       );
+  //       setProducts([...newProduts]);
+  //       return;
+  //     }
+  //   };
 
   useEffect(() => {
     //получение данных пользователя и карточек товара
@@ -70,7 +119,11 @@ function App() {
     setSearch,
     selected,
     user,
-    // onSort,
+    setCurrentPage,
+    setProductPerPage,
+    productPerPage,
+    currentProducts,
+    navigate,
   };
 
   return (

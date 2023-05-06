@@ -5,13 +5,34 @@ import { BannerContent } from './../../components/content/bannerContent/BannerCo
 import { CardList } from './../../components/content/cardList/CardList';
 import { Advantages } from './../../components/content/advantages/Advantages';
 import './Catalog.css';
+import Paginate from '../../components/content/pagination/Paginate';
 
 export const CatalogPage = () => {
-  const { products } = useContext(ProductsContext);
+  const { products, search, currentProducts } = useContext(ProductsContext);
+  const getIssues = (numb) => {
+    const tmp = numb % 10;
+    if (!tmp || !numb) {
+      return ' товаров';
+    }
+    if (tmp === 1) {
+      return ' товар';
+    }
+    if (tmp > 1 && tmp < 5) {
+      return ' товара';
+    }
+  };
   return (
     <div className='catalog'>
       <BannerContent />
-      <CardList products={products} />
+      {search && (
+        <p className='search'>
+          По запросу <b>{search}</b>{' '}
+          {products.length === 1 ? 'найден' : 'найдено'} {products.length}
+          {getIssues(products.length)}
+        </p>
+      )}
+      <CardList products={currentProducts} />
+      <Paginate />
       <Advantages />
     </div>
   );

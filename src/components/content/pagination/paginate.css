@@ -1,0 +1,14 @@
+.select {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 20px 40px;
+  font-size: 1.2rem;
+}
+
+.selectCount{
+	margin: 0 5px;
+	padding: 5px;
+	font-size: 1.2rem;
+}
