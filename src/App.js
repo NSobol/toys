@@ -13,6 +13,7 @@ import { FavoritesPage } from './pages/favoritesPage/FavoritesPage';
 // import {MainPage} from "./pages/mainPage/MainPage"
 import { OrUsPage } from './pages/orUsPage/OrUsPage';
 import { ProductPage } from './pages/productPage/ProductPage';
+import { ProfilePage } from './pages/profilePage/ProfilePage';
 import { NotFound } from './components/notFound/NotFound';
 
 function App() {
@@ -138,6 +139,7 @@ function App() {
             <Route path='/product/:id' element={<ProductPage />} />
             <Route path='/basket' element={<BasketPage />} />
             <Route path='/orus' element={<OrUsPage />} />
+            <Route path='/profile' element={<ProfilePage />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
           {/* ) : (

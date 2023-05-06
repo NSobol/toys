@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import "./ComeBack.css"
 
 export const ComeBack = () => {
   const back = useNavigate();
-  return <span onClick={() => back(-1)}>{'<'} На главную</span>;
+  return <span className='comeBackStyle' onClick={() => back(-1)}>{'<'} На главную</span>;
 };

@@ -3,6 +3,7 @@ import { Logo } from '../logo/Logo.jsx';
 import { Search } from './../search/Search.jsx';
 import { AdminHeaderIcons } from '../adminHeaderIcons/AdminHeaderIcons.jsx';
 import style from './headerMain.module.css';
+import { HeaderIcons } from '../userHeaderIcons/UserHeaderIcons.jsx';
   
 
 export const HeaderMain = () => {
@@ -11,6 +12,7 @@ export const HeaderMain = () => {
       <div className={style.container}>
         <Logo />
         <Search />
+        <HeaderIcons />
         <AdminHeaderIcons />
       </div>
     </div>

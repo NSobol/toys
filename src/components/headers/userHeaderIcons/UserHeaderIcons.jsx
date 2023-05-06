@@ -1,13 +1,16 @@
 import React from 'react';
-import favorites from './../../images/Favorites.svg';
 import s from './UserHeaderIcons.module.css';
+import { Link } from 'react-router-dom';
+import {ReactComponent as FavoritIcon} from "./../../../images/heart.svg"
+import {ReactComponent as BasketIcon} from "./../../../images/basket_icon.svg"
+import {ReactComponent as UserIcon} from "./../../../images/user.svg"
 
 export const HeaderIcons = () => {
   return (
     <div className={s.header__icons}>
-      <a href='/' className={s.header__link}>
-        <img src={favorites} alt='favorites' className={s.header__icon} />
-      </a>
+      <Link to = {`/selectes`}><div><FavoritIcon className={s.favoritIcon}/></div></Link>
+      <Link to = {'/basket'}><div><BasketIcon className={s.favoritIcon}/></div></Link>
+      <Link to = {'/profile'}><div><UserIcon className={s.favoritIcon}/></div></Link>
     </div>
   );
 };

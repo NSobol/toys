@@ -8,4 +8,3 @@ export const filteredProducts = (products) => {
   return filterProducts;
 };
 
-
