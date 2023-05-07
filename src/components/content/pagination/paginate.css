@@ -1,3 +1,8 @@
+.paginationSelect {
+  display: flex;
+  flex-direction: column;
+}
+
 .select {
   display: flex;
   flex-direction: row;
@@ -5,10 +10,39 @@
   justify-content: flex-end;
   margin: 20px 40px;
   font-size: 1.2rem;
+  margin-right: 260px;
 }
 
-.selectCount{
+.selectCount {
 	margin: 0 5px;
 	padding: 5px;
 	font-size: 1.2rem;
 }
+
+.page-link {
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+}
+
+.page-link:hover {
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+
+.page-link:active{
+  color: #ff7a39;
+}
+
+.selectNumber {
+  display: flex;
+  gap: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #0087b0;
+  justify-content: center;
+}
+
+

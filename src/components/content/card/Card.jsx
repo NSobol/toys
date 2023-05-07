@@ -30,6 +30,7 @@ export const Card = ({ product }) => {
             alt='картинка'
           />
         </div>
+      </Link>
         <div className={style.cardText}>
           <p className={style.titleItem}>Название: {product.name}</p>
           <p>Ед. измерения: {product.wight}</p>
@@ -39,7 +40,6 @@ export const Card = ({ product }) => {
           <br />
         </div>
         <button className={style.buttonItem}>В корзину</button>
-      </Link>
     </div>
   );
 };

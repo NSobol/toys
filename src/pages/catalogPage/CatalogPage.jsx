@@ -23,7 +23,7 @@ export const CatalogPage = () => {
     }
   };
 
-  const sortedItems = [{ id: POPULAR}, { id: NEWEST }, { id: SALE }, { id: CHEAPEST }, { id: EXPENSIVE }, { id: RATE }];
+  const sortedItems = [{ id: POPULAR}, { id: RATE }, { id: NEWEST }, { id: CHEAPEST }, { id: EXPENSIVE }, { id: SALE }];
 
   return (
     <div className='catalog'>
