@@ -51,45 +51,58 @@ function App() {
       : setSelected((products) => [alteredCard, ...products]);
   };
 
-  // 	const onSort = (sortId) => {
-  //     if (sortId === CHEAPEST) {
-  //       const newProduts = products.sort((a, b) => a.price - b.price);
-  //       setProducts([...newProduts]);
-  //       return;
-  //     }
-  //     if (sortId === EXPENSIVE) {
-  //       const newProduts = products.sort((a, b) => b.price - a.price);
-  //       setProducts([...newProduts]);
-  //       return;
-  //     }
-  //     if (sortId === POPULAR) {
-  //       const newProduts = products.sort(
-  //         (a, b) => b.likes.length - a.likes.length
-  //       );
-  //       setProducts([...newProduts]);
-  //       return;
-  //     }
-  //     if (sortId === NEWEST) {
-  //       const newProduts = products.sort(
-  //         (a, b) => new Date(b.created_at) - new Date(a.created_at)
-  //       );
-  //       setProducts([...newProduts]);
-  //       return;
-  //     }
+  const productRating = (reviews) => {
+    if (!reviews || !reviews.length) {
+      return 0;
+    }
+    const res = reviews.reduce((acc, el) => acc += el.rating, 0);
+    console.log(res / reviews.length);
+    return res / reviews.length
+  }
 
-  //     if (sortId === SALE) {
-  //       const newProduts = products.sort((a, b) => b.discount - a.discount);
-  //       setProducts([...newProduts]);
-  //       return;
-  //     }
-  //     if (sortId === RATE) {
-  //       const newProduts = products.sort(
-  //         (a, b) => productRating(b.reviews) - productRating(a.reviews)
-  //       );
-  //       setProducts([...newProduts]);
-  //       return;
-  //     }
-  //   };
+  const getSorted = (sortId) => {
+    let newProduts=[];
+    switch (sortId) {
+      case 'сначала дешевле':
+        newProduts = products.sort((a, b) => a.price - b.price);
+        setProducts([...newProduts]);
+        break;
+    
+      case 'сначала дороже':
+        newProduts = products.sort((a, b) => b.price - a.price);
+        setProducts([...newProduts]);
+        break;
+      
+      case 'популярные':
+        newProduts = products.sort(
+          (a, b) => b.likes.length - a.likes.length
+        );
+        setProducts([...newProduts]);
+        break;
+      
+      case 'новинки':
+        newProduts = products.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
+        setProducts([...newProduts]);
+        break;
+      
+      case 'снижена цена':
+        newProduts = products.sort((a, b) => b.discount - a.discount);
+        setProducts([...newProduts]);
+        break;
+  
+      case 'высокий рейтинг':
+        newProduts = products.sort(
+          (a, b) => productRating(b.reviews) - productRating(a.reviews)
+        );
+        setProducts([...newProduts]);
+        break;
+  
+      default:
+      break;
+    }
+  }
 
   useEffect(() => {
     //получение данных пользователя и карточек товара
@@ -125,6 +138,7 @@ function App() {
     productPerPage,
     currentProducts,
     navigate,
+    getSorted,
   };
 
   return (
