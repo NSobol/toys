@@ -92,6 +92,7 @@
   border: none;
 }
 .card__сhosen_active > svg {
+  cursor: pointer;
   stroke: red;
   fill: red;
 }
