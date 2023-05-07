@@ -63,36 +63,36 @@ function App() {
   const getSorted = (sortId) => {
     let newProduts=[];
     switch (sortId) {
-      case 'сначала дешевле':
+      case 'Сначала дешевле':
         newProduts = products.sort((a, b) => a.price - b.price);
         setProducts([...newProduts]);
         break;
     
-      case 'сначала дороже':
+      case 'Сначала дороже':
         newProduts = products.sort((a, b) => b.price - a.price);
         setProducts([...newProduts]);
         break;
       
-      case 'популярные':
+      case 'Популярные':
         newProduts = products.sort(
           (a, b) => b.likes.length - a.likes.length
         );
         setProducts([...newProduts]);
         break;
       
-      case 'новинки':
+      case 'Новинки':
         newProduts = products.sort(
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
         setProducts([...newProduts]);
         break;
       
-      case 'снижена цена':
+      case 'Снижена цена':
         newProduts = products.sort((a, b) => b.discount - a.discount);
         setProducts([...newProduts]);
         break;
   
-      case 'высокий рейтинг':
+      case 'Высокий рейтинг':
         newProduts = products.sort(
           (a, b) => productRating(b.reviews) - productRating(a.reviews)
         );
