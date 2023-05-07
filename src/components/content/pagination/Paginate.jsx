@@ -22,7 +22,7 @@ const Paginate = () => {
     setProductPerPage(event.target.value);
   }
   return (
-    <div>
+    <div className='paginationSelect'>
       <div className='select'>
         <p>Показывать на странице </p>
         <select
@@ -39,7 +39,7 @@ const Paginate = () => {
         <p> товаров</p>
       </div>
       <div>
-        <ul className='pagination'>
+        <ul className='selectNumber'>
           {pageNumber.map((number) => (
             <li className='page-item' key={number}>
               <a
