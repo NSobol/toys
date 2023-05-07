@@ -8,7 +8,8 @@ import { ProductsContext } from '../../../context/productsContext';
 
 export const HeaderIcons = () => {
   const { selected } = useContext(ProductsContext);
-  const numberLike = selected.length > 9 ? 'numberLike_standart' : 'numberLike_more';
+  const numberLike =
+    selected.length > 9 ? 'numberLike_more' : 'numberLike_standart';
   
   return (
     <div className={s.header__icons}>

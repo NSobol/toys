@@ -16,7 +16,7 @@
   height: 24px;
 }
 
-.favorit__container{
+.favorit__container {
   text-decoration: none;
   display: flex;
 }
@@ -40,13 +40,14 @@
   text-decoration: none;
   font-size: 20px;
   color: #fff;
-  margin-top: -10px;
+  margin-top: 2px;
+  margin-left: -24px;
 }
 
 .numberLike_more {
   text-decoration: none;
   font-size: 20px;
   color: #fff;
-  margin-top: -10px;
+  margin-top: 2px;
+  margin-left: -30px;
 }
-
