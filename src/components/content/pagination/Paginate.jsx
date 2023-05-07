@@ -3,7 +3,7 @@ import { ProductsContext } from '../../../context/productsContext';
 import './paginate.css';
 
 const Paginate = () => {
-  const { products, productPerPage, setProductPerPage, navigate } =
+  const { products, productPerPage, setProductPerPage, setCurrentPage } =
     useContext(ProductsContext);
 
   const [value, setValue] = useState(8);
@@ -16,11 +16,21 @@ const Paginate = () => {
     pageNumber.push(i);
   }
 
+  const navigate = (pageNumber, evt) => {
+    setCurrentPage(pageNumber);
+  };
+
   function handleChange(event) {
-    console.log(event.target.value);
     setValue(event.target.value);
     setProductPerPage(event.target.value);
   }
+
+  const prevPage = () => {
+    setCurrentPage((prev) => prev - 1);
+  };
+  const nextPage = () => {
+    setCurrentPage((prev) => prev + 1);
+  };
   return (
     <div className='paginationSelect'>
       <div className='select'>
@@ -38,7 +48,10 @@ const Paginate = () => {
         </select>
         <p> товаров</p>
       </div>
-      <div>
+      <div className='paginate'>
+        <button className='bntPaginate' onClick={prevPage}>
+          Предыдущая
+        </button>
         <ul className='selectNumber'>
           {pageNumber.map((number) => (
             <li className='page-item' key={number}>
@@ -52,6 +65,9 @@ const Paginate = () => {
             </li>
           ))}
         </ul>
+        <button className='bntPaginate' onClick={nextPage}>
+          Следующая
+        </button>
       </div>
     </div>
   );

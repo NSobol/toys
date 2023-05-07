@@ -30,8 +30,6 @@ function App() {
   const firstProductIndex = lastProductIndex - productPerPage;
   const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
-  const navigate = (pageNumber) => setCurrentPage(pageNumber);
-
   const scanValueInApp = useScan(search);
 
   const getHandlerLiks = async (product, isLiks) => {
@@ -136,7 +134,6 @@ function App() {
     setProductPerPage,
     productPerPage,
     currentProducts,
-    navigate,
     getSorted,
   };
 
