@@ -1,0 +1,79 @@
+.cardProduct {
+    width: 100%;
+    height: 71vh;
+    display: flex;
+    gap: 70px;
+    font-size: 20px;
+    justify-content: center;
+}
+
+.rightBar {
+    padding-top: 50px;
+}
+
+.product__title {
+    margin-bottom: 20px;
+}
+
+.rightBarP {
+    margin: 10px;
+    margin-left: 0;
+}
+
+.productReviews {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.reviewsButton {
+    display: inline-block;
+	box-sizing: border-box;
+	padding: 1px;
+	outline: none;
+	border: none;
+	border-radius: 25px;
+	height: 46px;
+	line-height: 0;
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: none;
+	color: #fff;
+	background-color: #fff;
+	position: relative;
+	overflow: hidden;
+	vertical-align: top;
+	cursor: pointer;
+	user-select: none;
+	appearance: none;
+	touch-action: manipulation;
+}
+
+.reviewsButton span {
+	display: block;	
+	box-sizing: border-box;
+	padding: 0 25px;    
+	height: 42px;
+	line-height: 38px;    
+	border: none;
+	border-radius: 25px;    
+	font-size: 14px;
+	color: #FFFFFF;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%), #0087b0;
+	text-align: center;
+	font-weight: 600;
+}
+.reviewsButton:focus-visible {
+	box-shadow: 0 0 0 3px lightskyblue;
+}
+.reviewsButton:hover span {
+	background-color: #ff7a39
+}
+.reviewsButton:active span {
+	background-color: #ff7a39 !important;
+}
+.reviewsButton:disabled {
+	opacity: 0.65;
+	pointer-events: none;
+}

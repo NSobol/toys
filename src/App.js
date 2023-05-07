@@ -13,6 +13,8 @@ import { FavoritesPage } from './pages/favoritesPage/FavoritesPage';
 // import {MainPage} from "./pages/mainPage/MainPage"
 import { OrUsPage } from './pages/orUsPage/OrUsPage';
 import { ProductPage } from './pages/productPage/ProductPage';
+import { ProfilePage } from './pages/profilePage/ProfilePage';
+import { NotFound } from './components/notFound/NotFound';
 
 function App() {
   //установка начальных состояний
@@ -20,6 +22,15 @@ function App() {
   const [search, setSearch] = useState(undefined);
   const [user, setUser] = useState({});
   const [selected, setSelected] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productPerPage, setProductPerPage] = useState(8);
+
+  const lastProductIndex = currentPage * productPerPage;
+  const firstProductIndex = lastProductIndex - productPerPage;
+  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
+
+  const navigate = (pageNumber) => setCurrentPage(pageNumber);
 
   const scanValueInApp = useScan(search);
 
@@ -40,19 +51,69 @@ function App() {
       : setSelected((products) => [alteredCard, ...products]);
   };
 
+  const productRating = (reviews) => {
+    if (!reviews || !reviews.length) {
+      return 0;
+    }
+    const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
+    return res / reviews.length;
+  };
+
+  const getSorted = (sortId) => {
+    let newProduts = [];
+    switch (sortId) {
+      case 'Сначала дешевле':
+        newProduts = products.sort((a, b) => a.price - b.price);
+        setProducts([...newProduts]);
+        break;
+    
+      case 'Сначала дороже':
+        newProduts = products.sort((a, b) => b.price - a.price);
+        setProducts([...newProduts]);
+        break;
+      
+      case 'Популярные':
+        newProduts = products.sort(
+          (a, b) => b.likes.length - a.likes.length
+        );
+        setProducts([...newProduts]);
+        break;
+      
+      case 'Новинки':
+        newProduts = products.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
+        setProducts([...newProduts]);
+        break;
+      
+      case 'Снижена цена':
+        newProduts = products.sort((a, b) => b.discount - a.discount);
+        setProducts([...newProduts]);
+        break;
+  
+      case 'Высокий рейтинг':
+        newProduts = products.sort(
+          (a, b) => productRating(b.reviews) - productRating(a.reviews)
+        );
+        setProducts([...newProduts]);
+        break;
+
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     //получение данных пользователя и карточек товара
     Promise.all([api.getMyUserInfo(), api.getAllProducts()]).then(
       ([userData, data]) => {
         setUser(userData);
-        const filtered = filteredProducts(data.products).filter((e) =>
+        const filtered = filteredProducts(data.products);
+        setProducts(filtered);
+        const selected = filtered.filter((e) =>
           e.likes.some((el) => el === userData._id)
         );
-        setProducts(filtered);
-        // const selected = filtered.filter((e) =>
-        //   e.likes.some((el) => el === userData._id)
-        // );
-        // setSelected(selected);
+        setSelected(selected);
       }
     );
   }, []);
@@ -71,7 +132,12 @@ function App() {
     setSearch,
     selected,
     user,
-    // onSort,
+    setCurrentPage,
+    setProductPerPage,
+    productPerPage,
+    currentProducts,
+    navigate,
+    getSorted,
   };
 
   return (
@@ -86,14 +152,15 @@ function App() {
             <Route path='/product/:id' element={<ProductPage />} />
             <Route path='/basket' element={<BasketPage />} />
             <Route path='/orus' element={<OrUsPage />} />
-            <Route path='*' element={<div>NOT FOUND 404</div>} />
+            <Route path='/profile' element={<ProfilePage />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
           {/* ) : (
             <Routes>
               <Route path="/" element={<MainPage />} />
               <Route path="/product/:id" element={<ProductPage />} />
               <Route path="/orus" element={<OrUsPage />} />
-              <Route path="*" element={<div>NOT FOUND 404</div>} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           )} */}
         </div>

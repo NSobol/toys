@@ -3,7 +3,6 @@
   margin: 0;
 }
 .cardItem {
-  width: 300px;
   box-sizing: border-box;
   border: 1px solid transparent;
   border-radius: 5px;
@@ -24,8 +23,7 @@
 }
 
 .cardPictures {
-  width: 250px;
-  height: 250px;
+  width: 80%;
 }
 
 .imageItem {
@@ -64,6 +62,7 @@
   cursor: pointer;
   border: none;
   border-radius: 7px;
+  width: 100%;
 }
 
 .buttonItem:hover {
@@ -93,6 +92,7 @@
   border: none;
 }
 .card__сhosen_active > svg {
+  cursor: pointer;
   stroke: red;
   fill: red;
 }
