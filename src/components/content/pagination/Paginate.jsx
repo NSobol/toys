@@ -16,8 +16,8 @@ const Paginate = () => {
     pageNumber.push(i);
   }
 
-  const navigate = (pageNumber, evt) => {
-    setCurrentPage(pageNumber);
+  const navigate = (numb) => {
+    setCurrentPage(numb);
   };
 
   function handleChange(event) {
@@ -55,13 +55,9 @@ const Paginate = () => {
         <ul className='selectNumber'>
           {pageNumber.map((number) => (
             <li className='page-item' key={number}>
-              <a
-                href='!#'
-                className='page-link'
-                onClick={() => navigate(number)}
-              >
+              <button className='page-link' onClick={() => navigate(number)}>
                 {number}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
