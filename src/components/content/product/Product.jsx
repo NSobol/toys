@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Product.css";
+import { ReviewForm } from "./../../ReviewForm/ReviewForm";
+import { Modal } from "./../../modal/Modal";
 
 export const Product = ({ product }) => {
- 
+  const [modalActive, setModalActive] = useState(false);
+
+  const prodId=product._id;
+
   return (
     <div className="cardProduct">
       <div className="leftBar">
@@ -17,9 +22,19 @@ export const Product = ({ product }) => {
         </p>
         <div className="productReviews">
           <h3>Отзывы:</h3>
-          <button className="reviewsButton"><span>Написать отзыв</span></button>
+          <button
+            className="reviewsButton"
+            onClick={() => {
+              setModalActive(true);
+            }}
+          >
+            <span>Написать отзыв</span>
+          </button>
         </div>
       </div>
+      <Modal active={modalActive} setActive={setModalActive}>
+        <ReviewForm productId={prodId}/>
+      </Modal>
     </div>
   );
 };
