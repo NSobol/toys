@@ -5,25 +5,22 @@ import { Modal } from "./../../modal/Modal";
 
 export const Product = ({ product }) => {
   const [modalActive, setModalActive] = useState(false);
-
-  const prodId=product._id;
-
   return (
-    <div className="cardProduct">
-      <div className="leftBar">
-        <img className="product__img" src={product.pictures} alt="картинка" />
+    <div className='cardProduct'>
+      <div className='leftBar'>
+        <img className='product__img' src={product.pictures} alt='картинка' />
       </div>
-      <div className="rightBar">
-        <h2 className="product__title">{product.name}</h2>
-        <p className="rightBarP">Описание: {product.description}</p>
-        <p className="rightBarP">Ед. измерения: {product.wight}</p>
-        <p className="rightBarP">
+      <div className='rightBar'>
+        <h2 className='product__title'>{product.name}</h2>
+        <p className='rightBarP'>Описание: {product.description}</p>
+        <p className='rightBarP'>Ед. измерения: {product.wight}</p>
+        <p className='rightBarP'>
           Цена: <b>{product.price} p</b>
         </p>
-        <div className="productReviews">
+        <div className='productReviews'>
           <h3>Отзывы:</h3>
           <button
-            className="reviewsButton"
+            className='reviewsButton'
             onClick={() => {
               setModalActive(true);
             }}
@@ -32,8 +29,8 @@ export const Product = ({ product }) => {
           </button>
         </div>
       </div>
-      <Modal active={modalActive} setActive={setModalActive}>
-        <ReviewForm productId={prodId}/>
+      <Modal active={modalActive} setActive={setModalActive} product={product}>
+        <ReviewForm product={product} />
       </Modal>
     </div>
   );

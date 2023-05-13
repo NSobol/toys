@@ -4,5 +4,5 @@ import "./ComeBack.css"
 
 export const ComeBack = () => {
   const back = useNavigate();
-  return <span className='comeBackStyle' onClick={() => back(-1)}>{'<'} На главную</span>;
+  return <span className='comeBackStyle' onClick={() => back(-1)}>{'<'} Назад</span>;
 };
