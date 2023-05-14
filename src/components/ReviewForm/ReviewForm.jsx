@@ -2,7 +2,7 @@ import React from 'react';
 import { api } from './../../utils/api';
 import { useForm } from 'react-hook-form';
 
-export const ReviewForm = ({ product }) => {
+export const ReviewForm = ({ product, setActive }) => {
   const { register, handleSubmit } = useForm();
   const productId = product._id;
   const onSubmit = (data) => {
@@ -32,7 +32,14 @@ export const ReviewForm = ({ product }) => {
           {...register('text')}
         />
         <div className='form__btns'>
-          <input type='submit' />
+          <button
+            type='submit'
+            onClick={() => {
+              setActive(false);
+            }}
+          >
+            Отправить
+          </button>
           <input type='reset' />
         </div>
       </form>

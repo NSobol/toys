@@ -7,6 +7,18 @@
     justify-content: center;
 }
 
+.leftBar{
+	width: 430px;
+	height: 430px;
+	padding: 30px;
+}
+
+.product__img{
+	width: 400px;
+	height: 400px;
+}
+
+
 .rightBar {
     padding-top: 50px;
 }
