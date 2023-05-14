@@ -1,7 +1,7 @@
 import React from 'react';
 import { Review } from '../review/rewiew';
 
-export const ReviewsList = ({ reviews } ) => {
+export const ReviewsList = ({ reviews=[] } ) => {
 	console.log( reviews );
   return (
     <div>
