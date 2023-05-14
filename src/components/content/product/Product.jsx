@@ -31,7 +31,7 @@ export const Product = ({ product }) => {
         >
           <span>Написать отзыв</span>
         </button>
-        {/* <ReviewsList reviews={product.reviews} /> */}
+        <ReviewsList reviews={product.reviews} />
       </div>
       <Modal active={active} setActive={setActive} product={product}>
         <ReviewForm product={product} setActive={setActive} />
