@@ -1,9 +1,9 @@
 const baseData = {
   baseUrl: 'https://api.react-learning.ru',
   headers: {
-    'Content-Type': 'application/json',
-    authorization:
+    Authorization:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQyYmQ4ZDMyOTFkNzkwYjNmY2UzYzYiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyMDk2NTM1LCJleHAiOjE3MTM2MzI1MzV9.fnI9mFVbrNioCqFbAEJO9ff5O7P_ubWbkht64eNY4V8',
+    'Content-Type': 'application/json',
   },
 };
 
@@ -86,7 +86,7 @@ class Api {
       .catch((e) => console.log(e));
   }
 
-  getAddReviewOfProduct(productId, data) {
+	getAddReviewOfProduct(productId, data) {
     return fetch(`${this.baseUrl}/products/review/${productId}`, {
       method: 'POST',
       headers: this.headers,
@@ -98,7 +98,6 @@ class Api {
 
   getAllReviewOfProduct(productId) {
     return fetch(`${this.baseUrl}/products/review/${productId}`, {
-      method: 'GET',
       headers: this.headers,
     })
       .then(resp)
@@ -107,7 +106,6 @@ class Api {
 
   getAllReviewsProducts(productId) {
     return fetch(`${this.baseUrl}/products/review/`, {
-      method: 'GET',
       headers: this.headers,
     })
       .then(resp)

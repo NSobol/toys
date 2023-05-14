@@ -33,7 +33,6 @@ export const Registr = () => {
           id='email'
           name='email'
           placeholder='Ваш email'
-          required
           {...register('email', { required: true })}
         />
         {errors.email && (
@@ -45,7 +44,6 @@ export const Registr = () => {
           type='password'
           id='password'
           name='password'
-          required
           {...register('password', { required: true })}
         />
         <br />
