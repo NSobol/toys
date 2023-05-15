@@ -1,12 +1,11 @@
 import React from 'react';
 import { Review } from '../review/rewiew';
 
-export const ReviewsList = ({ reviews=[] } ) => {
-	console.log( reviews );
+export const ReviewsList = ({ productId, reviews=[] } ) => {
   return (
     <div>
 		  {reviews.map((item) => 
-			  <Review key={item.updated_at} review={item} />
+			  <Review productId = {productId} key={item.updated_at} review={item} />
 		  )}
     </div>
   );

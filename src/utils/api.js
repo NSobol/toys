@@ -96,6 +96,16 @@ class Api {
       .catch((e) => console.log(e));
   }
 
+  getDeleteReviewOfProduct(productId, reviewId) {
+    console.log (productId, reviewId)
+    // return fetch(`${this.baseUrl}/products/review/${productId}/${reviewId}`, {
+    //   method: 'DELETE',
+    //   headers: this.headers,
+    // })
+    //   .then((res) => {console.log("wow"); return res.json} );
+      // .catch((e) => console.log(e));
+  }
+
   getAllReviewOfProduct(productId) {
     return fetch(`${this.baseUrl}/products/review/${productId}`, {
       headers: this.headers,

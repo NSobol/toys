@@ -14,9 +14,9 @@
 }
 
 .selectCount {
-	margin: 0 5px;
-	padding: 5px;
-	font-size: 1.2rem;
+  margin: 0 5px;
+  padding: 5px;
+  font-size: 1.2rem;
 }
 
 .page-link {
@@ -26,6 +26,7 @@
   padding: 10px 20px;
   border: 1px solid transparent;
   background-color: #0087b0;
+  cursor: pointer;
 }
 
 .page-link:hover {
@@ -33,16 +34,15 @@
   border-radius: 50%;
 }
 
-.page-link:active{
+.page-link:active {
   color: #ff7a39;
 }
 
-.selectNumber{
-	display: flex;
-	flex-direction: row;
-	gap: 30px;
+.selectNumber {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 }
-
 
 .paginate {
   display: flex;
@@ -53,16 +53,16 @@
   justify-content: space-around;
 }
 
-.bntPaginate{
-	background-color: #0087b0;
-	color: #fff;
-	border: none;
-	margin: 0;
-	padding: 0;
-	font-size: 20px;
+.bntPaginate {
+  background-color: #0087b0;
+  color: #fff;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-.bntPaginate:hover{
-	color: #ff7a39;
+.bntPaginate:hover {
+  color: #ff7a39;
 }
-
