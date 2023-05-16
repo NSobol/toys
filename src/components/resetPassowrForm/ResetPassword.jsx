@@ -1,25 +1,41 @@
-import React from "react";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+// import { api } from '../../utils/api';
 
 export const ResetPassword = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    //  api.getRegisteredUser(data);
+  };
+
   return (
-      <div className="formContainer">
-        <h2 className="formTitle">Восстановление пароля</h2>
-        <p className="formSubTitle">Для получения временного пароля необходимо ввести email, указанный при регистрации.</p>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+    <div className='formContainer'>
+      <h2 className='formTitle'>Восстановление пароля</h2>
+      <p className='formSubTitle'>
+        Для получения временного пароля необходимо ввести email, указанный при
+        регистрации.
+      </p>
+      <form className='form' onSubmit={handleSubmit(onSubmit)}>
         <label> Ваш email: </label> <br />
         <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
+          type='email'
+          id='email'
+          name='email'
+          placeholder='Email'
           required
-          {...register("email", { required: true })}
+          {...register('email', { required: true })}
         />
         {errors.email && (
-          <span style={{ color: "red" }}>*Email* is mandatory </span>
+          <span style={{ color: 'red' }}>*Email* is mandatory </span>
         )}
         <br />
-        <input type="submit" />
+        <input type='submit' />
       </form>
     </div>
   );

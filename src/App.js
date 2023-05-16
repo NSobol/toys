@@ -15,10 +15,15 @@ import { OrUsPage } from './pages/orUsPage/OrUsPage';
 import { ProductPage } from './pages/productPage/ProductPage';
 import { ProfilePage } from './pages/profilePage/ProfilePage';
 import { NotFound } from './components/notFound/NotFound';
+import { ResetPassword } from './components/resetPassowrForm/ResetPassword';
+import { Modal } from './components/modal/Modal';
+import { Autoriz } from './components/headers/autorization/Autoriz';
+import { Registr } from './components/headers/registration/Registr';
 
 function App() {
   //установка начальных состояний
   const [products, setProducts] = useState([]);
+  const [modalActive, setModalActive] = useState(false);
   const [search, setSearch] = useState(undefined);
   const [user, setUser] = useState({});
   const [selected, setSelected] = useState([]);
@@ -64,31 +69,29 @@ function App() {
         newProduts = products.sort((a, b) => a.price - b.price);
         setProducts([...newProduts]);
         break;
-    
+
       case 'Сначала дороже':
         newProduts = products.sort((a, b) => b.price - a.price);
         setProducts([...newProduts]);
         break;
-      
+
       case 'Популярные':
-        newProduts = products.sort(
-          (a, b) => b.likes.length - a.likes.length
-        );
+        newProduts = products.sort((a, b) => b.likes.length - a.likes.length);
         setProducts([...newProduts]);
         break;
-      
+
       case 'Новинки':
         newProduts = products.sort(
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
         setProducts([...newProduts]);
         break;
-      
+
       case 'Снижена цена':
         newProduts = products.sort((a, b) => b.discount - a.discount);
         setProducts([...newProduts]);
         break;
-  
+
       case 'Высокий рейтинг':
         newProduts = products.sort(
           (a, b) => productRating(b.reviews) - productRating(a.reviews)
@@ -135,7 +138,38 @@ function App() {
     productPerPage,
     currentProducts,
     getSorted,
+    modalActive,
+    setModalActive,
   };
+
+  const authotRoutes = (
+    <>
+      <Route
+        path='/registr'
+        element={
+          <Modal active={modalActive} setActive={setModalActive}>
+            <Registr />
+          </Modal>
+        }
+      />
+      <Route
+        path='/login'
+        element={
+          <Modal active={modalActive} setActive={setModalActive}>
+            <Autoriz />
+          </Modal>
+        }
+      />
+      <Route
+        path='/passReset'
+        element={
+          <Modal active={modalActive} setActive={setModalActive}>
+            <ResetPassword />
+          </Modal>
+        }
+      />
+    </>
+  );
 
   return (
     <div className='App'>
@@ -151,6 +185,7 @@ function App() {
             <Route path='/orus' element={<OrUsPage />} />
             <Route path='/profile' element={<ProfilePage />} />
             <Route path='*' element={<NotFound />} />
+            {authotRoutes}
           </Routes>
           {/* ) : (
             <Routes>
