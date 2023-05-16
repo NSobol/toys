@@ -1,8 +1,9 @@
 .comeBackStyle {
-    cursor: pointer;
-
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 .comeBackStyle:hover {
-    color: #ff7a39;
+  color: #ff7a39;
 }

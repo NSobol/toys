@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 25px;
-  border-bottom: 2px solid #0087b0;
 }
 
 .review__card__header {
@@ -21,7 +20,7 @@
   margin-right: 25px;
 }
 
-.review__card__header__name{
+.review__card__header__name {
   font-size: 1.4rem;
 }
 
