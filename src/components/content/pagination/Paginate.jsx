@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ProductsContext } from '../../../context/productsContext';
-import './paginate.css';
+import s from './paginate.module.css';
 
 const Paginate = () => {
   const { products, productPerPage, setProductPerPage, setCurrentPage } =
@@ -32,11 +32,11 @@ const Paginate = () => {
     setCurrentPage((prev) => prev + 1);
   };
   return (
-    <div className='paginationSelect'>
-      <div className='select'>
+    <div className={s.paginationSelect}>
+      <div className={s.select}>
         <p>Показывать на странице </p>
         <select
-          className='selectCount'
+          className={s.selectCount}
           name='selectCount'
           id='selectCount'
           value={value}
@@ -48,20 +48,23 @@ const Paginate = () => {
         </select>
         <p> товаров</p>
       </div>
-      <div className='paginate'>
-        <button className='bntPaginate' onClick={prevPage}>
+      <div className={s.paginate}>
+        <button className={s.bntPaginate} onClick={prevPage}>
           Предыдущая
         </button>
-        <ul className='selectNumber'>
+        <ul className={s.selectNumber}>
           {pageNumber.map((number) => (
             <li className='page-item' key={number}>
-              <button className='page-link' onClick={() => navigate(number)}>
-                <span className='page-numb'>{number}</span>
+              <button
+                className={s['page-link']}
+                onClick={() => navigate(number)}
+              >
+                <span className={s['page-numb']}>{number}</span>
               </button>
             </li>
           ))}
         </ul>
-        <button className='bntPaginate' onClick={nextPage}>
+        <button className={s.bntPaginate} onClick={nextPage}>
           Следующая
         </button>
       </div>
