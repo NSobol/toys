@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import './modal.css';
 
 export const Modal = ({ active, setActive, children }) => {
-  const closeOnEsc = (e) => {
-    if (e.code === 'Escape') {
-      document.removeEventListener('keydown', closeOnEsc);
-      setActive(false);
-    }
-  };
+  const closeOnEsc = useCallback(
+    (e) => {
+      if (e.code === 'Escape') {
+        setActive(false);
+      }
+    },
+    [setActive]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', closeOnEsc);
