@@ -56,7 +56,7 @@ const Paginate = () => {
           {pageNumber.map((number) => (
             <li className='page-item' key={number}>
               <button className='page-link' onClick={() => navigate(number)}>
-                {number}
+                <span className='page-numb'>{number}</span>
               </button>
             </li>
           ))}
