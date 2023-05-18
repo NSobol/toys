@@ -1,0 +1,9 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__btns {
+display: flex;
+flex-direction: row;
+}

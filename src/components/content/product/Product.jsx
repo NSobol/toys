@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Product.css';
 import { Modal } from './../../modal/Modal';
 import { ReviewsList } from '../../reviewsList/reviewsList';
+import { FormReview } from '../../formReview/FormReview';
 
 export const Product = ({ product }) => {
   const [active, setActive] = useState(false);
@@ -35,7 +36,7 @@ export const Product = ({ product }) => {
         <ReviewsList productId={product._id} reviews={product?.reviews ?? []} />
       </div>
       <Modal active={active} setActive={setActive} product={product}>
-        {/* <ReviewForm product={product} setActive={setActive}></ReviewForm> */}
+        <FormReview product={product} setActive={setActive} />
       </Modal>
     </div>
   );
