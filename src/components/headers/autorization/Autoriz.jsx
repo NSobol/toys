@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
-// import style from './autoriz.module.css';
+import './autoriz.css';
 
 export const Autoriz = (props) => {
   const {
@@ -12,36 +12,49 @@ export const Autoriz = (props) => {
 
   const onSubmit = (data) => {
     console.log(data);
-    api.getRegisteredUser(data);
+    api.getAuthorizedUser(data);
   };
   return (
-    <div className='formContainer'>
-      <h2>Вход</h2>
-      <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <label> Ваш email: </label> <br />
-        <input
-          type='email'
-          id='email'
-          name='email'
-          placeholder='Ваш email'
-          required
-          {...register('email', { required: true })}
-        />
-        {errors.email && (
-          <span style={{ color: 'red' }}>*Email* is mandatory </span>
-        )}
+    <div className='createModalForm'>
+      <h2 className='createModalFormTitle'>Вход</h2>
+      <form className='modalForm' onSubmit={handleSubmit(onSubmit)}>
+        <div className='field-form-div'>
+          <label className='text-form-div'> Ваш email: </label> <br />
+          <input
+            className='form-field-input'
+            type='email'
+            id='email'
+            name='email'
+            placeholder='Email'
+            required
+            {...register('email', { required: true })}
+          />
+          {errors.email && (
+            <span style={{ color: 'red' }}>*Email* is mandatory </span>
+          )}
+        </div>
         <br />
-        <label> Пароль: </label> <br />
-        <input
-          type='password'
-          id='password'
-          name='password'
-          required
-          {...register('password')}
-        />
+        <div className='field-form-div'>
+          <label className='text-form-div'> Пароль: </label> <br />
+          <input
+            className='form-field-input'
+            type='password'
+            id='password'
+            name='password'
+            placeholder='Пароль'
+            required
+            {...register('password')}
+          />
+        </div>
         <br />
-        <input type='submit' />
-        <input type='reset' />
+        <div className='button-form-duble-two'>
+          <button type='submit' className='btn button-form-submit'>
+            Ok
+          </button>
+          <button type='reset' className='btn button-form-close'>
+            Очистить
+          </button>
+        </div>
       </form>
     </div>
   );

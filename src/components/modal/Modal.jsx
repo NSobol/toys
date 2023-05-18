@@ -23,9 +23,9 @@ export const Modal = ({ active, setActive, children }) => {
         className={active ? 'modal__content active' : 'modal__content'}
         onClick={(e) => e.stopPropagation()}
       >
-        <span className='modal__close' onClick={() => setActive(false)}>
-          X
-        </span>
+        <button className='modal__close' onClick={() => setActive(false)}>
+          
+        </button>
         {children}
       </div>
     </div>

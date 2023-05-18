@@ -15,47 +15,36 @@ export const Registr = () => {
     api.getRegisteredUser(data);
   };
   return (
-    <div className='formContainer'>
-      <h2 className='formTitle'>Регистрация</h2>
-      <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <label> Ваше имя: </label> <br />
+<div className="createModalForm">
+      <h2 className="createModalFormTitle">Регистрация</h2>
+      <form className="modalForm" onSubmit={handleSubmit(onSubmit)}>
+        <div className="field-form-div">
+          <label className="text-form-div"> Ваш email: </label>
         <input
-          type='text'
-          id='name'
-          name='name'
-          placeholder='Ваше имя'
-          {...register('name')}
-        />
-        <br />
-        <label> Ваш email: </label> <br />
-        <input
+        className="form-field-input"
           type='email'
           id='email'
           name='email'
-          placeholder='Ваш email'
+          placeholder='Email'
           {...register('email', { required: true })}
         />
         {errors.email && (
           <span style={{ color: 'red' }}>*Email* is mandatory </span>
         )}
+        </div>
         <br />
-        <label> Пароль: </label> <br />
+        <div className="field-form-div">
+        <label className="text-form-div"> Пароль: </label>
         <input
+        className="form-field-input"
           type='password'
           id='password'
           name='password'
+          placeholder='Пароль'
           {...register('password', { required: true })}
         />
-        <br />
-        <label> О себе: </label> <br />
-        <input
-          type='text'
-          id='about'
-          name='about'
-          required
-          {...register('about')}
-        />
-        <br />
+        </div>
+        <br /> 
         <input
           className='hidden'
           type='text'
@@ -64,8 +53,14 @@ export const Registr = () => {
           value='group-12'
           {...register('group')}
         />
-        <input type='submit' className='formBtnSub' />
-        <input type='reset' />
+         <div className="button-form-duble-two">
+        <button type="submit" className="btn button-form-submit">
+          Ok
+        </button>
+        <button type="reset" className="btn button-form-close">
+          Очистить
+        </button>
+        </div>
       </form>
     </div>
   );

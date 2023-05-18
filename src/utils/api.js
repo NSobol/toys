@@ -23,7 +23,7 @@ class Api {
       headers: this.headers,
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 
   getAllUsersInfo() {
@@ -31,7 +31,33 @@ class Api {
       headers: this.headers,
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
+  }
+  getUserInfoId(userId) {
+    return fetch(`${this.baseUrl}/users/${userId}`, {
+      headers: this.headers,
+    })
+      .then(resp)
+      .catch((e) => console.error(e));
+  }
+  getResetUserAvatar(data) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify(data),
+    })
+      .then(resp)
+      .catch((e) => console.error(e));
+  }
+
+  getResetUserNameAbout(data) {
+    return fetch(`${this.baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify(data),
+    })
+      .then(resp)
+      .catch((e) => console.error(e));
   }
 
   /*Методы регистрации/авторизации/сброса пароля*/
@@ -42,7 +68,7 @@ class Api {
       body: JSON.stringify(data),
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 
   getAuthorizedUser(data) {
@@ -52,7 +78,27 @@ class Api {
       body: JSON.stringify(data),
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
+  }
+
+  getResetPasswordMail(data) {
+    return fetch(`${this.baseUrl}/forgot-password`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify(data),
+    })
+      .then(resp)
+      .catch((e) => console.error(e));
+  }
+
+  getResetPasswordToken(token, data) {
+    return fetch(`${this.baseUrl}/password-reset/${token}`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify(data),
+    })
+      .then(resp)
+      .catch((e) => console.error(e));
   }
 
   /*методы для товаров*/
@@ -62,7 +108,7 @@ class Api {
       headers: this.headers,
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 
   getAddProduct(data) {
@@ -75,7 +121,7 @@ class Api {
         console.log(res);
         return res.json();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 
   getProductInfo(id) {
@@ -83,17 +129,27 @@ class Api {
       headers: this.headers,
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 
-	getAddReviewOfProduct(productId, data) {
+  getAddReviewOfProduct(productId, data) {
     return fetch(`${this.baseUrl}/products/review/${productId}`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(data),
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
+  }
+
+  getDeleteReviewOfProduct(productId, reviewId) {
+    console.log(productId, reviewId);
+    return fetch(`${this.baseUrl}/products/review/${productId}/${reviewId}`, {
+      method: 'DELETE',
+      headers: this.headers,
+    })
+      .then(resp)
+      .catch((e) => console.error(e));
   }
 
   getAllReviewOfProduct(productId) {
@@ -101,7 +157,7 @@ class Api {
       headers: this.headers,
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 
   getAllReviewsProducts(productId) {
@@ -109,14 +165,14 @@ class Api {
       headers: this.headers,
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
   getSearchProduct(desiredValue) {
     return fetch(`${this.baseUrl}/products/search?query=${desiredValue}`, {
       headers: this.headers,
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 
   getAddLikeOfproduct(productId) {
@@ -125,7 +181,7 @@ class Api {
       method: 'PUT',
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 
   getDeleteLikeOfProduct(productId) {
@@ -134,7 +190,7 @@ class Api {
       method: 'DELETE',
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 
   getChangeLikeProduct(productId, isLiked) {
@@ -143,7 +199,7 @@ class Api {
       method: isLiked ? 'DELETE' : 'PUT',
     })
       .then(resp)
-      .catch((e) => console.log(e));
+      .catch((e) => console.error(e));
   }
 }
 

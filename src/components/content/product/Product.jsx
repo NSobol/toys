@@ -22,16 +22,18 @@ export const Product = ({ product }) => {
         </div>
       </div>
       <div className='productReviews'>
-        <h3>Отзывы:</h3>
-        <button
-          className='reviewsButton'
-          onClick={() => {
-            setActive(true);
-          }}
-        >
-          <span>Написать отзыв</span>
-        </button>
-        <ReviewsList reviews={product.reviews} />
+        <div className='productReviews__header'>
+          <h3>Отзывы:</h3>
+          <button
+            className='reviewsButton'
+            onClick={() => {
+              setActive(true);
+            }}
+          >
+            <span>Написать отзыв</span>
+          </button>
+        </div>
+        <ReviewsList productId = {product._id} reviews={product?.reviews ?? [] } />
       </div>
       <Modal active={active} setActive={setActive} product={product}>
         <ReviewForm product={product} setActive={setActive} />

@@ -1,7 +1,7 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { api } from './../../utils/api.js';
-import './popapAddCartProduct.css';
+import React from "react";
+import { useForm } from "react-hook-form";
+import { api } from "./../../utils/api.js";
+import "./popapAddCartProduct.css";
 
 export const PopapAddCartProduct = () => {
   const { register, handleSubmit } = useForm();
@@ -10,69 +10,94 @@ export const PopapAddCartProduct = () => {
     api.getAddProduct(data);
   };
   return (
-    <div className='createModalForm'>
-      <h2 className='createModalFormTitle'>Создание</h2>
-      <form className='modalForm' onSubmit={handleSubmit(onSubmit)}>
-        <label>Доступность</label>
-        <input
-          type='checkbox'
-          id='available'
-          name='available'
-          {...register('available')}
-        />
+    <div className="createModalForm">
+      <h2 className="createModalFormTitle">Создание</h2>
+      <form className="modalForm" onSubmit={handleSubmit(onSubmit)}>
+        <div className="field-form-div">
+          <label className="text-form-div">Ссылка на изображение</label>
+          <input
+            className="form-field-input"
+            type="text"
+            id="pictures"
+            name="pictures"
+            {...register("pictures")}
+          />
+        </div>
         <br />
-        <label>Ссылка на изображение</label>
-        <input
-          type='text'
-          id='pictures'
-          name='pictures'
-          {...register('pictures')}
-        />
+        <div className="field-form-div">
+          <label className="text-form-div">Название товара</label>{" "}
+          <input
+            className="form-field-input"
+            id="name"
+            name="name"
+            type="text"
+            {...register("name", { required: true })}
+          />
+        </div>
         <br />
-        <label>Название товара</label>
-        <input
-          id='name'
-          name='name'
-          type='text'
-          {...register('name', { required: true })}
-        />
+        <div className="field-form-div">
+          <label className="text-form-div">Цена</label>
+          <input
+            className="form-field-input"
+            id="price"
+            name="price"
+            type="number"
+            {...register("price", { required: true })}
+          />
+        </div>
         <br />
-        <label>Цена</label>
-        <input
-          id='price'
-          name='price'
-          type='number'
-          {...register('price', { required: true })}
-        />
+        <div className="field-form-div">
+          <label className="text-form-div">Скидка</label>
+          <input
+            className="form-field-input"
+            id="discount"
+            name="discount"
+            type="number"
+            {...register("discount")}
+          />
+        </div>
         <br />
-        <label>Скидка</label>
-        <input
-          id='discount'
-          name='discount'
-          type='number'
-          {...register('discount')}
-        />
+        <div className="field-form-div">
+          <label className="text-form-div">Количество на складе</label>
+          <input
+            className="form-field-input"
+            id="stock"
+            name="stock"
+            type="number"
+            {...register("stock")}
+          />
+        </div>
         <br />
-        <label>Количество на складе</label>
-        <input id='stock' name='stock' type='number' {...register('stock')} />
+        <div className="field-form-div">
+          <label className="text-form-div">Единицы измерения</label>{" "}
+          <input
+            className="form-field-input"
+            id="wight"
+            name="wight"
+            type="text"
+            {...register("wight")}
+          />
+        </div>
         <br />
-        <label>Единицы измерения</label>
-        <input id='wight' name='wight' type='text' {...register('wight')} />
+        <div className="field-form-div">
+          <label className="text-form-div">Описание товара</label>{" "}
+          <input
+            className="form-field-input"
+            id="description"
+            name="description"
+            type="text"
+            {...register("description", { required: true })}
+          />{" "}
+        </div>
         <br />
-        <label>Описание товара</label>
-        <input
-          id='description'
-          name='description'
-          type='text'
-          {...register('description', { required: true })}
-        />
-        <br />
-        <button type='submit' className='button-form-submit'>
+        <div className="button-form-duble">
+        <button type="submit" className="btn button-form-submit">
           Ok
         </button>
-        <button type='reset' className='button-form-close'>
+        <button type="reset" className="btn button-form-close">
           Очистить
         </button>
+        </div>
       </form>
     </div>
   );
