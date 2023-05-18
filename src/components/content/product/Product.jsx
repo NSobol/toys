@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Product.css';
-import { ReviewForm } from './../../reviewForm/ReviewForm';
 import { Modal } from './../../modal/Modal';
 import { ReviewsList } from '../../reviewsList/reviewsList';
 
@@ -36,7 +35,7 @@ export const Product = ({ product }) => {
         <ReviewsList productId={product._id} reviews={product?.reviews ?? []} />
       </div>
       <Modal active={active} setActive={setActive} product={product}>
-        <ReviewForm product={product} setActive={setActive}></ReviewForm>
+        {/* <ReviewForm product={product} setActive={setActive}></ReviewForm> */}
       </Modal>
     </div>
   );
