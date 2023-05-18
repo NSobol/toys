@@ -36,7 +36,7 @@ export const Product = ({ product }) => {
         <ReviewsList productId={product._id} reviews={product?.reviews ?? []} />
       </div>
       <Modal active={active} setActive={setActive} product={product}>
-        <ReviewForm product={product} setActive={setActive} />
+        <ReviewForm product={product} setActive={setActive}></ReviewForm>
       </Modal>
     </div>
   );
