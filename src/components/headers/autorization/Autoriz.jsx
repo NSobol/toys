@@ -1,10 +1,12 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { api } from "./../../../utils/api";
-import "./autoriz.css";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import { api } from './../../../utils/api';
+import './autoriz.css';
+import { Link } from 'react-router-dom';
+import { ProductsContext } from '../../../context/productsContext';
 
 export const Autoriz = (props) => {
+  const { setActive } = useContext(ProductsContext);
   const {
     register,
     handleSubmit,
@@ -16,52 +18,60 @@ export const Autoriz = (props) => {
     api.getAuthorizedUser(data);
   };
   return (
-    <div className="createModalForm">
-      <h2 className="createModalFormTitle">Вход</h2>
-      <form className="modalForm" onSubmit={handleSubmit(onSubmit)}>
-        <div className="field-form-div">
-          <label className="text-form-div"> Ваш email: </label> <br />
+    <div className='createModalForm'>
+      <h2 className='createModalFormTitle'>Вход</h2>
+      <form className='modalForm' onSubmit={handleSubmit(onSubmit)}>
+        <div className='field-form-div'>
+          <label className='text-form-div'> Ваш email: </label> <br />
           <input
-            className="form-field-input"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email"
+            className='form-field-input'
+            type='email'
+            id='email'
+            name='email'
+            placeholder='Email'
             required
-            {...register("email", { required: true })}
+            {...register('email', { required: true })}
           />
           {errors.email && (
-            <span style={{ color: "red" }}>*Email* is mandatory </span>
+            <span style={{ color: 'red' }}>*Email* is mandatory </span>
           )}
         </div>
         <br />
-        <div className="field-form-div">
-          <label className="text-form-div"> Пароль: </label> <br />
+        <div className='field-form-div'>
+          <label className='text-form-div'> Пароль: </label> <br />
           <input
-            className="form-field-input"
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Пароль"
+            className='form-field-input'
+            type='password'
+            id='password'
+            name='password'
+            placeholder='Пароль'
             required
-            {...register("password")}
+            {...register('password')}
           />
         </div>
         <br />
-        <div className="button-form-duble-two">
-          <button type="submit" className="btn button-form-submit">
+        <div className='button-form-duble-two'>
+          <button
+            type='submit'
+            className='btn button-form-submit'
+            onClick={() => {
+              setActive(false);
+            }}
+          >
             Ok
           </button>
-          <button type="reset" className="btn button-form-close">
+          <button type='reset' className='btn button-form-close'>
             Очистить
           </button>
         </div>
       </form>
-      <div className="relocation">
-        <span>Нет аккаунта?</span> <Link to="/registr">Зарегистрироваться</Link>
+      <div className='relocation'>
+        <span>Нет аккаунта?</span>{' '}
+        <Link to={'/registr'}>Зарегистрироваться</Link>
       </div>
-      <div className="relocation">
-        <span>Забыт пароль?</span> <Link to="/passReset">Восстановление пароля</Link>
+      <div className='relocation'>
+        <span>Забыт пароль?</span>{' '}
+        <Link to={'/passReset'}>Восстановление пароля</Link>
       </div>
     </div>
   );

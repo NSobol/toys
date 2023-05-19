@@ -3,11 +3,14 @@ import { useForm } from 'react-hook-form';
 import { api } from '../../utils/api';
 import s from './formReview.module.css';
 
-export const FormReview = ({ product, setActive }) => {
+export const FormReview = ({ product, setProduct, setActive }) => {
   const { register, handleSubmit } = useForm();
   const productId = product._id;
   const onSubmit = (data) => {
-    api.getAddReviewOfProduct(productId, data);
+    api
+      .getAddReviewOfProduct(productId, data)
+      .then((data) => setProduct({ ...data }))
+      .catch(() => console.log('err'));
   };
   return (
     <div className={s.formContainer}>

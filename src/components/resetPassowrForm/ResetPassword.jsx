@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { ProductsContext } from '../../context/productsContext';
 // import { api } from '../../utils/api';
 
 export const ResetPassword = () => {
+	 const { setActive } = useContext(ProductsContext);
   const {
     register,
     handleSubmit,
@@ -35,7 +37,12 @@ export const ResetPassword = () => {
           <span style={{ color: 'red' }}>*Email* is mandatory </span>
         )}
         <br />
-        <input type='submit' />
+        <input
+          type='submit'
+          onClick={() => {
+            setActive(false);
+          }}
+        />
       </form>
     </div>
   );

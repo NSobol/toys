@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import './Product.css';
 import { Modal } from './../../modal/Modal';
-import { ReviewsList } from '../../reviewsList/reviewsList';
 import { FormReview } from '../../formReview/FormReview';
+import { ProductsContext } from '../../../context/productsContext';
 
-export const Product = ({ product }) => {
-  const [active, setActive] = useState(false);
+export const Product = ({ product, setProduct }) => {
+  const { active, setActive } = useContext(ProductsContext);
+
   return (
     <div className='cardProduct__container'>
       <div className='cardProduct'>
@@ -33,10 +34,13 @@ export const Product = ({ product }) => {
             <span>Написать отзыв</span>
           </button>
         </div>
-        <ReviewsList productId={product._id} reviews={product?.reviews ?? []} />
       </div>
       <Modal active={active} setActive={setActive} product={product}>
-        <FormReview product={product} setActive={setActive} />
+        <FormReview
+          product={product}
+          setProduct={setProduct}
+          setActive={setActive}
+        />
       </Modal>
     </div>
   );
