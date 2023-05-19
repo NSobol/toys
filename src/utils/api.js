@@ -143,7 +143,6 @@ class Api {
   }
 
   getDeleteReviewOfProduct(productId, reviewId) {
-    console.log(productId, reviewId);
     return fetch(`${this.baseUrl}/products/review/${productId}/${reviewId}`, {
       method: 'DELETE',
       headers: this.headers,
@@ -154,14 +153,16 @@ class Api {
 
   getAllReviewOfProduct(productId) {
     return fetch(`${this.baseUrl}/products/review/${productId}`, {
+      method: 'GET',
       headers: this.headers,
     })
       .then(resp)
       .catch((e) => console.error(e));
   }
 
-  getAllReviewsProducts(productId) {
-    return fetch(`${this.baseUrl}/products/review/`, {
+  getAllReviewsProducts() {
+	  return fetch(`${this.baseUrl}/products/review/`, {
+      method: 'GET',
       headers: this.headers,
     })
       .then(resp)

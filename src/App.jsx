@@ -23,7 +23,7 @@ import { Registr } from './components/headers/registration/Registr';
 function App() {
   //установка начальных состояний
   const [products, setProducts] = useState([]);
-  const [modalActive, setModalActive] = useState(false);
+  const [active, setActive] = useState(false);
   const [search, setSearch] = useState(undefined);
   const [user, setUser] = useState({});
   const [selected, setSelected] = useState([]);
@@ -138,38 +138,15 @@ function App() {
     productPerPage,
     currentProducts,
     getSorted,
-    modalActive,
-    setModalActive,
+    active,
+    setActive,
   };
 
-  const authotRoutes = (
-    <>
-      <Route
-        path='/registr'
-        element={
-          <Modal active={modalActive} setActive={setModalActive}>
-            <Registr />
-          </Modal>
-        }
-      />
-      <Route
-        path='/login'
-        element={
-          <Modal active={modalActive} setActive={setModalActive}>
-            <Autoriz />
-          </Modal>
-        }
-      />
-      <Route
-        path='/passReset'
-        element={
-          <Modal active={modalActive} setActive={setModalActive}>
-            <ResetPassword />
-          </Modal>
-        }
-      />
-    </>
-  );
+//   const authotRoutes = (
+//     <>
+     
+//     </>
+//   );
 
   return (
     <div className='App'>
@@ -185,7 +162,30 @@ function App() {
             <Route path='/orus' element={<OrUsPage />} />
             <Route path='/profile' element={<ProfilePage />} />
             <Route path='*' element={<NotFound />} />
-            {authotRoutes}
+            <Route
+              path='/registr'
+              element={
+                <Modal active={active} setActive={setActive}>
+                  <Registr />
+                </Modal>
+              }
+            />
+            <Route
+              path='/login'
+              element={
+                <Modal active={active} setActive={setActive}>
+                  <Autoriz />
+                </Modal>
+              }
+            />
+            <Route
+              path='/passReset'
+              element={
+                <Modal active={active} setActive={setActive}>
+                  <ResetPassword />
+                </Modal>
+              }
+            />
           </Routes>
           {/* ) : (
             <Routes>
@@ -196,7 +196,10 @@ function App() {
             </Routes>
           )} */}
         </div>
-        <Footer />
+			  <Footer />
+			  {/* <Modal active={active} setActive={setActive}>
+				  {children }
+			  </Modal> */}
       </ProductsContext.Provider>
     </div>
   );
