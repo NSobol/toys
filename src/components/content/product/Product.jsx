@@ -1,32 +1,78 @@
-import React, { useContext } from 'react';
-import './Product.css';
-import { Modal } from './../../modal/Modal';
-import { FormReview } from '../../formReview/FormReview';
-import { ProductsContext } from '../../../context/productsContext';
+import React, { useContext } from "react";
+import s from "./Product.module.css";
+import { Modal } from "./../../modal/Modal";
+import { FormReview } from "../../formReview/FormReview";
+import { ProductsContext } from "../../../context/productsContext";
 
 export const Product = ({ product, setProduct }) => {
   const { active, setActive } = useContext(ProductsContext);
 
+  const getDiscountPrice = (discount, price) => {
+    return (price - Math.floor((price * discount) / 100)).toFixed(0);
+  };
+
   return (
-    <div className='cardProduct__container'>
-      <div className='cardProduct'>
-        <div className='leftBar'>
-          <img className='product__img' src={product.pictures} alt='картинка' />
+    <div className={s.cardProduct__container}>
+      <div className={s.cardProduct}>
+        <div className={s.leftBar}>
+          <img
+            className={s.product__img}
+            src={product.pictures}
+            alt="картинка"
+          />
         </div>
-        <div className='rightBar'>
-          <h2 className='product__title'>{product.name}</h2>
-          <p className='rightBarP'>Описание: {product.description}</p>
-          <p className='rightBarP'>Ед. измерения: {product.wight}</p>
-          <p className='rightBarP'>
-            Цена: <b>{product.price} p</b>
-          </p>
+        <div className={s.rightBar}>
+          <h2 className={s.product__title}>{product.name}</h2>
+          <p className={s.rightBarP}>Описание: {product.description}</p>
+          <p className={s.rightBarP}>Ед. измерения: {product.wight}</p>
+          <div className={s.cardDics}>
+            Цена: 
+            <b>
+              {
+                <div className={s.cardDesc}>
+                  <span
+                    className={`${s.price} ${
+                      !!product.discount ? s.oldPrice : ""
+                    }`}
+                  >
+                    {product.price}&nbsp;p
+                  </span>
+                  {!!product.discount && (
+                    <span
+                      className={`${s.price} ${
+                        !!product.discount ? s.newPrice : ""
+                      }`}
+                    >
+                      {getDiscountPrice(product.discount, product.price)}&nbsp;p
+                    </span>
+                  )}
+                </div>
+              }{" "}
+            </b>
+          </div>
+          <div className={s.inCase}>
+            <div className={s.inCaseControls}>
+              <button className={s.inCaseMinus}><span className={s.minusText}>-</span></button>
+              <span className={s.caseText}>0</span>
+              <button className={s.inCasePlus}><span className={s.plusText}>+</span></button>
+            </div>
+            <button className={s.inCaseBasket}>В корзину</button>
+          </div>
+          {/* <button
+            className={cn(s.favorite, { [s.favoriteActive]: isLikedProduct })}
+            onClick={handleClick}
+          >
+            <Like />
+            <span>{isLikedProduct ? "В избранном" : "В избранное"}</span>
+          </button> */}
         </div>
       </div>
-      <div className='productReviews'>
-        <div className='productReviews__header'>
+
+      <div className={s.productReviews}>
+        <div className={s.productReviews__header}>
           <h3>Отзывы:</h3>
           <button
-            className='reviewsButton'
+            className={s.reviewsButton}
             onClick={() => {
               setActive(true);
             }}
