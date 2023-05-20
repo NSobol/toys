@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import { ProductsContext } from '../../context/productsContext';
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { ProductsContext } from "../../context/productsContext";
+import { Link } from "react-router-dom";
+import s from "./resetPass.module.css";
 // import { api } from '../../utils/api';
 
 export const ResetPassword = () => {
-	 const { setActive } = useContext(ProductsContext);
+  const { setActive } = useContext(ProductsContext);
   const {
     register,
     handleSubmit,
@@ -17,33 +19,40 @@ export const ResetPassword = () => {
   };
 
   return (
-    <div className='formContainer'>
-      <h2 className='formTitle'>Восстановление пароля</h2>
-      <p className='formSubTitle'>
-        Для получения временного пароля необходимо ввести email, указанный при
-        регистрации.
+    <div className={s.formContainer}>
+      <h2 className={s.formTitle}>Восстановление пароля</h2>
+      <p className={s.formSubTitle}>
+        Для получения временного пароля необходимо <br /> ввести email,
+        указанный при регистрации.
       </p>
-      <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <label> Ваш email: </label> <br />
+      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <div className={s.fieldFormDiv}>
+          <label> Ваш email: </label> <br />
+          <input
+            className={s.formFieldInput}
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+            {...register("email", { required: true })}
+          />
+          {errors.email && (
+            <span style={{ color: "red" }}>*Email* is mandatory </span>
+          )}
+        </div>
+
         <input
-          type='email'
-          id='email'
-          name='email'
-          placeholder='Email'
-          required
-          {...register('email', { required: true })}
-        />
-        {errors.email && (
-          <span style={{ color: 'red' }}>*Email* is mandatory </span>
-        )}
-        <br />
-        <input
-          type='submit'
+          className={s.formBtn}
+          type="submit"
           onClick={() => {
             setActive(false);
           }}
         />
       </form>
+      <div className={s.relocationPassword}>
+        <span>Вспомнил пароль?</span> <Link to={"/login"}>Войти</Link>
+      </div>
     </div>
   );
 };

@@ -3,13 +3,34 @@ import s from "./Product.module.css";
 import { Modal } from "./../../modal/Modal";
 import { FormReview } from "../../formReview/FormReview";
 import { ProductsContext } from "../../../context/productsContext";
+import { Rating } from "../rating/Rating";
+import { getCorrectWordEnding } from "../../../utils/function";
 
-export const Product = ({ product, setProduct }) => {
+export const Product = ({ product, setProduct, reviews=[]}) => {
   const { active, setActive } = useContext(ProductsContext);
+  // const arrReview=Array.from(product.reviews);
+  console.log(product.reviews.length);
+  // console.log(arrReview.length);
 
   const getDiscountPrice = (discount, price) => {
     return (price - Math.floor((price * discount) / 100)).toFixed(0);
   };
+
+  const productRating = (reviews) => {
+    if (!reviews || !reviews.length) {
+      return 0;
+    }
+    const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
+    return Math.floor(res / reviews.length);
+  };
+
+  // let productReviewsCount=product?.reviews.length;
+  // console.log(product?.reviews)
+  // if (product.reviews.length===0){
+  //   let productReviewsCount = 0;
+  // }
+  // let productReviewsCount = product.reviews;
+  // console.log(productReviewsCount.length)
 
   return (
     <div className={s.cardProduct__container}>
@@ -23,6 +44,13 @@ export const Product = ({ product, setProduct }) => {
         </div>
         <div className={s.rightBar}>
           <h2 className={s.product__title}>{product.name}</h2>
+          <div className={s.rating}>
+            <Rating rating={productRating(product.reviews)} />
+            {/* <span>
+              {product?.reviews.length}
+              {getCorrectWordEnding(product?.reviews.length, "отзыв")}
+            </span> */}
+          </div>
           <p className={s.rightBarP}>Описание: {product.description}</p>
           <p className={s.rightBarP}>Ед. измерения: {product.wight}</p>
           <div className={s.cardDics}>
@@ -52,9 +80,13 @@ export const Product = ({ product, setProduct }) => {
           </div>
           <div className={s.inCase}>
             <div className={s.inCaseControls}>
-              <button className={s.inCaseMinus}><span className={s.minusText}>-</span></button>
+              <button className={s.inCaseMinus}>
+                <span className={s.minusText}>-</span>
+              </button>
               <span className={s.caseText}>0</span>
-              <button className={s.inCasePlus}><span className={s.plusText}>+</span></button>
+              <button className={s.inCasePlus}>
+                <span className={s.plusText}>+</span>
+              </button>
             </div>
             <button className={s.inCaseBasket}>В корзину</button>
           </div>
