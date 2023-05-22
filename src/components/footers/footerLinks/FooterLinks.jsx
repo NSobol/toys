@@ -7,7 +7,7 @@ export const FooterLinks = () => {
     <div>
       <ul>
         <li><Link to = "/orus" className='linkone'>О нас</Link></li>
-        <li>1</li>
+        <li><Link to = "/questionsAndAnswers" className='linkone'>Вопрос - ответ</Link></li>
         <li><Link to = "/profile" className='linkone'>Профиль пользователя</Link></li>
       </ul>
     </div>
