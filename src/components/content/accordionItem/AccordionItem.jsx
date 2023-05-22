@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import s from './accordionItem.module.css';
 
 export const AccordionItem = ({ title, content }) => {
-  const [isActive, setIsActive] = useState(false);
+	const [isActive, setIsActive] = useState(null);
+	
 
   return (
     <div className={s.accordionItem}>

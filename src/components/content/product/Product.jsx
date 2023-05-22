@@ -9,20 +9,20 @@ import { Rating } from "../rating/Rating";
 export const Product = ({ product, setProduct, reviews=[]}) => {
   const { active, setActive } = useContext(ProductsContext);
   // const arrReview=Array.from(product.reviews);
-  console.log(product.reviews.length);
+//   console.log(product.reviews.length);
   // console.log(arrReview.length);
 
   const getDiscountPrice = (discount, price) => {
     return (price - Math.floor((price * discount) / 100)).toFixed(0);
   };
 
-  const productRating = (reviews) => {
-    if (!reviews || !reviews.length) {
-      return 0;
-    }
-    const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
-    return Math.floor(res / reviews.length);
-  };
+//   const productRating = (reviews) => {
+//     if (!reviews || !reviews.length) {
+//       return 0;
+//     }
+//     const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
+//     return Math.floor(res / reviews.length);
+//   };
 
   // let productReviewsCount=product?.reviews.length;
   // console.log(product?.reviews)
@@ -45,7 +45,7 @@ export const Product = ({ product, setProduct, reviews=[]}) => {
         <div className={s.rightBar}>
           <h2 className={s.product__title}>{product.name}</h2>
           <div className={s.rating}>
-            <Rating rating={productRating(product.reviews)} />
+            {/* <Rating rating={productRating(product.reviews)} /> */}
             {/* <span>
               {product?.reviews.length}
               {getCorrectWordEnding(product?.reviews.length, "отзыв")}
