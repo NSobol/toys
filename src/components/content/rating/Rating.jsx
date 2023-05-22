@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
-import s from "./Rating.module.css";
-import { ReactComponent as RatingStar } from "./../../../images/star.rating.svg";
+import React, { useCallback, useEffect, useState } from 'react';
+import s from './Rating.module.css';
+import { ReactComponent as RatingStar } from './../../../images/star.rating.svg';
 
 const emptyFragments = new Array(5).fill(<></>);
 export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
@@ -16,12 +16,13 @@ export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
     [setRate, isEditable]
   );
 
-  const changeDisplay = (r) => {
-    if (!isEditable) {
-      return;
-    }
-    constructRating(r);
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function changeDisplay(r) {
+		if (!isEditable) {
+			return;
+		}
+		constructRating(r);
+	}
 
   const constructRating = useCallback(
     (rate) => {
@@ -41,12 +42,12 @@ export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
       ));
       setRatingArr(updatedArray);
     },
-    [rating, isEditable]
+    [rating, isEditable, changeRating, changeDisplay]
   );
 
   useEffect(() => {
     constructRating(rating);
-  }, [constructRating]);
+  }, [constructRating, rating]);
 
   return (
     <div>

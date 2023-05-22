@@ -4,7 +4,7 @@ import { Modal } from "./../../modal/Modal";
 import { FormReview } from "../../formReview/FormReview";
 import { ProductsContext } from "../../../context/productsContext";
 import { Rating } from "../rating/Rating";
-import { getCorrectWordEnding } from "../../../utils/function";
+// import { getCorrectWordEnding } from "../../../utils/function";
 
 export const Product = ({ product, setProduct, reviews=[]}) => {
   const { active, setActive } = useContext(ProductsContext);

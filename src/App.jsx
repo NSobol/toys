@@ -19,6 +19,7 @@ import { ResetPassword } from './components/resetPassowrForm/ResetPassword';
 import { Modal } from './components/modal/Modal';
 import { Autoriz } from './components/headers/autorization/Autoriz';
 import { Registr } from './components/headers/registration/Registr';
+import { QuestionsAndAnswers } from './pages/questionsAndAnswers/QuestionsAndAnswers';
 
 function App() {
   //установка начальных состояний
@@ -142,11 +143,11 @@ function App() {
     setActive,
   };
 
-//   const authotRoutes = (
-//     <>
-     
-//     </>
-//   );
+  //   const authotRoutes = (
+  //     <>
+
+  //     </>
+  //   );
 
   return (
     <div className='App'>
@@ -161,7 +162,12 @@ function App() {
             <Route path='/basket' element={<BasketPage />} />
             <Route path='/orus' element={<OrUsPage />} />
             <Route path='/profile' element={<ProfilePage />} />
+            <Route
+              path='/questionsAndAnswers'
+              element={<QuestionsAndAnswers />}
+            />
             <Route path='*' element={<NotFound />} />
+
             <Route
               path='/registr'
               element={
@@ -196,10 +202,7 @@ function App() {
             </Routes>
           )} */}
         </div>
-			  <Footer />
-			  {/* <Modal active={active} setActive={setActive}>
-				  {children }
-			  </Modal> */}
+        <Footer />
       </ProductsContext.Provider>
     </div>
   );
