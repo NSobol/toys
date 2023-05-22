@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import s from './accordionItem.module.css';
 
-export const AccordionItem = ({ title, content }) => {
-	const [isActive, setIsActive] = useState(null);
-	
+export const AccordionItem = ({ item, index, toggle, opened }) => {
+  const isTitleActive = opened ? 'active' : 'accordionTitle';
+  const isActive = opened ? 'content show' : 'content';
 
   return (
-    <div className={s.accordionItem}>
-      <div className={s.accordionTitle} onClick={() => setIsActive(!isActive)}>
-        <div>{title}</div>
-        <div>{isActive ? '-' : '+'}</div>
+    <div className={s.accordionItem} key={item.title} onClick={toggle}>
+      <div className={s[`${isTitleActive}`]}>
+        <div className={s.icon}>{opened === index ? '-' : '+'}</div>
+        <h2 className={s.title}>{item.title}</h2>
       </div>
-      {isActive && <div className={s.accordionContent}>{content}</div>}
+      <div className={s[`${isActive}`]}>{item.content}</div>
     </div>
   );
 };

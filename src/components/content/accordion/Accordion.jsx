@@ -1,28 +1,19 @@
-import React from 'react';
-import { AccordionItem } from '../accordionItem/AccordionItem';
+import React, { useState } from 'react';
 import { accordionData } from '../../../constants/Constants';
 import s from './accordion.module.css';
+import { AccordionItem } from '../accordionItem/AccordionItem';
 
 export const Accordion = () => {
-	const { selected, setSelected } = useState(null);;
-
-  const handleClick = (e, titleProps) => {
-    const { index } = titleProps;
-    const { activeIndex } = state;
-    const newIndex = activeIndex === index ? -1 : index;
-
-    setState({ activeIndex: newIndex });
-  };
-
+  const [opened, setOpened] = useState(null);
   return (
     <div className={s.accordion}>
-      {accordionData.map(({ title, content, i, state }) => (
+      {accordionData.map((item, i) => (
         <AccordionItem
-          title={title}
-          content={content}
-          handleClick={handleClick}
+          key={item.title}
+          opened={i === opened}
+          toggle={setOpened.bind(null, i === opened ? null : i)}
+          item={item}
           index={i}
-          activeIndex={state}
         />
       ))}
     </div>

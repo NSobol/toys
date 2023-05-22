@@ -3,8 +3,8 @@ import { Accordion } from '../../components/content/accordion/Accordion';
 
 export const QuestionsAndAnswers = () => {
   return (
-    <div>
+    <>
       <Accordion />
-    </div>
+    </>
   );
 };

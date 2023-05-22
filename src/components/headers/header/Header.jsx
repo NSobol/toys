@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={style.header}>
       <TopPanel />
-      <HeaderMain></HeaderMain>
+      <HeaderMain/>
     </div>
   );
 };
