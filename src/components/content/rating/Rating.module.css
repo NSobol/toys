@@ -1,0 +1,10 @@
+.starRating {
+    stroke: lightgray;
+}
+.filledRating {
+    fill: #ff7a39;
+    stroke: #ff7a39;
+}
+.editableRating {
+    cursor: pointer;
+}

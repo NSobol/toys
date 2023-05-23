@@ -13,6 +13,7 @@
   justify-content: space-evenly;
   /* align-items: start; */
   align-content: center;
+  position: relative;
 }
 
 .cardItem:hover {
@@ -20,6 +21,28 @@
   box-shadow: 3px 3px 3px 3px #0087b0;
   transform: scale(1.05);
   z-index: 999;
+}
+
+.cardHeader {
+  display: flex;
+}
+
+.cardTegs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("./../../../images/discount.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 60px 60px;
+  z-index: 10;
+}
+
+.cardDiscount {
+  color: #ffffff;
+  width: 75px;
+  height: 75px;
+  font-size: 22px;
 }
 
 .cardPictures {
@@ -76,6 +99,8 @@
   border: none;
   padding: 0;
   display: flex;
+
+  margin-left: auto;
   width: 24px;
   height: 24px;
   stroke: red;
@@ -90,6 +115,7 @@
 .card__сhosen_active {
   background: none;
   border: none;
+  margin-left: auto;
 }
 .card__сhosen_active > svg {
   cursor: pointer;

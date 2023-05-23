@@ -17,7 +17,13 @@ export const Card = ({ product }) => {
   const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
   return (
     <div className={style.cardItem}>
-      <div className='card_header'>
+      <div className={style.cardHeader}>
+      <div className={style.cardTegs}>
+                {!!product.discount && <div className={style.cardDiscount}>
+                    -{product.discount}%
+                </div>}
+                {/* {product.tags.map(e => <span className={`tag tag_type_${e}`} key={e}>{e}</span>)} */}
+            </div>
         <button onClick={getClickLiks} className={style[`${сhosen}`]}>
           <Like />
         </button>

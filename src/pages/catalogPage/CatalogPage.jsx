@@ -7,21 +7,10 @@ import { Advantages } from './../../components/content/advantages/Advantages';
 import './Catalog.css';
 import Paginate from '../../components/content/pagination/Paginate';
 import { CHEAPEST, EXPENSIVE, NEWEST, POPULAR, RATE, SALE } from "./../../constants/Constants"
+import { getCorrectWordEnding } from '../../utils/function';
 
 export const CatalogPage = () => {
   const { products, search, currentProducts, getSorted } = useContext(ProductsContext);
-  const getIssues = (numb) => {
-    const tmp = numb % 10;
-    if (!tmp || !numb) {
-      return ' товаров';
-    }
-    if (tmp === 1) {
-      return ' товар';
-    }
-    if (tmp > 1 && tmp < 5) {
-      return ' товара';
-    }
-  };
 
   const sortedItems = [{ id: POPULAR}, { id: RATE }, { id: NEWEST }, { id: CHEAPEST }, { id: EXPENSIVE }, { id: SALE }];
 
@@ -32,7 +21,7 @@ export const CatalogPage = () => {
         <p className='search'>
           По запросу <b>{search}</b>{' '}
           {products.length === 1 ? 'найден' : 'найдено'} {products.length}
-          {getIssues(products.length)}
+          {getCorrectWordEnding(products.length)}
         </p>
       )}
             <div className='sort-cards'>

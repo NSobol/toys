@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
 import './autoriz.css';
+import { Link } from 'react-router-dom';
+import { ProductsContext } from '../../../context/productsContext';
 
 export const Autoriz = (props) => {
+  const { setActive } = useContext(ProductsContext);
   const {
     register,
     handleSubmit,
@@ -48,7 +51,13 @@ export const Autoriz = (props) => {
         </div>
         <br />
         <div className='button-form-duble-two'>
-          <button type='submit' className='btn button-form-submit'>
+          <button
+            type='submit'
+            className='btn button-form-submit'
+            onClick={() => {
+              setActive(false);
+            }}
+          >
             Ok
           </button>
           <button type='reset' className='btn button-form-close'>
@@ -56,6 +65,14 @@ export const Autoriz = (props) => {
           </button>
         </div>
       </form>
+      <div className='relocation'>
+        <span>Нет аккаунта?</span>{' '}
+        <Link to={'/registr'}>Зарегистрироваться</Link>
+      </div>
+      <div className='relocation'>
+        <span>Забыт пароль?</span>{' '}
+        <Link to={'/passReset'}>Восстановление пароля</Link>
+      </div>
     </div>
   );
 };

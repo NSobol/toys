@@ -1,0 +1,55 @@
+.formContainer {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    min-width: 400px;
+  }
+  
+  .formTitle {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .formSubTitle {
+    margin-bottom: 20px;
+  }
+  
+  .formFieldInput {
+    height: 24px;
+    width: 240px;
+    border-radius: 15px;
+    padding-left: 10px;
+    outline: none;
+  }
+  
+  .fieldFormDiv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .formBtn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 12px;
+    background: #0087b0;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 28px;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    width: 200px;
+    margin-bottom: 10px;
+  }
+  
+  .formBtn:hover {
+    background-color: #ff7a39;
+  }

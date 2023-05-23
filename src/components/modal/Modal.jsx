@@ -13,21 +13,16 @@ export const Modal = ({ active, setActive, children }) => {
 
   useEffect(() => {
     document.addEventListener('keydown', closeOnEsc);
-
     return () => document.removeEventListener('keydown', closeOnEsc);
   }, [closeOnEsc]);
+
   return (
-    <div
-      className={active ? 'modal active' : 'modal'}
-      onClick={() => setActive(false)}
-    >
-      <div
-        className={active ? 'modal__content active' : 'modal__content'}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button className='modal__close' onClick={() => setActive(false)}>
-          
-        </button>
+    <div className={active ? 'modal active' : 'modal'}>
+      <div className={active ? 'modal__content active' : 'modal__content'}>
+        <span
+          className='modal__close'
+          onClick={() => setActive(false)}
+        ></span>
         {children}
       </div>
     </div>

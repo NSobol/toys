@@ -54,13 +54,12 @@ const Paginate = () => {
         </button>
         <ul className={s.selectNumber}>
           {pageNumber.map((number) => (
-            <li className='page-item' key={number}>
-              <button
-                className={s['page-link']}
-                onClick={() => navigate(number)}
-              >
-                <span className={s['page-numb']}>{number}</span>
-              </button>
+            <li
+              key={number}
+              className={s['page-item']}
+              onClick={() => navigate(number)}
+            >
+              {number}
             </li>
           ))}
         </ul>
