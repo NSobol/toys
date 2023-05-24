@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import s from './Rating.module.css';
-import { ReactComponent as RatingStar } from './../../../images/star.rating.svg';
+import { ReactComponent as Star } from './../../../images/star.svg';
+import cn from 'classnames';
 
-const emptyFragments = new Array(5).fill(<></>);
 export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
+  const emptyFragments = new Array(5).fill(<></>);
   const [ratingArr, setRatingArr] = useState(emptyFragments);
 
   const changeRating = useCallback(
@@ -16,25 +17,21 @@ export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
     [setRate, isEditable]
   );
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   function changeDisplay(r) {
-		if (!isEditable) {
-			return;
-		}
-		constructRating(r);
-	}
+    if (!isEditable) {
+      return;
+    }
+    constructRating(r);
+  }
 
   const constructRating = useCallback(
     (rate) => {
       const updatedArray = emptyFragments.map((elem, index) => (
-        <RatingStar
-          className={
-            (s.starRating,
-            {
-              [s.filledRating]: index < rate,
-              [s.editableRating]: isEditable,
-            })
-          }
+        <Star
+          className={cn(s.starRating, {
+            [s.filledRating]: index < rate,
+            [s.editableRating]: isEditable,
+          })}
           onMouseEnter={() => changeDisplay(index + 1)}
           onMouseLeave={() => changeDisplay(rating)}
           onClick={() => changeRating(index + 1)}
@@ -42,12 +39,14 @@ export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
       ));
       setRatingArr(updatedArray);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [rating, isEditable, changeRating, changeDisplay]
   );
 
   useEffect(() => {
     constructRating(rating);
-  }, [constructRating, rating]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [constructRating]);
 
   return (
     <div>

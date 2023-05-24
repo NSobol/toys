@@ -45,7 +45,7 @@ export const Product = ({ product, setProduct, reviews=[]}) => {
         <div className={s.rightBar}>
           <h2 className={s.product__title}>{product.name}</h2>
           <div className={s.rating}>
-            {/* <Rating rating={productRating(product.reviews)} /> */}
+            <Rating />
             {/* <span>
               {product?.reviews.length}
               {getCorrectWordEnding(product?.reviews.length, "отзыв")}
