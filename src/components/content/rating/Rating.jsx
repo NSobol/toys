@@ -40,13 +40,13 @@ export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
       setRatingArr(updatedArray);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [rating, isEditable, changeRating, changeDisplay]
+    [rating, isEditable]
   );
 
   useEffect(() => {
     constructRating(rating);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [constructRating]);
+  }, []);
 
   return (
     <div>

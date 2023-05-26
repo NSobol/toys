@@ -8,29 +8,21 @@ import { Rating } from "../rating/Rating";
 
 export const Product = ({ product, setProduct, reviews=[]}) => {
   const { active, setActive } = useContext(ProductsContext);
-  // const arrReview=Array.from(product.reviews);
-//   console.log(product.reviews.length);
-  // console.log(arrReview.length);
+//   const arrReview = product?.reviews ?? [];
+  console.log(product.reviews.length);
+    // console.log(arrReview.length);
 
   const getDiscountPrice = (discount, price) => {
     return (price - Math.floor((price * discount) / 100)).toFixed(0);
   };
 
-//   const productRating = (reviews) => {
-//     if (!reviews || !reviews.length) {
-//       return 0;
-//     }
-//     const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
-//     return Math.floor(res / reviews.length);
-//   };
-
-  // let productReviewsCount=product?.reviews.length;
-  // console.log(product?.reviews)
-  // if (product.reviews.length===0){
-  //   let productReviewsCount = 0;
-  // }
-  // let productReviewsCount = product.reviews;
-  // console.log(productReviewsCount.length)
+  const productRating = (reviews) => {
+    if (!reviews || !reviews.length) {
+      return 0;
+    }
+    const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
+    return Math.floor(res / reviews.length);
+  };
 
   return (
     <div className={s.cardProduct__container}>
@@ -39,7 +31,7 @@ export const Product = ({ product, setProduct, reviews=[]}) => {
           <img
             className={s.product__img}
             src={product.pictures}
-            alt="картинка"
+            alt='картинка'
           />
         </div>
         <div className={s.rightBar}>
@@ -60,7 +52,7 @@ export const Product = ({ product, setProduct, reviews=[]}) => {
                 <div className={s.cardDesc}>
                   <span
                     className={`${s.price} ${
-                      !!product.discount ? s.oldPrice : ""
+                      !!product.discount ? s.oldPrice : ''
                     }`}
                   >
                     {product.price}&nbsp;p
@@ -68,14 +60,14 @@ export const Product = ({ product, setProduct, reviews=[]}) => {
                   {!!product.discount && (
                     <span
                       className={`${s.price} ${
-                        !!product.discount ? s.newPrice : ""
+                        !!product.discount ? s.newPrice : ''
                       }`}
                     >
                       {getDiscountPrice(product.discount, product.price)}&nbsp;p
                     </span>
                   )}
                 </div>
-              }{" "}
+              }{' '}
             </b>
           </div>
           <div className={s.inCase}>
