@@ -1,10 +1,13 @@
 .starRating {
-    stroke: lightgray;
+  stroke: lightgray;
+  width: 30px;
+  height: 30px;
 }
 .filledRating {
-    fill: #ff7a39;
-    stroke: #ff7a39;
+
+  fill: #ff7a39;
+  stroke: #ff7a39;
 }
 .editableRating {
-    cursor: pointer;
+  cursor: pointer;
 }
