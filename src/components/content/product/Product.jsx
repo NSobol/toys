@@ -6,7 +6,7 @@ import { ProductsContext } from "../../../context/productsContext";
 import { Rating } from "../rating/Rating";
 // import { getCorrectWordEnding } from "../../../utils/function";
 
-export const Product = ({ product, setProduct, reviews=[]}) => {
+export const Product = ({ product, setProduct, reviews}) => {
   const { active, setActive } = useContext(ProductsContext);
 //   const arrReview = product?.reviews ?? [];
   console.log(product.reviews.length);

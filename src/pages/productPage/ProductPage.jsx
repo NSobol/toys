@@ -28,7 +28,11 @@ export const ProductPage = () => {
     <div className='container'>
       <ComeBack />
       <div className='product__page'>
-        <Product product={product} setProduct={setProduct} reviews={product?.reviews}/>
+        <Product
+          product={product}
+          setProduct={setProduct}
+          reviews={product?.reviews ?? []}
+        />
         <ReviewsList
           productId={product._id}
           reviews={product?.reviews ?? []}
