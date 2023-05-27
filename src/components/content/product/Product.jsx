@@ -3,12 +3,12 @@ import s from './Product.module.css';
 import { Modal } from './../../modal/Modal';
 import { FormReview } from '../../formReview/FormReview';
 import { ProductsContext } from '../../../context/productsContext';
-import { Rating } from '../rating/Rating';
 import { getCorrectWordEnding } from '../../../utils/function';
+import { Rate } from '../../Rate/Rate';
+
 
 export const Product = ({ product, setProduct, reviews }) => {
   const { active, setActive } = useContext(ProductsContext);
-  console.log(product.reviews?.length);
   const getDiscountPrice = (discount, price) => {
     return (price - Math.floor((price * discount) / 100)).toFixed(0);
   };
@@ -20,7 +20,7 @@ export const Product = ({ product, setProduct, reviews }) => {
     const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
     return Math.floor(res / reviews.length);
   };
-
+  
   return (
     <div className={s.cardProduct__container}>
       <div className={s.cardProduct}>
@@ -34,7 +34,7 @@ export const Product = ({ product, setProduct, reviews }) => {
         <div className={s.rightBar}>
           <h2 className={s.product__title}>{product.name}</h2>
           <div className={s.rating}>
-            <Rating />
+            <Rate rating={productRating (reviews)}/>
             <div>
               {product.reviews?.length}
               {getCorrectWordEnding(product.reviews?.length, 'отзыв')}

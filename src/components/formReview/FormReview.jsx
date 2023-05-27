@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from '../../utils/api';
 import s from './formReview.module.css';
+import { FormRating } from '../content/rating/Rating';
 
 export const FormReview = ({ product, setProduct, setActive }) => {
   const { register, handleSubmit } = useForm();
@@ -16,18 +17,7 @@ export const FormReview = ({ product, setProduct, setActive }) => {
     <div className={s.formContainer}>
       <h2>Создание отзыва</h2>
       <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <label> Укажите рейтинг товара </label> <br />
-        <input
-          type='number'
-          min='1'
-          max='5'
-          id='rate'
-          name='rating'
-          placeholder='Рейтинг товара'
-          required
-          {...register('rating', { required: true })}
-        />
-        <br />
+        <FormRating />
         <textarea
           name='text'
           type='text'
