@@ -93,15 +93,13 @@ export const Product = ({ product, setProduct, reviews }) => {
           </button>
         </div>
       </div>
-      {active && (
-        <Modal active={active} setActive={setActive} product={product}>
+      <Modal active={active} setActive={setActive} product={product}>
           <FormReview
             product={product}
             setProduct={setProduct}
             setActive={setActive}
           />
         </Modal>
-      )}
     </div>
   );
 };
