@@ -6,21 +6,12 @@ import { ProductsContext } from '../../../context/productsContext';
 import { getCorrectWordEnding } from '../../../utils/function';
 import { Rate } from '../../Rate/Rate';
 
-
 export const Product = ({ product, setProduct, reviews }) => {
-  const { active, setActive } = useContext(ProductsContext);
+  const { active, setActive, productRating } = useContext(ProductsContext);
   const getDiscountPrice = (discount, price) => {
     return (price - Math.floor((price * discount) / 100)).toFixed(0);
   };
 
-  const productRating = (reviews) => {
-    if (!reviews || !reviews?.length) {
-      return 0;
-    }
-    const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
-    return Math.floor(res / reviews.length);
-  };
-  
   return (
     <div className={s.cardProduct__container}>
       <div className={s.cardProduct}>
@@ -34,7 +25,7 @@ export const Product = ({ product, setProduct, reviews }) => {
         <div className={s.rightBar}>
           <h2 className={s.product__title}>{product.name}</h2>
           <div className={s.rating}>
-            <Rate rating={productRating (reviews)}/>
+            <Rate rating={productRating(reviews)} />
             <div>
               {product.reviews?.length}
               {getCorrectWordEnding(product.reviews?.length, 'отзыв')}
@@ -102,13 +93,15 @@ export const Product = ({ product, setProduct, reviews }) => {
           </button>
         </div>
       </div>
-      <Modal active={active} setActive={setActive} product={product}>
-        <FormReview
-          product={product}
-          setProduct={setProduct}
-          setActive={setActive}
-        />
-      </Modal>
+      {active && (
+        <Modal active={active} setActive={setActive} product={product}>
+          <FormReview
+            product={product}
+            setProduct={setProduct}
+            setActive={setActive}
+          />
+        </Modal>
+      )}
     </div>
   );
 };
