@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import Header from './components/headers/header/Header.jsx';
 import Footer from './components/footers/footer/Footer.jsx';
@@ -55,13 +55,13 @@ function App() {
       : setSelected((products) => [alteredCard, ...products]);
   };
 
-  const productRating = (reviews) => {
-    if (!reviews || !reviews.length) {
+  const productRating = useCallback((reviews) => {
+    if (!reviews || !reviews?.length) {
       return 0;
     }
     const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
-    return res / reviews.length;
-  };
+    return Math.floor(res / reviews.length);
+  }, []);
 
   const getSorted = (sortId) => {
     let newProduts = [];
@@ -141,13 +141,8 @@ function App() {
     getSorted,
     active,
     setActive,
+    productRating,
   };
-
-  //   const authotRoutes = (
-  //     <>
-
-  //     </>
-  //   );
 
   return (
     <div className='App'>
@@ -171,25 +166,31 @@ function App() {
             <Route
               path='/registr'
               element={
-                <Modal active={active} setActive={setActive}>
-                  <Registr />
-                </Modal>
+                active && (
+                  <Modal active={active} setActive={setActive}>
+                    <Registr />
+                  </Modal>
+                )
               }
             />
             <Route
               path='/login'
               element={
-                <Modal active={active} setActive={setActive}>
-                  <Autoriz />
-                </Modal>
+                active && (
+                  <Modal active={active} setActive={setActive}>
+                    <Autoriz />
+                  </Modal>
+                )
               }
             />
             <Route
               path='/passReset'
               element={
-                <Modal active={active} setActive={setActive}>
-                  <ResetPassword />
-                </Modal>
+                active && (
+                  <Modal active={active} setActive={setActive}>
+                    <ResetPassword />
+                  </Modal>
+                )
               }
             />
           </Routes>

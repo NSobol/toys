@@ -1,13 +1,22 @@
-.starRating {
-  stroke: lightgray;
+.stars {
+  display: "flex";
+}
+
+.star {
+  margin-right: 10;
+  cursor: "pointer";
   width: 30px;
   height: 30px;
+  stroke: #d3d3d3;
+  fill: lightgray;
 }
-.filledRating {
 
-  fill: #ff7a39;
-  stroke: #ff7a39;
-}
-.editableRating {
-  cursor: pointer;
+.filled {
+  margin-right: 10;
+  cursor: "pointer";
+  width: 30px;
+  height: 30px;
+  stroke: #FFAA0D;
+  fill: #FFAA0D;
+  fill-opacity: 1;
 }

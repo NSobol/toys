@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from '../../utils/api';
 import s from './formReview.module.css';
+import { FormRating } from '../content/rating/Rating';
 
 export const FormReview = ({ product, setProduct, setActive }) => {
+  const [rate, setRate] = useState(0);
   const { register, handleSubmit } = useForm();
   const productId = product._id;
-  const onSubmit = (data) => {
+
+  const onSubmit = ({ text }) => {
+    const data = { text, rating: rate };
     api
       .getAddReviewOfProduct(productId, data)
       .then((data) => setProduct({ ...data }))
@@ -16,18 +20,7 @@ export const FormReview = ({ product, setProduct, setActive }) => {
     <div className={s.formContainer}>
       <h2>Создание отзыва</h2>
       <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <label> Укажите рейтинг товара </label> <br />
-        <input
-          type='number'
-          min='1'
-          max='5'
-          id='rate'
-          name='rating'
-          placeholder='Рейтинг товара'
-          required
-          {...register('rating', { required: true })}
-        />
-        <br />
+        <FormRating rating={rate} setRate={setRate} />
         <textarea
           name='text'
           type='text'

@@ -18,12 +18,14 @@ export const Card = ({ product }) => {
   return (
     <div className={style.cardItem}>
       <div className={style.cardHeader}>
-      <div className={style.cardTegs}>
-                {!!product.discount && <div className={style.cardDiscount}>
-                    -{product.discount}%
-                </div>}
-                {/* {product.tags.map(e => <span className={`tag tag_type_${e}`} key={e}>{e}</span>)} */}
+        <div className={style.cardTegs}>
+          {!!product.discount && (
+            <div className={style.cardDiscount}>
+              -{product.discount}%
             </div>
+          )}
+          {/* {product.tags.map(e => <span className={`tag tag_type_${e}`} key={e}>{e}</span>)} */}
+        </div>
         <button onClick={getClickLiks} className={style[`${сhosen}`]}>
           <Like />
         </button>
@@ -37,15 +39,15 @@ export const Card = ({ product }) => {
           />
         </div>
       </Link>
-        <div className={style.cardText}>
-          <p className={style.titleItem}>Название: {product.name}</p>
-          <p>Ед. измерения: {product.wight}</p>
-          <p>
-            Цена: <b>{product.price} p</b>
-          </p>
-          <br />
-        </div>
-        <button className={style.buttonItem}>В корзину</button>
+      <div className={style.cardText}>
+        <p className={style.titleItem}>Название: {product.name}</p>
+        <p>Ед. измерения: {product.wight}</p>
+        <p>
+          Цена: <b>{product.price} p</b>
+        </p>
+        <br />
+      </div>
+      <button className={style.buttonItem}>В корзину</button>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import "./reviewS.css";
+import { Rate } from "../Rate/Rate";
 
 export const Review = ({ productId, review }) => {
   return (
@@ -13,10 +14,9 @@ export const Review = ({ productId, review }) => {
         <p className="review__card__header__name">{review.author.name}</p>
         <p className="review__card__header__date">{review.author.created_at}</p>
       </div>
-      {/* rate component */}
-      <p>{review.rating}</p>
+      <Rate rating={review.rating} />
+      <p>{review.rating} </p>
       <p className="review__card__text">{review.text}</p>
-     
     </div>
   );
 };

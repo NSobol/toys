@@ -1,58 +1,43 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import s from './Rating.module.css';
 import { ReactComponent as Star } from './../../../images/star.svg';
-import cn from 'classnames';
 
-export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
-  const emptyFragments = new Array(5).fill(<></>);
-  const [ratingArr, setRatingArr] = useState(emptyFragments);
+const stars = Array(5).fill(0);
+export const FormRating = ({ rate, setRate }) => {
+  const [currentValue, setCurrentValue] = useState(0);
+  const [hoverValue, setHoverValue] = useState(undefined);
 
-  const changeRating = useCallback(
-    (r) => {
-      if (!isEditable) {
-        return;
-      }
-      setRate(r);
+  const handleClick = useCallback(
+    (value) => {
+      setCurrentValue(value);
+      setRate(value);
     },
-    [setRate, isEditable]
+    [setRate]
   );
 
-  function changeDisplay(r) {
-    if (!isEditable) {
-      return;
-    }
-    constructRating(r);
-  }
+  const handleMouseOver = useCallback((newHoverValue) => {
+    setHoverValue(newHoverValue);
+  }, []);
 
-  const constructRating = useCallback(
-    (rate) => {
-      const updatedArray = emptyFragments.map((elem, index) => (
-        <Star
-          className={cn(s.starRating, {
-            [s.filledRating]: index < rate,
-            [s.editableRating]: isEditable,
-          })}
-          onMouseEnter={() => changeDisplay(index + 1)}
-          onMouseLeave={() => changeDisplay(rating)}
-          onClick={() => changeRating(index + 1)}
-        />
-      ));
-      setRatingArr(updatedArray);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [rating, isEditable]
-  );
-
-  useEffect(() => {
-    constructRating(rating);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleMouseLeave = useCallback(() => {
+    setHoverValue(undefined);
   }, []);
 
   return (
-    <div>
-      {ratingArr.map((e, i) => (
-        <span key={i}>{e}</span>
-      ))}
+    <div className={s.stars}>
+      {stars.map((_, index) => {
+        return (
+          <Star
+            className={
+              (hoverValue || currentValue) > index ? s['filled'] : s['star']
+            }
+            key={index}
+            onClick={() => handleClick(index + 1)}
+            onMouseOver={() => handleMouseOver(index + 1)}
+            onMouseLeave={handleMouseLeave}
+          />
+        );
+      })}
     </div>
   );
 };
