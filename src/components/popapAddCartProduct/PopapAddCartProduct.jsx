@@ -9,6 +9,7 @@ export const PopapAddCartProduct = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
+    setActive(false);
     api.getAddProduct(data);
   };
   return (

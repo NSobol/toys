@@ -1,21 +1,20 @@
-import { useContext } from 'react';
+import { useState } from 'react';
 import style from './adminHeaderIcons.module.css';
 import add from './../../../images/add.png';
 import { Modal } from './../../modal/Modal';
 import './../../modal/modal.css';
 import { PopapAddCartProduct } from './../../popapAddCartProduct/PopapAddCartProduct';
-import { ProductsContext } from '../../../context/productsContext';
 
 export const AdminHeaderIcons = () => {
-const { active, setActive } = useContext(ProductsContext);
+	const [modalActive, setModalActive] = useState(false);
 	
   return (
     <div>
-      <button className={style.btn} onClick={() => setActive(true)}>
+      <button className={style.btn} onClick={() => setModalActive(true)}>
         <img src={add} alt='Добавить' />
       </button>
 
-		  {active && <Modal active={active} setActive={setActive}>
+		  {modalActive && <Modal active={modalActive} setActive={setModalActive}>
 			  <PopapAddCartProduct />
 		  </Modal>}
     </div>
