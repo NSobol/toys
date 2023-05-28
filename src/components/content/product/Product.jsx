@@ -100,7 +100,6 @@ export const Product = ({ product, setProduct, reviews }) => {
             setActive={setActive}
           />
         </Modal>
-      )}
     </div>
   );
 };
