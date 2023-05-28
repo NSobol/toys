@@ -93,7 +93,6 @@ export const Product = ({ product, setProduct, reviews }) => {
           </button>
         </div>
       </div>
-      {active && (
         <Modal active={active} setActive={setActive} product={product}>
           <FormReview
             product={product}
@@ -101,7 +100,6 @@ export const Product = ({ product, setProduct, reviews }) => {
             setActive={setActive}
           />
         </Modal>
-      )}
     </div>
   );
 };
