@@ -4,8 +4,6 @@ export const filteredProducts = (products) => {
     (e) =>
       e.author._id === '6442d2653291d790b3fcf266' ||
       e.author._id === '6442bd8d3291d790b3fce3c6'
-    //   ||
-    //   e.author._id === '622bd81b06c7d323b8ae4614'
   );
   return filterProducts;
 };
@@ -29,4 +27,12 @@ export const getCorrectWordEnding = (numb, field = 'товар') => {
     return ` ${field}ов`;
   }
   return ` ${field}ов`;
+};
+
+export const productRating = (reviews) => {
+  if (!reviews || !reviews?.length) {
+    return 0;
+  }
+  const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
+  return Math.floor(res / reviews.length);
 };
