@@ -18,7 +18,8 @@ export const getUser = createAsyncThunk(
     dataFromUp,
     { getState, dispatch, fulfillWithValue, rejectWithValue }
   ) {
-    const data = await api.getUserInfo();
+    const data = await api.getMyUserInfo();
+    console.log(data);
     return data;
   }
 );
@@ -26,10 +27,10 @@ export const getUser = createAsyncThunk(
 export const updateUser = createAsyncThunk('updateUser', async function (data) {
   console.log({ data });
   if (data.avatar) {
-    const res = await api.updateUserAvatar({ avatar: data.avatar });
+    const res = await api.getResetUserAvatar({ avatar: data.avatar });
     return res;
   } else {
-    const res = await api.updateUserInfo({
+    const res = await api.getResetUserNameAbout({
       name: data.name,
       about: data.about,
     });
@@ -43,23 +44,15 @@ export const updateUser = createAsyncThunk('updateUser', async function (data) {
 
 const userSlice = createSlice({
   name: 'user',
-  initialState,
-  reducers: {},
+  initialState: initialState,
   extraReducers: (builder) => {
-    // builder.addCase(getUser.pending, (state, action) => {
-    //     state.loading = true
-    // });
-    // builder.addCase(getUser.fulfilled, (state, action) => {
-    //  name: "user",
-  	//  initialState,
-  	//  extraReducers: (builder) => {
-    // builder.addCase(getMyUser.pending, (state) => {
-    //   state.loading = true;
-    // });
-    // builder.addCase(getMyUser.fulfilled, (state, action) => {
-    //   state.data = action.payload;
-    //   state.loading = false;
-    // });
+    builder.addCase(getUser.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getUser.fulfilled, (state, action) => {
+      state.data = action.payload;
+      state.loading = false;
+    });
     builder.addCase(updateUser.fulfilled, (state, action) => {
       state.data = action.payload;
       state.loading = false;
@@ -69,7 +62,7 @@ const userSlice = createSlice({
       state.error = action.payload;
     });
     builder.addMatcher(isLoading, (state) => {
-      // state.loading = true;
+      state.loading = true;
     });
   },
 });

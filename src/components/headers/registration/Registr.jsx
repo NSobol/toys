@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
 import './registrStyle.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ProductsContext } from '../../../context/productsContext';
 
 export const Registr = () => {
@@ -11,7 +11,8 @@ export const Registr = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+	} = useForm();
+	const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -61,7 +62,8 @@ export const Registr = () => {
             type='submit'
             className='btn button-form-submit'
             onClick={() => {
-              setActive(false);
+				navigate(`/`);
+				setActive(false);
             }}
           >
             Ok

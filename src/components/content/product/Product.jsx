@@ -16,7 +16,9 @@ export const Product = ({ product, setProduct, reviews }) => {
     console.log('click -');
   };
 
-	const plus = () => { console.log('click +') };
+  const plus = () => {
+    console.log('click +');
+  };
 
   return (
     <div className={s.cardProduct__container}>
@@ -69,11 +71,8 @@ export const Product = ({ product, setProduct, reviews }) => {
               <button className={s.inCaseMinus} onClick={minus}>
                 <span className={s.minusText}>-</span>
               </button>
-              <span className={s.caseText}>0</span>
-              <button
-                className={s.inCasePlus}
-                onClick={plus}
-              >
+              <span className={s.caseText}>{}</span>
+              <button className={s.inCasePlus} onClick={plus}>
                 <span className={s.plusText}>+</span>
               </button>
             </div>

@@ -7,3 +7,4 @@ export const isLoading = (data) => data.type?.endsWith('pending');
 export const findLiked = (product, id) => {
   return product.likes.some((e) => e === id);
 };
+
