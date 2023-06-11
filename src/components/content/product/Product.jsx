@@ -8,7 +8,8 @@ import { getCorrectWordEnding } from '../../../utils/function';
 import { Rate } from '../../Rate/Rate';
 
 export const Product = ({ product, setProduct, reviews, getLiks }) => {
-  const { active, setActive, productRating, user } = useContext(ProductsContext);
+  const { active, setActive, productRating, user } =
+    useContext(ProductsContext);
 
   const getDiscountPrice = (discount, price) => {
     return (price - Math.floor((price * discount) / 100)).toFixed(0);
@@ -76,22 +77,24 @@ export const Product = ({ product, setProduct, reviews, getLiks }) => {
               }
             </b>
           </div>
+          <div className={s.likedBlock}>
+            <button onClick={getClickLiks} className={s[`${сhosen}`]}>
+              <Like />
+            </button>
+            <span>{isСhosen ? 'В избранном' : 'В избранное'}</span>
+          </div>
           <div className={s.inCase}>
             <div className={s.inCaseControls}>
               <button className={s.inCaseMinus} onClick={minus}>
                 <span className={s.minusText}>-</span>
               </button>
-              <span className={s.caseText}>{}</span>
+              <span className={s.caseText}>{'0'}</span>
               <button className={s.inCasePlus} onClick={plus}>
                 <span className={s.plusText}>+</span>
               </button>
             </div>
             <button className={s.inCaseBasket}>В корзину</button>
           </div>
-          <button onClick={getClickLiks} className={s[`${сhosen}`]}>
-            <Like />
-          </button>
-          <span>{isСhosen ? 'В избранном' : 'В избранное'}</span>
         </div>
       </div>
 

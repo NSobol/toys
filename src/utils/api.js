@@ -7,37 +7,46 @@ const baseData = {
   },
 };
 
+const freshHeaders = () => {
+  return {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: localStorage.getItem('myToken'),
+    },
+  };
+};
 const resp = (res) => {
   return res.ok ? res.json() : res.json().then((data) => Promise.reject(data));
 };
 
 class Api {
-  constructor(data) {
+  constructor(data, freshHeaders) {
     this.baseUrl = data.baseUrl;
     this.headers = data.headers;
+    this.freshHeaders = freshHeaders;
   }
 
   /*методы для пользователя*/
   getMyUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
-      headers: this.headers,
+      ...this.freshHeaders(),
     }).then(resp);
   }
 
   getAllUsersInfo() {
     return fetch(`${this.baseUrl}/users`, {
-      headers: this.headers,
+      ...this.freshHeaders(),
     }).then(resp);
   }
   getUserInfoId(userId) {
     return fetch(`${this.baseUrl}/users/${userId}`, {
-      headers: this.headers,
+      ...this.freshHeaders(),
     }).then(resp);
   }
   getResetUserAvatar(data) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this.headers,
+      ...this.freshHeaders(),
       body: JSON.stringify(data),
     }).then(resp);
   }
@@ -45,7 +54,7 @@ class Api {
   getResetUserNameAbout(data) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this.headers,
+      ...this.freshHeaders(),
       body: JSON.stringify(data),
     }).then(resp);
   }
@@ -54,7 +63,7 @@ class Api {
   getRegisteredUser(data) {
     return fetch(`${this.baseUrl}/signup`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      ...this.freshHeaders(),
       body: JSON.stringify(data),
     }).then(resp);
   }
@@ -62,7 +71,7 @@ class Api {
   getAuthorizedUser(data) {
     return fetch(`${this.baseUrl}/signin`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      ...this.freshHeaders(),
       body: JSON.stringify(data),
     }).then(resp);
   }
@@ -70,15 +79,15 @@ class Api {
   getResetPasswordMail(data) {
     return fetch(`${this.baseUrl}/forgot-password`, {
       method: 'POST',
-      headers: this.headers,
+      ...this.freshHeaders(),
       body: JSON.stringify(data),
     }).then(resp);
   }
 
   getResetPasswordToken(token, data) {
     return fetch(`${this.baseUrl}/password-reset/${token}`, {
+      headers: { ...this.freshHeaders() },
       method: 'PATCH',
-      headers: this.headers,
       body: JSON.stringify(data),
     }).then(resp);
   }
@@ -87,14 +96,14 @@ class Api {
   getAllProducts() {
     return fetch(`${this.baseUrl}/products`, {
       method: 'GET',
-      headers: this.headers,
+      ...this.freshHeaders(),
     }).then(resp);
   }
 
   getAddProduct(data) {
     return fetch(`${this.baseUrl}/products`, {
       method: 'POST',
-      headers: this.headers,
+      ...this.freshHeaders(),
       body: JSON.stringify(data),
     }).then((res) => {
       return res.json();
@@ -103,14 +112,14 @@ class Api {
 
   getProductInfo(id) {
     return fetch(`${this.baseUrl}/products/${id}`, {
-      headers: this.headers,
+      ...this.freshHeaders(),
     }).then(resp);
   }
 
   getAddReviewOfProduct(productId, data) {
     return fetch(`${this.baseUrl}/products/review/${productId}`, {
       method: 'POST',
-      headers: this.headers,
+      ...this.freshHeaders(),
       body: JSON.stringify(data),
     }).then(resp);
   }
@@ -118,49 +127,49 @@ class Api {
   getDeleteReviewOfProduct(productId, reviewId) {
     return fetch(`${this.baseUrl}/products/review/${productId}/${reviewId}`, {
       method: 'DELETE',
-      headers: this.headers,
+      ...this.freshHeaders(),
     }).then(resp);
   }
 
   getAllReviewOfProduct(productId) {
     return fetch(`${this.baseUrl}/products/review/${productId}`, {
       method: 'GET',
-      headers: this.headers,
+      ...this.freshHeaders(),
     }).then(resp);
   }
 
   getAllReviewsProducts() {
     return fetch(`${this.baseUrl}/products/review/`, {
       method: 'GET',
-      headers: this.headers,
+      ...this.freshHeaders(),
     }).then(resp);
   }
   getSearchProduct(desiredValue) {
     return fetch(`${this.baseUrl}/products/search?query=${desiredValue}`, {
-      headers: this.headers,
+      ...this.freshHeaders(),
     }).then(resp);
   }
 
   getAddLikeOfproduct(productId) {
     return fetch(`${this.baseUrl}/products/likes/${productId}`, {
-      headers: this.headers,
+      ...this.freshHeaders(),
       method: 'PUT',
     }).then(resp);
   }
 
   getDeleteLikeOfProduct(productId) {
     return fetch(`${this.baseUrl}/products/likes/${productId}`, {
-      headers: this.headers,
+      ...this.freshHeaders(),
       method: 'DELETE',
     }).then(resp);
   }
 
   getChangeLikeProduct(productId, isLiked) {
     return fetch(`${this.baseUrl}/products/likes/${productId}`, {
-      headers: this.headers,
+      ...this.freshHeaders(),
       method: isLiked ? 'DELETE' : 'PUT',
     }).then(resp);
   }
 }
 
-export const api = new Api(baseData);
+export const api = new Api(baseData, freshHeaders);

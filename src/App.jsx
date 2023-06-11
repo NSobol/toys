@@ -108,7 +108,6 @@ function App() {
     Promise.all([api.getMyUserInfo(), api.getAllProducts()])
       .then(([userData, data]) => {
         setUser(userData);
-        console.log(userData);
         const filtered = filteredProducts(data.products);
         setProducts(filtered);
         const selected = filtered.filter((e) =>
