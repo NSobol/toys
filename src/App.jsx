@@ -107,18 +107,19 @@ function App() {
     Promise.all([api.getMyUserInfo(), api.getAllProducts()])
       .then(([userData, data]) => {
         setUser(userData);
-        if (
-          user._id === '6442d2653291d790b3fcf266' ||
-          user._id === '6442bd8d3291d790b3fce3c6'
-        ) {
-          setAdmin(true);
-        }
+
         const filtered = filteredProducts(data.products);
         setProducts(filtered);
         const selected = filtered.filter((e) =>
           e.likes.some((el) => el === userData._id)
         );
         setSelected(selected);
+        if (
+          user._id === '6442d2653291d790b3fcf266' ||
+          user._id === '6442bd8d3291d790b3fce3c6'
+        ) {
+          setAdmin(true);
+        }
       })
       .catch(() => {
         setProducts(localData);
