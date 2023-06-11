@@ -1,25 +1,26 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/headers/header/Header.jsx';
 import Footer from './components/footers/footer/Footer.jsx';
 import { api } from './utils/api';
 import { useScan } from './hooks/Hooks';
-import { filteredProducts } from './utils/function';
+import { filteredProducts, productRating } from './utils/function';
 import { ProductsContext } from './context/productsContext';
 import { Route, Routes } from 'react-router-dom';
 import { CatalogPage } from './pages/catalogPage/CatalogPage';
 import { BasketPage } from './pages/basketPage/BasketPage';
 import { FavoritesPage } from './pages/favoritesPage/FavoritesPage';
-// import {MainPage} from "./pages/mainPage/MainPage"
 import { OrUsPage } from './pages/orUsPage/OrUsPage';
 import { ProductPage } from './pages/productPage/ProductPage';
 import { ProfilePage } from './pages/profilePage/ProfilePage';
 import { NotFound } from './components/notFound/NotFound';
-import { ResetPassword } from './components/resetPassowrForm/ResetPassword';
-import { Modal } from './components/modal/Modal';
-import { Autoriz } from './components/headers/autorization/Autoriz';
-import { Registr } from './components/headers/registration/Registr';
 import { QuestionsAndAnswers } from './pages/questionsAndAnswers/QuestionsAndAnswers';
+import { RegistrationPage } from './pages/registrationPage/RegistrationPage';
+import { AutorizedPage } from './pages/autorizedPage/AutorizedPage';
+import { ResetPassPage } from './pages/resetPassPage/ResetPassPage';
+import { MainPage } from './pages/mainPage/MainPage';
+// import { useDispatch,useSelector } from 'react-redux';
+
 
 function App() {
   //установка начальных состояний
@@ -37,7 +38,10 @@ function App() {
   const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
   const scanValueInApp = useScan(search);
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
+  //   const dispatch = useDispatch();
+  //   const selector = useSelector();
   const getHandlerLiks = async (product, isLiks) => {
     const alteredCard = await api.getChangeLikeProduct(product._id, isLiks);
     const index = products.findIndex((e) => e._id === alteredCard._id);
@@ -54,14 +58,6 @@ function App() {
         )
       : setSelected((products) => [alteredCard, ...products]);
   };
-
-  const productRating = useCallback((reviews) => {
-    if (!reviews || !reviews?.length) {
-      return 0;
-    }
-    const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
-    return Math.floor(res / reviews.length);
-  }, []);
 
   const getSorted = (sortId) => {
     let newProduts = [];
@@ -149,59 +145,52 @@ function App() {
       <ProductsContext.Provider value={productsValue}>
         <Header />
         <div className='content'>
-          {/* {isAuthorized ? ( */}
-          <Routes>
-            <Route path='/' element={<CatalogPage />} />
-            <Route path='/selectes' element={<FavoritesPage />} />
-            <Route path='/product/:id' element={<ProductPage />} />
-            <Route path='/basket' element={<BasketPage />} />
-            <Route path='/orus' element={<OrUsPage />} />
-            <Route path='/profile' element={<ProfilePage />} />
-            <Route
-              path='/questionsAndAnswers'
-              element={<QuestionsAndAnswers />}
-            />
-            <Route path='*' element={<NotFound />} />
-
-            <Route
-              path='/registr'
-              element={
-                active && (
-                  <Modal active={active} setActive={setActive}>
-                    <Registr />
-                  </Modal>
-                )
-              }
-            />
-            <Route
-              path='/login'
-              element={
-                active && (
-                  <Modal active={active} setActive={setActive}>
-                    <Autoriz />
-                  </Modal>
-                )
-              }
-            />
-            <Route
-              path='/passReset'
-              element={
-                active && (
-                  <Modal active={active} setActive={setActive}>
-                    <ResetPassword />
-                  </Modal>
-                )
-              }
-            />
-          </Routes>
-          {/* ) : (
+          {isAuthorized ? (
             <Routes>
-              <Route path="/" element={<MainPage />} />
-              <Route path="/product/:id" element={<ProductPage />} />
-              <Route path="/orus" element={<OrUsPage />} />
-              <Route path="*" element={<NotFound />} />
+              <Route path='/' element={<CatalogPage />} />
+              <Route path='/selectes' element={<FavoritesPage />} />
+              <Route path='/product/:id' element={<ProductPage />} />
+              <Route path='/basket' element={<BasketPage />} />
+              <Route path='/orus' element={<OrUsPage />} />
+              <Route path='/profile' element={<ProfilePage />} />
+              <Route
+                path='/questionsAndAnswers'
+                element={<QuestionsAndAnswers />}
+              />
+              <Route path='*' element={<NotFound />} />
             </Routes>
-          )} */}
+          ) : (
+            <Routes>
+              <Route path='/' element={<MainPage />} />
+              <Route path='/orus' element={<OrUsPage />} />
+              <Route
+                path='/questionsAndAnswers'
+                element={<QuestionsAndAnswers />}
+              />
+              <Route
+                path='/registr'
+                element={
+                  <RegistrationPage active={active} setActive={setActive} />
+                }
+              />
+              <Route
+                path='/login'
+                element={
+                  <AutorizedPage
+                    active={active}
+                    setActive={setActive}
+                    setIsAuthorized={setIsAuthorized}
+                  />
+                }
+              />
+              <Route
+                path='/passReset'
+                element={
+                  <ResetPassPage active={active} setActive={setActive} />
+                }
+              />
+            </Routes>
+          )}
         </div>
         <Footer />
       </ProductsContext.Provider>

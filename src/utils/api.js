@@ -8,7 +8,7 @@ const baseData = {
 };
 
 const resp = (res) => {
-  return res.json();
+  return res.ok ? res.json() : res.json().then((data) => Promise.reject(data));
 };
 
 class Api {
@@ -21,33 +21,25 @@ class Api {
   getMyUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getAllUsersInfo() {
     return fetch(`${this.baseUrl}/users`, {
       headers: this.headers,
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
   getUserInfoId(userId) {
     return fetch(`${this.baseUrl}/users/${userId}`, {
       headers: this.headers,
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
   getResetUserAvatar(data) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify(data),
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getResetUserNameAbout(data) {
@@ -55,9 +47,7 @@ class Api {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify(data),
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   /*Методы регистрации/авторизации/сброса пароля*/
@@ -66,9 +56,7 @@ class Api {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getAuthorizedUser(data) {
@@ -76,9 +64,7 @@ class Api {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getResetPasswordMail(data) {
@@ -86,9 +72,7 @@ class Api {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(data),
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getResetPasswordToken(token, data) {
@@ -96,9 +80,7 @@ class Api {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify(data),
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   /*методы для товаров*/
@@ -106,9 +88,7 @@ class Api {
     return fetch(`${this.baseUrl}/products`, {
       method: 'GET',
       headers: this.headers,
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getAddProduct(data) {
@@ -116,20 +96,15 @@ class Api {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(data),
-    })
-      .then((res) => {
-        console.log(res);
-        return res.json();
-      })
-      .catch((e) => console.error(e));
+    }).then((res) => {
+      return res.json();
+    });
   }
 
   getProductInfo(id) {
     return fetch(`${this.baseUrl}/products/${id}`, {
       headers: this.headers,
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getAddReviewOfProduct(productId, data) {
@@ -137,70 +112,54 @@ class Api {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(data),
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getDeleteReviewOfProduct(productId, reviewId) {
     return fetch(`${this.baseUrl}/products/review/${productId}/${reviewId}`, {
       method: 'DELETE',
       headers: this.headers,
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getAllReviewOfProduct(productId) {
     return fetch(`${this.baseUrl}/products/review/${productId}`, {
       method: 'GET',
       headers: this.headers,
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getAllReviewsProducts() {
-	  return fetch(`${this.baseUrl}/products/review/`, {
+    return fetch(`${this.baseUrl}/products/review/`, {
       method: 'GET',
       headers: this.headers,
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
   getSearchProduct(desiredValue) {
     return fetch(`${this.baseUrl}/products/search?query=${desiredValue}`, {
       headers: this.headers,
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getAddLikeOfproduct(productId) {
     return fetch(`${this.baseUrl}/products/likes/${productId}`, {
       headers: this.headers,
       method: 'PUT',
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getDeleteLikeOfProduct(productId) {
     return fetch(`${this.baseUrl}/products/likes/${productId}`, {
       headers: this.headers,
       method: 'DELETE',
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 
   getChangeLikeProduct(productId, isLiked) {
     return fetch(`${this.baseUrl}/products/likes/${productId}`, {
       headers: this.headers,
       method: isLiked ? 'DELETE' : 'PUT',
-    })
-      .then(resp)
-      .catch((e) => console.error(e));
+    }).then(resp);
   }
 }
 

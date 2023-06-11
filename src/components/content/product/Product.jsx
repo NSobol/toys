@@ -12,6 +12,14 @@ export const Product = ({ product, setProduct, reviews }) => {
     return (price - Math.floor((price * discount) / 100)).toFixed(0);
   };
 
+  const minus = () => {
+    console.log('click -');
+  };
+
+  const plus = () => {
+    console.log('click +');
+  };
+
   return (
     <div className={s.cardProduct__container}>
       <div className={s.cardProduct}>
@@ -60,11 +68,11 @@ export const Product = ({ product, setProduct, reviews }) => {
           </div>
           <div className={s.inCase}>
             <div className={s.inCaseControls}>
-              <button className={s.inCaseMinus}>
+              <button className={s.inCaseMinus} onClick={minus}>
                 <span className={s.minusText}>-</span>
               </button>
-              <span className={s.caseText}>0</span>
-              <button className={s.inCasePlus}>
+              <span className={s.caseText}>{}</span>
+              <button className={s.inCasePlus} onClick={plus}>
                 <span className={s.plusText}>+</span>
               </button>
             </div>
@@ -94,12 +102,12 @@ export const Product = ({ product, setProduct, reviews }) => {
         </div>
       </div>
       <Modal active={active} setActive={setActive} product={product}>
-          <FormReview
-            product={product}
-            setProduct={setProduct}
-            setActive={setActive}
-          />
-        </Modal>
+        <FormReview
+          product={product}
+          setProduct={setProduct}
+          setActive={setActive}
+        />
+      </Modal>
     </div>
   );
 };

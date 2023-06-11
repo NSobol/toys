@@ -1,21 +1,30 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
 import './registrStyle.css';
-import { Link } from 'react-router-dom';
-import { ProductsContext } from '../../../context/productsContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { getNotification } from '../../notification/Notification';
 
-export const Registr = () => {
-  const { setActive } = useContext(ProductsContext);
+export const Registr = ({ setActive }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    api.getRegisteredUser(data);
+  const onSubmit = async (data) => {
+    try {
+      const res = await api.getRegisteredUser(data);
+      navigate('/login');
+      getNotification(
+        'success',
+        'Успешно',
+        'Вы зарегистрированы! Пожалуйста войдите!'
+      );
+    } catch (error) {
+      getNotification('error', 'Ошибка', 'Ошибка регистрации');
+    }
   };
   return (
     <div className='createModalForm'>
@@ -57,13 +66,7 @@ export const Registr = () => {
           {...register('group')}
         />
         <div className='button-form-duble-two'>
-          <button
-            type='submit'
-            className='btn button-form-submit'
-            onClick={() => {
-              setActive(false);
-            }}
-          >
+          <button type='submit' className='btn button-form-submit'>
             Ok
           </button>
           <button type='reset' className='btn button-form-close'>
