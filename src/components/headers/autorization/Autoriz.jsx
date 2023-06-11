@@ -16,11 +16,12 @@ export const Autoriz = ({ setActive, setIsAuthorized }) => {
   const onSubmit = async (data) => {
     try {
       const res = await api.getAuthorizedUser(data);
-      localStorage.setItem('token', res.token);
+      localStorage.setItem('myToken', res.token);
+      setIsAuthorized(true);
       navigate('/');
       getNotification('success', 'Успешно', 'Вы авторизованы');
     } catch (error) {
-      getNotification('error', 'Ошибка', 'Неправильный логин пароль');
+      getNotification('error', 'Ошибка', 'Неправильные почта или пароль');
     }
   };
   return (

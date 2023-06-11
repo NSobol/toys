@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
 import './registrStyle.css';
@@ -12,10 +12,10 @@ export const Registr = ({ setActive }) => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-
+  const [type, setType] = useState(true);
   const onSubmit = async (data) => {
     try {
-      const res = await api.getRegisteredUser(data);
+      await api.getRegisteredUser(data);
       navigate('/login');
       getNotification(
         'success',
@@ -49,12 +49,15 @@ export const Registr = ({ setActive }) => {
           <label className='text-form-div'> Пароль: </label>
           <input
             className='form-field-input'
-            type='password'
+            type={!type ? 'password' : 'text'}
             id='password'
             name='password'
             placeholder='Пароль'
             {...register('password', { required: true })}
           />
+          <span onClick={() => setType(!type)} className={`form__pass__icon`}>
+            {type ? '0' : 'X'}
+          </span>
         </div>
         <br />
         <input

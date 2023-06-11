@@ -128,7 +128,7 @@
 }
 
 .caseText {
-	font-size: 50px;
+  font-size: 50px;
 }
 
 .product__title {
@@ -211,4 +211,45 @@
 .reviewsButton:disabled {
   opacity: 0.65;
   pointer-events: none;
+}
+
+.likedBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card__сhosen {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  stroke: red;
+  fill: transparent;
+  margin-right: 10px;
+}
+
+.card__сhosen > svg {
+  width: 30px;
+  height: 30px;
+  stroke: red;
+}
+.card__сhosen_active {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  background: none;
+  border: none;
+  margin-right: 10px;
+}
+.card__сhosen_active > svg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  stroke: red;
+  fill: red;
 }
