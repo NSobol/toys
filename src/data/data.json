@@ -1,0 +1,677 @@
+[
+  {
+    "discount": 0,
+    "stock": 5,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/derevyannyy_kosmos.jpg",
+    "likes": ["6442bd8d3291d790b3fce3c6"],
+    "reviews": [],
+    "tags": [],
+    "isPublished": true,
+    "_id": "645287e78fbc473fa8a2e2a4",
+    "name": "Пазл деревянный 'Космос' ",
+    "author": {
+      "name": "Наталья Соболева",
+      "about": "Начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442bd8d3291d790b3fce3c6",
+      "email": "varna09@rambler.ru",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 700,
+    "wight": "1шт",
+    "description": "Пазл деревянный 'Космос', 42 элемента",
+    "created_at": "2023-05-03T16:12:23.823Z",
+    "updated_at": "2023-06-07T14:27:35.027Z",
+    "__v": 0
+  },
+  {
+    "discount": 0,
+    "stock": 10,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/car.jpeg",
+    "likes": ["6442bd8d3291d790b3fce3c6", "6479cbcde0bf2c519bd1d9c4"],
+    "reviews": [
+      {
+        "rating": 5,
+        "_id": "64707bb5e0bf2c519bafe14b",
+        "text": "Rhfcfdbwf",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "645287ec8fbc473fa8a2e2ad",
+        "created_at": "2023-05-26T09:28:21.934Z",
+        "updated_at": "2023-05-26T09:28:21.934Z",
+        "__v": 0
+      },
+      {
+        "rating": 5,
+        "_id": "64707bc6e0bf2c519bafe155",
+        "text": "Красавица",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "645287ec8fbc473fa8a2e2ad",
+        "created_at": "2023-05-26T09:28:38.203Z",
+        "updated_at": "2023-05-26T09:28:38.203Z",
+        "__v": 0
+      },
+      {
+        "rating": 3,
+        "_id": "647327dee0bf2c519bc1dc66",
+        "text": "рпарапр",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "645287ec8fbc473fa8a2e2ad",
+        "created_at": "2023-05-28T10:07:26.700Z",
+        "updated_at": "2023-05-28T10:07:26.700Z",
+        "__v": 0
+      },
+      {
+        "rating": 2,
+        "_id": "64737edce0bf2c519bc22f3b",
+        "text": "арпапр",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "645287ec8fbc473fa8a2e2ad",
+        "created_at": "2023-05-28T16:18:36.705Z",
+        "updated_at": "2023-05-28T16:18:36.705Z",
+        "__v": 0
+      },
+      {
+        "rating": 5,
+        "_id": "64738433e0bf2c519bc24ed2",
+        "text": "jkjkl",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "645287ec8fbc473fa8a2e2ad",
+        "created_at": "2023-05-28T16:41:23.126Z",
+        "updated_at": "2023-05-28T16:41:23.126Z",
+        "__v": 0
+      },
+      {
+        "rating": 4,
+        "_id": "64738448e0bf2c519bc24ff1",
+        "text": "mhnm",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "645287ec8fbc473fa8a2e2ad",
+        "created_at": "2023-05-28T16:41:44.202Z",
+        "updated_at": "2023-05-28T16:41:44.202Z",
+        "__v": 0
+      },
+      {
+        "rating": 3,
+        "_id": "64739832e0bf2c519bc28f7c",
+        "text": "ЛОРЛРП",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "645287ec8fbc473fa8a2e2ad",
+        "created_at": "2023-05-28T18:06:42.240Z",
+        "updated_at": "2023-05-28T18:06:42.240Z",
+        "__v": 0
+      }
+    ],
+    "tags": [],
+    "isPublished": true,
+    "_id": "645287ec8fbc473fa8a2e2ad",
+    "name": "Модель машины Ford F-150",
+    "author": {
+      "name": "Наталья Соболева",
+      "about": "Начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442bd8d3291d790b3fce3c6",
+      "email": "varna09@rambler.ru",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 509,
+    "wight": "1шт",
+    "description": "Модель машины 1:34-39 Ford F-150",
+    "created_at": "2023-05-03T16:12:28.253Z",
+    "updated_at": "2023-06-07T19:56:25.573Z",
+    "__v": 0
+  },
+  {
+    "discount": 0,
+    "stock": 2,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/derevyannyy_gorod.jpg",
+    "likes": [],
+    "reviews": [
+      {
+        "rating": 4,
+        "_id": "64732771e0bf2c519bc1dc0f",
+        "text": "Очень понравилось!",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "645287f08fbc473fa8a2e2b0",
+        "created_at": "2023-05-28T10:05:37.222Z",
+        "updated_at": "2023-05-28T10:05:37.222Z",
+        "__v": 0
+      }
+    ],
+    "tags": [],
+    "isPublished": true,
+    "_id": "645287f08fbc473fa8a2e2b0",
+    "name": "Пазл деревянный 'Город' ",
+    "author": {
+      "name": "Наталья Соболева",
+      "about": "Начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442bd8d3291d790b3fce3c6",
+      "email": "varna09@rambler.ru",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 700,
+    "wight": "1шт",
+    "description": "Пазл деревянный 'Город', 35 элементов",
+    "created_at": "2023-05-03T16:12:32.655Z",
+    "updated_at": "2023-06-07T19:56:26.285Z",
+    "__v": 0
+  },
+  {
+    "discount": 0,
+    "stock": 2,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/yk_2045_6.jpg",
+    "likes": [],
+    "reviews": [],
+    "tags": [],
+    "isPublished": true,
+    "_id": "645287f58fbc473fa8a2e2bb",
+    "name": "Внедорожник с прицепом и квадроциклом Р/У ",
+    "author": {
+      "name": "Наталья Соболева",
+      "about": "Начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442bd8d3291d790b3fce3c6",
+      "email": "varna09@rambler.ru",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 4600,
+    "wight": "1шт",
+    "description": "Внедорожник с прицепом и квадроциклом Р/У, USB-зарядка",
+    "created_at": "2023-05-03T16:12:37.341Z",
+    "updated_at": "2023-06-07T19:56:27.286Z",
+    "__v": 0
+  },
+  {
+    "discount": 10,
+    "stock": 5,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/yk_2220_6.jpg",
+    "likes": [],
+    "reviews": [
+      {
+        "rating": 5,
+        "_id": "646908b6e0bf2c519baa8c87",
+        "text": "Отлично!",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "645287fc8fbc473fa8a2e2bf",
+        "created_at": "2023-05-20T17:51:50.468Z",
+        "updated_at": "2023-05-20T17:51:50.468Z",
+        "__v": 0
+      }
+    ],
+    "tags": [],
+    "isPublished": true,
+    "_id": "645287fc8fbc473fa8a2e2bf",
+    "name": "Разборная инерционная машина с цистерной и водомётом",
+    "author": {
+      "name": "Наталья Соболева",
+      "about": "Начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442bd8d3291d790b3fce3c6",
+      "email": "varna09@rambler.ru",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 2400,
+    "wight": "1шт",
+    "description": "Пожарная часть Разборная инерционная машина с цистерной и водомётом, звук, свет",
+    "created_at": "2023-05-03T16:12:44.918Z",
+    "updated_at": "2023-06-07T14:27:29.599Z",
+    "__v": 0
+  },
+  {
+    "discount": 0,
+    "stock": 15,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/yk_2053rm_6.jpg",
+    "likes": ["6479cbcde0bf2c519bd1d9c4"],
+    "reviews": [],
+    "tags": [],
+    "isPublished": true,
+    "_id": "645288028fbc473fa8a2e2c8",
+    "name": "Машина на катках с выхлопом в виде пара",
+    "author": {
+      "name": "Наталья Соболева",
+      "about": "Начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442bd8d3291d790b3fce3c6",
+      "email": "varna09@rambler.ru",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 5200,
+    "wight": "1шт",
+    "description": "RED MACHINE Машина на катках с выхлопом в виде пара (свет, звук), Р/У, USB-зарядка",
+    "created_at": "2023-05-03T16:12:50.418Z",
+    "updated_at": "2023-06-07T19:56:28.150Z",
+    "__v": 0
+  },
+  {
+    "discount": 7,
+    "stock": 10,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/godzilla_true.jpeg",
+    "likes": ["6442bd8d3291d790b3fce3c6"],
+    "reviews": [
+      {
+        "rating": 5,
+        "_id": "6472494fe0bf2c519bc0df07",
+        "text": "hghgd",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "6452ada98fbc473fa8a2f919",
+        "created_at": "2023-05-27T18:17:51.796Z",
+        "updated_at": "2023-05-27T18:17:51.796Z",
+        "__v": 0
+      },
+      {
+        "rating": 2,
+        "_id": "64737f11e0bf2c519bc22f74",
+        "text": "Жуть!",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "6452ada98fbc473fa8a2f919",
+        "created_at": "2023-05-28T16:19:29.917Z",
+        "updated_at": "2023-05-28T16:19:29.917Z",
+        "__v": 0
+      },
+      {
+        "rating": 3,
+        "_id": "64737f66e0bf2c519bc22f94",
+        "text": "ghjhjh",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "6452ada98fbc473fa8a2f919",
+        "created_at": "2023-05-28T16:20:54.611Z",
+        "updated_at": "2023-05-28T16:20:54.611Z",
+        "__v": 0
+      },
+      {
+        "rating": 5,
+        "_id": "64737f78e0bf2c519bc22f9b",
+        "text": "hkhkj",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "6452ada98fbc473fa8a2f919",
+        "created_at": "2023-05-28T16:21:12.491Z",
+        "updated_at": "2023-05-28T16:21:12.491Z",
+        "__v": 0
+      },
+      {
+        "rating": 4,
+        "_id": "6473827ce0bf2c519bc23667",
+        "text": "Интересная игрушка",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "6452ada98fbc473fa8a2f919",
+        "created_at": "2023-05-28T16:34:04.426Z",
+        "updated_at": "2023-05-28T16:34:04.426Z",
+        "__v": 0
+      },
+      {
+        "rating": 5,
+        "_id": "64744b5ce0bf2c519bc2a7ee",
+        "text": "Ребенку понравилась!",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "6452ada98fbc473fa8a2f919",
+        "created_at": "2023-05-29T06:51:08.416Z",
+        "updated_at": "2023-05-29T06:51:08.416Z",
+        "__v": 0
+      }
+    ],
+    "tags": [],
+    "isPublished": true,
+    "_id": "6452ada98fbc473fa8a2f919",
+    "name": "Годзилла",
+    "author": {
+      "name": "Павел Омелечко",
+      "about": "Очень сильно начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442d2653291d790b3fcf266",
+      "email": "merkucio.sama@gmail.com",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 850,
+    "wight": "1 шт",
+    "description": "Игрушка Годзилла. Японский национальный персонаж комиксов, мультфильмов и кинофильмов. Сделан из нетоксичного высокопрочного пластика. Высота игрушки 20 см.",
+    "created_at": "2023-05-03T18:53:29.170Z",
+    "updated_at": "2023-06-06T20:57:38.427Z",
+    "__v": 0
+  },
+  {
+    "discount": 0,
+    "stock": 10,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/robot_tobbie.jpg",
+    "likes": ["64107e08aa397121838f28a8", "6442bd8d3291d790b3fce3c6"],
+    "reviews": [
+      {
+        "rating": 5,
+        "_id": "64724ffde0bf2c519bc13197",
+        "text": "mm,m.,",
+        "author": {
+          "name": "Наталья Соболева",
+          "about": "Начинающий фронтенд-разработчик",
+          "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+          "_id": "6442bd8d3291d790b3fce3c6",
+          "email": "varna09@rambler.ru",
+          "group": "group-12",
+          "__v": 0
+        },
+        "product": "6452adae8fbc473fa8a2f926",
+        "created_at": "2023-05-27T18:46:21.163Z",
+        "updated_at": "2023-05-27T18:46:21.163Z",
+        "__v": 0
+      }
+    ],
+    "tags": [],
+    "isPublished": true,
+    "_id": "6452adae8fbc473fa8a2f926",
+    "name": "Робот Тобби",
+    "author": {
+      "name": "Павел Омелечко",
+      "about": "Очень сильно начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442d2653291d790b3fcf266",
+      "email": "merkucio.sama@gmail.com",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 2300,
+    "wight": "1 шт",
+    "description": "Робот Тобби прибыл к нам прямиком из Австралии. Высота игрушки 45 сантиметров, говорит, предвигается, мигает всеми цветами радуги.",
+    "created_at": "2023-05-03T18:53:34.344Z",
+    "updated_at": "2023-06-08T18:19:49.783Z",
+    "__v": 0
+  },
+  {
+    "discount": 0,
+    "stock": 10,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/slinky.jpg",
+    "likes": ["6442bd8d3291d790b3fce3c6"],
+    "reviews": [],
+    "tags": [],
+    "isPublished": true,
+    "_id": "6452adc98fbc473fa8a2f93a",
+    "name": "Слинки",
+    "author": {
+      "name": "Павел Омелечко",
+      "about": "Очень сильно начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442d2653291d790b3fcf266",
+      "email": "merkucio.sama@gmail.com",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 130,
+    "wight": "1 шт",
+    "description": "Игрушка проверенная временем. Описание излишне, подойдет как детям, так и их родителям.",
+    "created_at": "2023-05-03T18:54:01.353Z",
+    "updated_at": "2023-06-07T14:27:30.013Z",
+    "__v": 0
+  },
+  {
+    "discount": 10,
+    "stock": 10,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/tamagochi.jpg",
+    "likes": ["6442bd8d3291d790b3fce3c6"],
+    "reviews": [],
+    "tags": [],
+    "isPublished": true,
+    "_id": "6452adcc8fbc473fa8a2f93d",
+    "name": "Тамагочи",
+    "author": {
+      "name": "Павел Омелечко",
+      "about": "Очень сильно начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442d2653291d790b3fcf266",
+      "email": "merkucio.sama@gmail.com",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 400,
+    "wight": "1 шт",
+    "description": "Игрушка из далекого прошлого, научите своего ребенка ухаживать за питомцем.",
+    "created_at": "2023-05-03T18:54:04.298Z",
+    "updated_at": "2023-06-06T20:57:38.450Z",
+    "__v": 0
+  },
+  {
+    "discount": 5,
+    "stock": 10,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/ufo.jpg",
+    "likes": ["6442bd8d3291d790b3fce3c6"],
+    "reviews": [],
+    "tags": [],
+    "isPublished": true,
+    "_id": "6452adcf8fbc473fa8a2f940",
+    "name": "НЛО",
+    "author": {
+      "name": "Павел Омелечко",
+      "about": "Очень сильно начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442d2653291d790b3fcf266",
+      "email": "merkucio.sama@gmail.com",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 1300,
+    "wight": "1 шт",
+    "description": "Игрушка НЛО. Внутри милый пришелец. Подойдет как мальчикам, так и девочкам.",
+    "created_at": "2023-05-03T18:54:07.305Z",
+    "updated_at": "2023-06-07T19:56:34.966Z",
+    "__v": 0
+  },
+  {
+    "discount": 0,
+    "stock": 20,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/chupacabra.jpg",
+    "likes": ["6442bd8d3291d790b3fce3c6"],
+    "reviews": [],
+    "tags": [],
+    "isPublished": true,
+    "_id": "6452ae2b8fbc473fa8a2f943",
+    "name": "Чупакабра",
+    "author": {
+      "name": "Павел Омелечко",
+      "about": "Очень сильно начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442d2653291d790b3fcf266",
+      "email": "merkucio.sama@gmail.com",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 420,
+    "wight": "1 шт",
+    "description": "Игрушка Чупакабра. Загадочный гость из Латинской Америки.",
+    "created_at": "2023-05-03T18:55:39.451Z",
+    "updated_at": "2023-06-06T20:57:38.467Z",
+    "__v": 0
+  },
+  {
+    "discount": 0,
+    "stock": 10,
+    "available": false,
+    "pictures": "https://cdn1.akusherstvo.ru/3b5/f98/868880_2013155.jpg",
+    "likes": [
+      "6442bd8d3291d790b3fce3c6",
+      "644ce0908fbc473fa89fe1ff",
+      "64107e08aa397121838f28a8"
+    ],
+    "reviews": [],
+    "tags": [],
+    "isPublished": true,
+    "_id": "6452af9e8fbc473fa8a2f987",
+    "name": "Машина на радиоуправлении BMW",
+    "author": {
+      "name": "Наталья Соболева",
+      "about": "Начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442bd8d3291d790b3fce3c6",
+      "email": "varna09@rambler.ru",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 7700,
+    "wight": "1 шт",
+    "description": "Машина на радиоуправлении BMW",
+    "created_at": "2023-05-03T19:01:50.429Z",
+    "updated_at": "2023-06-07T14:27:35.755Z",
+    "__v": 0
+  },
+  {
+    "discount": 0,
+    "stock": 10,
+    "available": true,
+    "pictures": "https://raw.githubusercontent.com/MerkucioZemba/pictures/main/images/pokemon.jpg",
+    "likes": [],
+    "reviews": [],
+    "tags": [],
+    "isPublished": true,
+    "_id": "6452b0718fbc473fa8a2f9c9",
+    "name": "Фишки Покемон",
+    "author": {
+      "name": "Павел Омелечко",
+      "about": "Очень сильно начинающий фронтенд-разработчик",
+      "avatar": "https://react-learning.ru/image-compressed/default-image.jpg",
+      "_id": "6442d2653291d790b3fcf266",
+      "email": "merkucio.sama@gmail.com",
+      "group": "group-12",
+      "__v": 0
+    },
+    "price": 250,
+    "wight": "1 уп",
+    "description": "Фишки с любимыми героями из аниме Покемон.",
+    "created_at": "2023-05-03T19:05:21.269Z",
+    "updated_at": "2023-06-06T20:57:38.491Z",
+    "__v": 0
+  }
+]

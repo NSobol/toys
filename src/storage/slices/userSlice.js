@@ -12,20 +12,20 @@ const initialState = {
 
 // actions
 // ----------------------------------------------------
-export const getUser = createAsyncThunk(
+//получение информации о пользователе
+export const getMyUser = createAsyncThunk(
   'getUser',
   async function (
     dataFromUp,
     { getState, dispatch, fulfillWithValue, rejectWithValue }
   ) {
     const data = await api.getMyUserInfo();
-    console.log(data);
     return data;
   }
 );
 
+// изменение информации о пользователе
 export const updateUser = createAsyncThunk('updateUser', async function (data) {
-  console.log({ data });
   if (data.avatar) {
     const res = await api.getResetUserAvatar({ avatar: data.avatar });
     return res;
@@ -46,10 +46,10 @@ const userSlice = createSlice({
   name: 'user',
   initialState: initialState,
   extraReducers: (builder) => {
-    builder.addCase(getUser.pending, (state, action) => {
+    builder.addCase(getMyUser.pending, (state, action) => {
       state.loading = true;
     });
-    builder.addCase(getUser.fulfilled, (state, action) => {
+    builder.addCase(getMyUser.fulfilled, (state, action) => {
       state.data = action.payload;
       state.loading = false;
     });

@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { ProductsContext } from "../../context/productsContext";
 import { Link } from "react-router-dom";
 import s from "./resetPass.module.css";
 // import { api } from '../../utils/api';
 
 export const ResetPassword = () => {
-  const { setActive } = useContext(ProductsContext);
   const {
     register,
     handleSubmit,
@@ -14,8 +12,7 @@ export const ResetPassword = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    //  api.getRegisteredUser(data);
+    
   };
 
   return (
@@ -45,9 +42,6 @@ export const ResetPassword = () => {
         <input
           className={s.formBtn}
           type="submit"
-          onClick={() => {
-            setActive(false);
-          }}
         />
       </form>
       <div className={s.relocationPassword}>

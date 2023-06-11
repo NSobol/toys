@@ -1,21 +1,27 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
 import './autoriz.css';
-import { Link } from 'react-router-dom';
-import { ProductsContext } from '../../../context/productsContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { getNotification } from '../../notification/Notification';
 
-export const Autoriz = (props) => {
-  const { setActive } = useContext(ProductsContext);
+export const Autoriz = ({ setActive, setIsAuthorized }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    api.getAuthorizedUser(data);
+  const onSubmit = async (data) => {
+    try {
+      const res = await api.getAuthorizedUser(data);
+      localStorage.setItem('token', res.token);
+      navigate('/');
+      getNotification('success', 'Успешно', 'Вы авторизованы');
+    } catch (error) {
+      getNotification('error', 'Ошибка', 'Неправильный логин пароль');
+    }
   };
   return (
     <div className='createModalForm'>
@@ -32,8 +38,8 @@ export const Autoriz = (props) => {
             required
             {...register('email', { required: true })}
           />
-          {errors.email && (
-            <span style={{ color: 'red' }}>*Email* is mandatory </span>
+          {errors?.email && (
+            <span style={{ color: 'red' }}>*Email* обязателен! </span>
           )}
         </div>
         <br />
@@ -51,13 +57,7 @@ export const Autoriz = (props) => {
         </div>
         <br />
         <div className='button-form-duble-two'>
-          <button
-            type='submit'
-            className='btn button-form-submit'
-            onClick={() => {
-              setActive(false);
-            }}
-          >
+          <button type='submit' className='btn button-form-submit'>
             Ok
           </button>
           <button type='reset' className='btn button-form-close'>

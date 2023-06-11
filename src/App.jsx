@@ -10,17 +10,17 @@ import { Route, Routes } from 'react-router-dom';
 import { CatalogPage } from './pages/catalogPage/CatalogPage';
 import { BasketPage } from './pages/basketPage/BasketPage';
 import { FavoritesPage } from './pages/favoritesPage/FavoritesPage';
-// import {MainPage} from "./pages/mainPage/MainPage"
 import { OrUsPage } from './pages/orUsPage/OrUsPage';
 import { ProductPage } from './pages/productPage/ProductPage';
 import { ProfilePage } from './pages/profilePage/ProfilePage';
 import { NotFound } from './components/notFound/NotFound';
-import { ResetPassword } from './components/resetPassowrForm/ResetPassword';
-import { Modal } from './components/modal/Modal';
-import { Autoriz } from './components/headers/autorization/Autoriz';
 import { QuestionsAndAnswers } from './pages/questionsAndAnswers/QuestionsAndAnswers';
 import { RegistrationPage } from './pages/registrationPage/RegistrationPage';
+import { AutorizedPage } from './pages/autorizedPage/AutorizedPage';
+import { ResetPassPage } from './pages/resetPassPage/ResetPassPage';
+import { MainPage } from './pages/mainPage/MainPage';
 // import { useDispatch,useSelector } from 'react-redux';
+
 
 function App() {
   //установка начальных состояний
@@ -38,10 +38,10 @@ function App() {
   const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
   const scanValueInApp = useScan(search);
-  const isAuthorized = false;
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
   //   const dispatch = useDispatch();
   //   const selector = useSelector();
-
   const getHandlerLiks = async (product, isLiks) => {
     const alteredCard = await api.getChangeLikeProduct(product._id, isLiks);
     const index = products.findIndex((e) => e._id === alteredCard._id);
@@ -161,39 +161,32 @@ function App() {
             </Routes>
           ) : (
             <Routes>
-              <Route path='/' element={<CatalogPage />} />
-              <Route path='/product/:id' element={<ProductPage />} />
+              <Route path='/' element={<MainPage />} />
               <Route path='/orus' element={<OrUsPage />} />
-              <Route path='*' element={<NotFound />} />
               <Route
                 path='/questionsAndAnswers'
                 element={<QuestionsAndAnswers />}
               />
-			  <Route path='/registr' element={<RegistrationPage />}/>
+              <Route
+                path='/registr'
+                element={
+                  <RegistrationPage active={active} setActive={setActive} />
+                }
+              />
               <Route
                 path='/login'
                 element={
-                  <>
-                    <CatalogPage />
-                    active && (
-                    <Modal active={active} setActive={setActive}>
-                      <Autoriz />
-                    </Modal>
-                    )
-                  </>
+                  <AutorizedPage
+                    active={active}
+                    setActive={setActive}
+                    setIsAuthorized={setIsAuthorized}
+                  />
                 }
               />
               <Route
                 path='/passReset'
                 element={
-                  <>
-                    <CatalogPage />
-                    active && (
-                    <Modal active={active} setActive={setActive}>
-                      <ResetPassword />
-                    </Modal>
-                    )
-                  </>
+                  <ResetPassPage active={active} setActive={setActive} />
                 }
               />
             </Routes>
