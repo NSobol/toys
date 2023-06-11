@@ -4,7 +4,6 @@ import { api } from './../../../utils/api';
 import './registrStyle.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { getNotification } from '../../notification/Notification';
-// import { Notification } from '../../notification/Notification';
 
 export const Registr = ({ setActive }) => {
   const {
