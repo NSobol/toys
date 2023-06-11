@@ -1,5 +1,5 @@
 import React from 'react';
-import style from "./navPanel.module.css";
+import style from './navPanel.module.css';
 import { Link } from 'react-router-dom';
 
 export const NavPanel = () => {
@@ -8,9 +8,9 @@ export const NavPanel = () => {
       <Link to='/orus' className={style.linkItem}>
         О компании
       </Link>
-      <a href='/' className={style.linkItem}>
+      <Link to='/contacts' className={style.linkItem}>
         Контакты
-      </a>
+      </Link>
     </div>
   );
 };

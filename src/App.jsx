@@ -41,9 +41,8 @@ function App() {
   const [isAuthorized, setIsAuthorized] = useState(
     !!localStorage.getItem('myToken')
   );
+  const [admin, setAdmin] = useState(false);
 
-  //   const dispatch = useDispatch();
-  //   const selector = useSelector();
   const getHandlerLiks = async (product, isLiks) => {
     const alteredCard = await api.getChangeLikeProduct(product._id, isLiks);
     const index = products.findIndex((e) => e._id === alteredCard._id);
@@ -108,6 +107,12 @@ function App() {
     Promise.all([api.getMyUserInfo(), api.getAllProducts()])
       .then(([userData, data]) => {
         setUser(userData);
+        if (
+          user._id === '6442d2653291d790b3fcf266' ||
+          user._id === '6442bd8d3291d790b3fce3c6'
+        ) {
+          setAdmin(true);
+        }
         const filtered = filteredProducts(data.products);
         setProducts(filtered);
         const selected = filtered.filter((e) =>
@@ -119,7 +124,7 @@ function App() {
         setProducts(localData);
         setUser(localUserData);
       });
-  }, []);
+  }, [user._id]);
 
   useEffect(() => {
     if (scanValueInApp === undefined) return;
@@ -135,6 +140,7 @@ function App() {
     setSearch,
     selected,
     user,
+    admin,
     setCurrentPage,
     setProductPerPage,
     productPerPage,
@@ -144,6 +150,8 @@ function App() {
     setActive,
     productRating,
     setProducts,
+    isAuthorized,
+    setIsAuthorized,
   };
 
   return (
