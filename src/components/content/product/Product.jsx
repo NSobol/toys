@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import s from './Product.module.css';
+import { ReactComponent as Like } from './../../../images/like.svg';
 import { Modal } from './../../modal/Modal';
 import { FormReview } from '../../formReview/FormReview';
 import { ProductsContext } from '../../../context/productsContext';
 import { getCorrectWordEnding } from '../../../utils/function';
 import { Rate } from '../../Rate/Rate';
 
-export const Product = ({ product, setProduct, reviews }) => {
-  const { active, setActive, productRating } = useContext(ProductsContext);
+export const Product = ({ product, setProduct, reviews, getLiks }) => {
+  const { active, setActive, productRating, user } = useContext(ProductsContext);
+
   const getDiscountPrice = (discount, price) => {
     return (price - Math.floor((price * discount) / 100)).toFixed(0);
   };
@@ -19,6 +21,14 @@ export const Product = ({ product, setProduct, reviews }) => {
   const plus = () => {
     console.log('click +');
   };
+
+  let isСhosen = product.likes.some((e) => e === user._id);
+
+  const getClickLiks = () => {
+    getLiks(product, isСhosen);
+  };
+
+  const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
 
   return (
     <div className={s.cardProduct__container}>
@@ -78,13 +88,10 @@ export const Product = ({ product, setProduct, reviews }) => {
             </div>
             <button className={s.inCaseBasket}>В корзину</button>
           </div>
-          {/* <button
-            className={cn(s.favorite, { [s.favoriteActive]: isLikedProduct })}
-            onClick={handleClick}
-          >
+          <button onClick={getClickLiks} className={s[`${сhosen}`]}>
             <Like />
-            <span>{isLikedProduct ? "В избранном" : "В избранное"}</span>
-          </button> */}
+          </button>
+          <span>{isСhosen ? 'В избранном' : 'В избранное'}</span>
         </div>
       </div>
 

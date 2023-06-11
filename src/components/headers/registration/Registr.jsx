@@ -15,7 +15,7 @@ export const Registr = ({ setActive }) => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await api.getRegisteredUser(data);
+     await api.getRegisteredUser(data);
       navigate('/login');
       getNotification(
         'success',
