@@ -76,3 +76,27 @@ export const accordionData = [
 `,
   },
 ];
+
+export const slides = [
+  {
+    id: 1,
+    src: 'https://raw.githubusercontent.com/NSobol/pictures/main/images/aktsiya.webp',
+  },
+  {
+    id: 2,
+    src: 'https://raw.githubusercontent.com/NSobol/pictures/main/images/collaba.webp',
+  },
+  {
+    id: 3,
+    src: 'https://raw.githubusercontent.com/NSobol/pictures/main/images/crossbot.webp',
+  },
+  {
+    id: 4,
+    src: 'https://raw.githubusercontent.com/NSobol/pictures/main/images/dergileva.webp',
+  },
+  {
+    id: 5,
+    src: 'https://raw.githubusercontent.com/NSobol/pictures/main/images/collaba-uglanov.webp',
+  },
+];
+

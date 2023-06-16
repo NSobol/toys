@@ -1,0 +1,55 @@
+.nextSlide,
+.lastSlide {
+  display: none;
+  width: 100%;
+}
+
+.currentSlide {
+  display: block;
+}
+
+.slider__arrows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.slider__arrow {
+  width: 40px;
+  height: 40px;
+  fill: #fff;
+  background-color: #0087b0;
+  cursor: pointer;
+}
+
+.slider__dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #000;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.slider__dot_active {
+  background: green;
+}
+
+.slider__dot:hover {
+  background: #fff;
+}

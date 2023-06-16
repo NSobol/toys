@@ -1,0 +1,26 @@
+.slider__dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #000;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.slider__dot_active {
+  background: green;
+}
+
+.slider__dot:hover {
+  background: #fff;
+}

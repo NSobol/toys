@@ -19,6 +19,7 @@ import { RegistrationPage } from './pages/registrationPage/RegistrationPage';
 import { AutorizedPage } from './pages/autorizedPage/AutorizedPage';
 import { ResetPassPage } from './pages/resetPassPage/ResetPassPage';
 import { MainPage } from './pages/mainPage/MainPage';
+import { AdminPage } from './pages/adminPage/AdminPage';
 import localData from './data/data.json';
 import localUserData from './data/userData.json';
 
@@ -42,6 +43,13 @@ function App() {
     !!localStorage.getItem('myToken')
   );
   const [admin, setAdmin] = useState(false);
+  const [goods, setGoods] = useState([]);
+  const [visibleGoods, setVisibleGoods] = useState(goods);
+  const [basket, setBasket] = useState(
+    localStorage.getItem('basket')
+      ? JSON.parse(localStorage.getItem('basket'))
+      : []
+  );
 
   const getHandlerLiks = async (product, isLiks) => {
     const alteredCard = await api.getChangeLikeProduct(product._id, isLiks);
@@ -153,6 +161,12 @@ function App() {
     setProducts,
     isAuthorized,
     setIsAuthorized,
+    goods,
+    setGoods,
+    visibleGoods,
+    setVisibleGoods,
+    basket,
+    setBasket,
   };
 
   return (
@@ -168,6 +182,7 @@ function App() {
               <Route path='/basket' element={<BasketPage />} />
               <Route path='/orus' element={<OrUsPage />} />
               <Route path='/profile' element={<ProfilePage />} />
+              <Route path='/admin' element={<AdminPage />} />
               <Route
                 path='/questionsAndAnswers'
                 element={<QuestionsAndAnswers />}
