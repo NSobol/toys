@@ -1,0 +1,77 @@
+.container {
+  width: 92%;
+  height: 100vh;
+  padding: 40px 50px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 90%;
+}
+
+.block {
+  display: flex;
+}
+
+.avatarBox {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid #0087b0;
+}
+
+.change {
+  width: 50px;
+  height: 50px;
+  background-color: #0087b0;
+  border: none;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+.btnChange {
+  width: 30px;
+  height: 30px;
+  fill: #ffffff;
+  outline: none;
+}
+
+.profileBox {
+  margin-left: 50px;
+  padding-top: 20px;
+}
+
+.name {
+  padding-bottom: 10px;
+  font-size: 22px;
+}
+
+.email {
+  font-style: italic;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+.about {
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+.changeAbout {
+  width: 50px;
+  height: 50px;
+  background-color: #0087b0;
+  border: none;
+  border-radius: 5px;
+  margin-left: 350px;
+  margin-top: 15px;
+}
