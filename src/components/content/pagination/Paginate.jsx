@@ -7,7 +7,6 @@ const Paginate = () => {
     products,
     productPerPage,
     setProductPerPage,
-    currentPage,
     setCurrentPage,
   } = useContext(ProductsContext);
 

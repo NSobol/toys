@@ -9,31 +9,37 @@
   width: 24px;
   height: 24px;
   padding: 7px;
+  outline: none;
 }
 
 .header__icon {
   width: 24px;
   height: 24px;
+  outline: none;
 }
 
 .favorit__container {
   text-decoration: none;
   display: flex;
+  outline: none;
 }
 
 .favoritIcon {
   height: 40px;
   width: 40px;
+  outline: none;
 }
 
 .basketIcon {
   height: 45px;
   width: 45px;
+  outline: none;
 }
 
 .userIcon {
   height: 50px;
   width: 50px;
+  outline: none;
 }
 
 .numberLike_standart {
@@ -52,14 +58,14 @@
   margin-left: -31px;
 }
 
-[data-tooltip]::after{
+[data-tooltip]::after {
   content: attr(data-tooltip);
   opacity: 0;
   transition: 1s;
   border: 1px solid grey;
   position: absolute;
   top: 0;
-  left:65px;
+  left: 65px;
 }
 
 .userIcon[data-tooltip]:hover::after {
