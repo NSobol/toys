@@ -11,7 +11,7 @@ export const ProductPage = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
 
-  const { setProducts } = useContext(ProductsContext);
+  const { setProducts, user } = useContext(ProductsContext);
 
   const getHandlerLiksOnProductPage = async (product, isLiks) => {
     const alteredCard = await api.getChangeLikeProduct(product._id, isLiks);
@@ -51,6 +51,7 @@ export const ProductPage = () => {
             productId={product._id}
             reviews={product?.reviews ?? []}
             getDeleteReview={getDeleteReview}
+            user={user}
           />
         </div>
       )}
