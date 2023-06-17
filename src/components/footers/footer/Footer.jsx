@@ -1,14 +1,16 @@
-import React from 'react'
-import './Footer.css'
-import { Copyright } from '../copyright/Copyright.jsx'
-import { FooterContent } from '../footerContent/FooterContent'
+import React from 'react';
+import './Footer.css';
+import { Copyright } from '../copyright/Copyright.jsx';
+import { FooterContent } from '../footerContent/FooterContent';
 
 const Footer = () => {
   return (
     <div className='footer'>
-      <FooterContent/>
-      <Copyright />
-     </div>
-   )
-}
+      <div className='content'>
+        <FooterContent />
+        <Copyright />
+      </div>
+    </div>
+  );
+};
 export default Footer;

@@ -8,10 +8,10 @@ export const ProfilePage = () => {
   const { avatar, name, about, email, _id } = user;
 
   return (
-    <div>
+    <div className={s.container}>
       <ComeBack />
       <h2 className={s.title}>Профиль пользователя</h2>
-      <div className={s.container}>
+      <div className={s.block}>
         <div className={s.avatarBox}>
           <img src={avatar} alt='Аватар' className={s.avatar} />
           <button className={s.changeAvatar}>Сменить аватар</button>

@@ -4,8 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import s from './resetPass.module.css';
 import { api } from '../../utils/api';
 import { getNotification } from '../notification/Notification';
+import { ReactComponent as Eye } from './../../images/eye.svg';
+import { ReactComponent as EyeClose } from './../../images/eye_close.svg';
 
 export const ResetPassword = () => {
+  const [type, setType] = useState(false);
   const {
     register,
     handleSubmit,
@@ -17,9 +20,7 @@ export const ResetPassword = () => {
   const onSubmit = async (data) => {
     if (data.token) {
       try {
-        const res = await api.getResetPasswordToken(data.token, {
-          password: data.password,
-        });
+        const res = await api.getResetPasswordToken(data);
         localStorage.setItem('token', res.token);
         getNotification(
           'success',
@@ -28,12 +29,7 @@ export const ResetPassword = () => {
         );
         navigate('/login');
       } catch (error) {
-        console.log(error);
-        getNotification(
-          'error',
-          'Ошибка',
-          'Время действия кода истекло, отправьте запрос на восстановления паролья повторно'
-        );
+        getNotification('error', 'Ошибка', `${error.message}`);
       }
     } else {
       try {
@@ -41,7 +37,7 @@ export const ResetPassword = () => {
         setToken(true);
         getNotification('success', 'Успешно', 'Письмо успешно отправлено');
       } catch (error) {
-        getNotification('error', 'Ошибка', 'Секретная строка не валидная');
+        getNotification('error', 'Ошибка', `${error.message}`);
       }
     }
   };
@@ -71,22 +67,27 @@ export const ResetPassword = () => {
         </div>
         {token ? (
           <>
-            <div>
+            <div className={s.fieldFormDiv}>
+              <label> Ваш токен: </label> <br />
               <input
-                className='form__input'
+                className={s.formFieldInput}
                 type='text'
                 {...register('token', { required: true })}
                 placeholder='token'
               />
               {errors?.token && <span> {errors?.token.message}</span>}
             </div>
-            <div>
+            <div className={s.fieldFormDivPass}>
+              <label> Ваш пароль: </label> <br />
               <input
-                className='form__input'
-                type='password'
+                className={s.formFieldInput}
+                type={!type ? 'password' : 'text'}
                 {...register('password', { required: true })}
                 placeholder='password'
               />
+              <span onClick={() => setType(!type)} className={s.formPassIcon}>
+                {type ? <Eye /> : <EyeClose />}
+              </span>
               {errors?.password && <span> {errors?.password.message}</span>}
             </div>
           </>

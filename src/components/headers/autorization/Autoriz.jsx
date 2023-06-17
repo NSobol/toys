@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
 import './autoriz.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { getNotification } from '../../notification/Notification';
+import { ProductsContext } from '../../../context/productsContext';
+import { ReactComponent as Eye } from './../../../images/eye.svg';
+import { ReactComponent as EyeClose } from './../../../images/eye_close.svg';
 
-export const Autoriz = ({ setActive, setIsAuthorized }) => {
+export const Autoriz = () => {
+  const { setIsAuthorized } = useContext(ProductsContext);
+  const [type, setType] = useState(false);
   const {
     register,
     handleSubmit,
@@ -44,17 +49,20 @@ export const Autoriz = ({ setActive, setIsAuthorized }) => {
           )}
         </div>
         <br />
-        <div className='field-form-div'>
+        <div className='field-form-div-pass'>
           <label className='text-form-div'> Пароль: </label> <br />
           <input
             className='form-field-input'
-            type='password'
+            type={!type ? 'password' : 'text'}
             id='password'
             name='password'
             placeholder='Пароль'
             required
             {...register('password')}
           />
+          <span onClick={() => setType(!type)} className='form__pass__icon'>
+            {type ? <Eye /> : <EyeClose />}
+          </span>
         </div>
         <br />
         <div className='button-form-duble-two'>

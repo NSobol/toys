@@ -19,8 +19,10 @@ import { RegistrationPage } from './pages/registrationPage/RegistrationPage';
 import { AutorizedPage } from './pages/autorizedPage/AutorizedPage';
 import { ResetPassPage } from './pages/resetPassPage/ResetPassPage';
 import { MainPage } from './pages/mainPage/MainPage';
+import { AdminPage } from './pages/adminPage/AdminPage';
 import localData from './data/data.json';
 import localUserData from './data/userData.json';
+import 'react-tooltip/dist/react-tooltip.css';
 
 function App() {
   //установка начальных состояний
@@ -29,19 +31,27 @@ function App() {
   const [search, setSearch] = useState(undefined);
   const [user, setUser] = useState({});
   const [selected, setSelected] = useState([]);
-
+  const [admin, setAdmin] = useState(false);
+  //для пагинации
   const [currentPage, setCurrentPage] = useState(1);
   const [productPerPage, setProductPerPage] = useState(8);
-
   const lastProductIndex = currentPage * productPerPage;
   const firstProductIndex = lastProductIndex - productPerPage;
   const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
+  //для поиска
   const scanValueInApp = useScan(search);
   const [isAuthorized, setIsAuthorized] = useState(
     !!localStorage.getItem('myToken')
   );
-  const [admin, setAdmin] = useState(false);
+  //для корзины
+  const [goods, setGoods] = useState([]);
+  const [visibleGoods, setVisibleGoods] = useState(goods);
+  const [basket, setBasket] = useState(
+    localStorage.getItem('basket')
+      ? JSON.parse(localStorage.getItem('basket'))
+      : []
+  );
 
   const getHandlerLiks = async (product, isLiks) => {
     const alteredCard = await api.getChangeLikeProduct(product._id, isLiks);
@@ -63,6 +73,11 @@ function App() {
   const getSorted = (sortId) => {
     let newProduts = [];
     switch (sortId) {
+      case 'Без сортировки':
+        newProduts = products;
+        setProducts([...newProduts]);
+        break;
+
       case 'Сначала дешевле':
         newProduts = products.sort((a, b) => a.price - b.price);
         setProducts([...newProduts]);
@@ -153,6 +168,12 @@ function App() {
     setProducts,
     isAuthorized,
     setIsAuthorized,
+    goods,
+    setGoods,
+    visibleGoods,
+    setVisibleGoods,
+    basket,
+    setBasket,
   };
 
   return (
@@ -168,6 +189,7 @@ function App() {
               <Route path='/basket' element={<BasketPage />} />
               <Route path='/orus' element={<OrUsPage />} />
               <Route path='/profile' element={<ProfilePage />} />
+              <Route path='/admin' element={<AdminPage />} />
               <Route
                 path='/questionsAndAnswers'
                 element={<QuestionsAndAnswers />}
@@ -182,28 +204,9 @@ function App() {
                 path='/questionsAndAnswers'
                 element={<QuestionsAndAnswers />}
               />
-              <Route
-                path='/registr'
-                element={
-                  <RegistrationPage active={active} setActive={setActive} />
-                }
-              />
-              <Route
-                path='/login'
-                element={
-                  <AutorizedPage
-                    active={active}
-                    setActive={setActive}
-                    setIsAuthorized={setIsAuthorized}
-                  />
-                }
-              />
-              <Route
-                path='/passReset'
-                element={
-                  <ResetPassPage active={active} setActive={setActive} />
-                }
-              />
+              <Route path='/registr' element={<RegistrationPage />} />
+              <Route path='/login' element={<AutorizedPage />} />
+              <Route path='/passReset' element={<ResetPassPage />} />
             </Routes>
           )}
         </div>

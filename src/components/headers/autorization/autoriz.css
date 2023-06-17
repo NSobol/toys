@@ -1,7 +1,81 @@
+.createModalForm {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  min-width: 400px;
+}
+
+.createModalFormTitle {
+  margin-bottom: 35px;
+}
+
+.form-field-input {
+  height: 24px;
+  width: 240px;
+  border-radius: 15px;
+  padding-left: 10px;
+  outline: none;
+  border: none;
+}
+
+.field-form-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.field-form-div-pass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  gap: 40px;
+}
+
+.button-form-duble {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 90px 0 70px;
+}
+
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0 12px;
+  background: #0087b0;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 28px;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  width: 100px;
+}
+
+.btn:hover {
+  background-color: #ff7a39;
+}
+
+.createModalFormTitle {
+  color: black;
+}
 .button-form-duble-two {
   display: flex;
   justify-content: space-between;
   margin: 0 50px 0 50px;
 }
 
-
+.form__pass__icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}

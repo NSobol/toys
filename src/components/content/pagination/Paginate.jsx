@@ -3,8 +3,13 @@ import { ProductsContext } from '../../../context/productsContext';
 import s from './paginate.module.css';
 
 const Paginate = () => {
-  const { products, productPerPage, setProductPerPage, setCurrentPage } =
-    useContext(ProductsContext);
+  const {
+    products,
+    productPerPage,
+    setProductPerPage,
+    currentPage,
+    setCurrentPage,
+  } = useContext(ProductsContext);
 
   const [value, setValue] = useState(8);
 
@@ -31,6 +36,7 @@ const Paginate = () => {
   const nextPage = () => {
     setCurrentPage((prev) => prev + 1);
   };
+
   return (
     <div className={s.paginationSelect}>
       <div className={s.select}>
@@ -50,7 +56,7 @@ const Paginate = () => {
       </div>
       <div className={s.paginate}>
         <button className={s.bntPaginate} onClick={prevPage}>
-          Предыдущая
+          &#8249; Предыдущая
         </button>
         <ul className={s.selectNumber}>
           {pageNumber.map((number) => (
@@ -64,7 +70,7 @@ const Paginate = () => {
           ))}
         </ul>
         <button className={s.bntPaginate} onClick={nextPage}>
-          Следующая
+          Следующая &#8250;
         </button>
       </div>
     </div>

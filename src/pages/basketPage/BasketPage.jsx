@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { ComeBack } from '../../components/comeBack/ComeBack';
+import { EmptyBasket } from '../../components/emptyBasket.jsx/EmptyBasket';
 
 export const BasketPage = () => {
   return (
-    <div>BasketPage</div>
-  )
-}
+    <div className='container'>
+      <ComeBack />
+      <div className='basket'><EmptyBasket /></div>
+    </div>
+  );
+};
