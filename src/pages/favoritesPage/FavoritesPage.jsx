@@ -8,8 +8,10 @@ export const FavoritesPage = () => {
   const { selected } = useContext(ProductsContext);
   return (
     <div className='favorites__products'>
-      <ComeBack />
-      <h1>Избранное</h1>
+      <div className='headerPage'>
+        <ComeBack />
+        <h1>Избранное</h1>
+      </div>
       <CardList products={selected} />
     </div>
   );
