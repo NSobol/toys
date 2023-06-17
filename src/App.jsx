@@ -200,23 +200,20 @@ function App() {
               <Route
                 path='/registr'
                 element={
-                  <RegistrationPage active={active} setActive={setActive} />
+                  <RegistrationPage />
                 }
               />
               <Route
                 path='/login'
                 element={
                   <AutorizedPage
-                    active={active}
-                    setActive={setActive}
-                    setIsAuthorized={setIsAuthorized}
                   />
                 }
               />
               <Route
                 path='/passReset'
                 element={
-                  <ResetPassPage active={active} setActive={setActive} />
+                  <ResetPassPage />
                 }
               />
             </Routes>

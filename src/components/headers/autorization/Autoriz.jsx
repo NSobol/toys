@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
 import './autoriz.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { getNotification } from '../../notification/Notification';
+import { ProductsContext } from '../../../context/productsContext';
 
-export const Autoriz = ({ setActive, setIsAuthorized }) => {
+export const Autoriz = () => {
+	const { setIsAuthorized } = useContext(ProductsContext)
   const {
     register,
     handleSubmit,

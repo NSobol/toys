@@ -79,16 +79,16 @@ class Api {
   getResetPasswordMail(data) {
     return fetch(`${this.baseUrl}/forgot-password`, {
       method: 'POST',
-      ...this.freshHeaders(),
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     }).then(resp);
   }
 
-  getResetPasswordToken(token, data) {
-    return fetch(`${this.baseUrl}/password-reset/${token}`, {
-      headers: { ...this.freshHeaders() },
+  getResetPasswordToken(data) {
+    return fetch(`${this.baseUrl}/password-reset/${data.token}`, {
+      headers: { 'Content-Type': 'application/json' },
       method: 'PATCH',
-      body: JSON.stringify(data),
+      body: JSON.stringify({ password: data.password }),
     }).then(resp);
   }
 

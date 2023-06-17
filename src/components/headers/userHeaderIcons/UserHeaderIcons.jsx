@@ -33,7 +33,7 @@ export const HeaderIcons = () => {
         </div>
       </Link>
       {admin && (
-        <Link to={'/admin'}>
+        <Link to={'/admin'} data-tooltip='Админская'>
           <div>
             <img src={AdminIcon} alt='Иконка админа' className={s.userIcon} />
           </div>

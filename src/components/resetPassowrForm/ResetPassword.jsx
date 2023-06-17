@@ -17,9 +17,7 @@ export const ResetPassword = () => {
   const onSubmit = async (data) => {
     if (data.token) {
       try {
-        const res = await api.getResetPasswordToken(data.token, {
-          password: data.password,
-        });
+        const res = await api.getResetPasswordToken(data);
         localStorage.setItem('token', res.token);
         getNotification(
           'success',
@@ -28,12 +26,7 @@ export const ResetPassword = () => {
         );
         navigate('/login');
       } catch (error) {
-        console.log(error);
-        getNotification(
-          'error',
-          'Ошибка',
-          'Время действия кода истекло, отправьте запрос на восстановления паролья повторно'
-        );
+        getNotification('error', 'Ошибка', `${error.message}`);
       }
     } else {
       try {
@@ -41,7 +34,7 @@ export const ResetPassword = () => {
         setToken(true);
         getNotification('success', 'Успешно', 'Письмо успешно отправлено');
       } catch (error) {
-        getNotification('error', 'Ошибка', 'Секретная строка не валидная');
+        getNotification('error', 'Ошибка', `${error.message}`);
       }
     }
   };
@@ -73,7 +66,7 @@ export const ResetPassword = () => {
           <>
             <div>
               <input
-                className='form__input'
+                className={s.formFieldInput}
                 type='text'
                 {...register('token', { required: true })}
                 placeholder='token'
@@ -82,7 +75,7 @@ export const ResetPassword = () => {
             </div>
             <div>
               <input
-                className='form__input'
+                className={s.formFieldInput}
                 type='password'
                 {...register('password', { required: true })}
                 placeholder='password'

@@ -7,8 +7,6 @@ import { HeaderIcons } from '../userHeaderIcons/UserHeaderIcons.jsx';
 
 
 export const HeaderMain = () => {
-
-
   return (
     <div className={style.headerMain}>
         <div className={style.container}>

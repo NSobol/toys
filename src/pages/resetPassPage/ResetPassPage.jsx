@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Main } from '../../components/main/Main';
 import { Modal } from '../../components/modal/Modal';
 import { ResetPassword } from '../../components/resetPassowrForm/ResetPassword';
+import { ProductsContext } from '../../context/productsContext';
 
-export const ResetPassPage = ({ active, setActive }) => {
+export const ResetPassPage = () => {
+	const { active, setActive } = useContext(ProductsContext);
   return (
     <div className='resetPass'>
       <Main />
