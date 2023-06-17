@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ReactComponent as Smile } from './../../images/smile.svg';
 import style from './main.module.css';
-import { TopPanel } from '../headers/topPanel/TopPanel';
+import { Link } from 'react-router-dom';
+import { ProductsContext } from '../../context/productsContext';
 
 export const Main = () => {
+  const { setActive } = useContext(ProductsContext);
   return (
     <div className={style.container}>
       <Smile className={style.smile} />
@@ -12,7 +14,27 @@ export const Main = () => {
         Пожалуйста зарегистрируйтесь или войдите....
       </p>
 
-      <TopPanel />
+      <div className={style.autoriz}>
+        <Link
+          className={style.registrBtn}
+          to={'/registr'}
+          onClick={() => {
+            setActive(true);
+          }}
+        >
+          Регистрация
+        </Link>
+        <span className={style.registrBtn}>/</span>
+        <Link
+          to={'/login'}
+          className={style.registrBtn}
+          onClick={() => {
+            setActive(true);
+          }}
+        >
+          Вход
+        </Link>
+      </div>
     </div>
   );
 };

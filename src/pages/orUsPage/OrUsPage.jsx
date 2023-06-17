@@ -1,8 +1,11 @@
-import React from "react";
+import React from 'react';
+import s from './oruspage.module.css';
+import { ComeBack } from './../../components/comeBack/ComeBack';
 
 export const OrUsPage = () => {
   return (
-    <div>
+    <div className={s.container}>
+      <ComeBack />
       <h1>О Нас </h1>
       <p>
         Сайт и компания «Моя игрушка» являются ничем иным, как дипломным

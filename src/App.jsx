@@ -31,19 +31,20 @@ function App() {
   const [search, setSearch] = useState(undefined);
   const [user, setUser] = useState({});
   const [selected, setSelected] = useState([]);
-
+  const [admin, setAdmin] = useState(false);
+  //для пагинации
   const [currentPage, setCurrentPage] = useState(1);
   const [productPerPage, setProductPerPage] = useState(8);
-
   const lastProductIndex = currentPage * productPerPage;
   const firstProductIndex = lastProductIndex - productPerPage;
   const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
+  //для поиска
   const scanValueInApp = useScan(search);
   const [isAuthorized, setIsAuthorized] = useState(
     !!localStorage.getItem('myToken')
   );
-  const [admin, setAdmin] = useState(false);
+  //для корзины
   const [goods, setGoods] = useState([]);
   const [visibleGoods, setVisibleGoods] = useState(goods);
   const [basket, setBasket] = useState(
@@ -72,6 +73,11 @@ function App() {
   const getSorted = (sortId) => {
     let newProduts = [];
     switch (sortId) {
+      case 'Без сортировки':
+        newProduts = products;
+        setProducts([...newProduts]);
+        break;
+
       case 'Сначала дешевле':
         newProduts = products.sort((a, b) => a.price - b.price);
         setProducts([...newProduts]);
@@ -198,25 +204,9 @@ function App() {
                 path='/questionsAndAnswers'
                 element={<QuestionsAndAnswers />}
               />
-              <Route
-                path='/registr'
-                element={
-                  <RegistrationPage />
-                }
-              />
-              <Route
-                path='/login'
-                element={
-                  <AutorizedPage
-                  />
-                }
-              />
-              <Route
-                path='/passReset'
-                element={
-                  <ResetPassPage />
-                }
-              />
+              <Route path='/registr' element={<RegistrationPage />} />
+              <Route path='/login' element={<AutorizedPage />} />
+              <Route path='/passReset' element={<ResetPassPage />} />
             </Routes>
           )}
         </div>

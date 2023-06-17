@@ -12,6 +12,7 @@ import {
   POPULAR,
   RATE,
   SALE,
+  ALL,
 } from './../../constants/Constants';
 import { getCorrectWordEnding } from '../../utils/function';
 import { Slider } from '../../components/slider/Slider';
@@ -20,7 +21,8 @@ export const CatalogPage = () => {
   const { products, search, currentProducts, getSorted } =
     useContext(ProductsContext);
 
-  const sortedItems = [
+	const sortedItems = [
+    { id: ALL },
     { id: POPULAR },
     { id: RATE },
     { id: NEWEST },

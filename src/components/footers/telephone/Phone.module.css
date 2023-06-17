@@ -1,0 +1,12 @@
+.phoneBlock {
+  display: flex;
+  align-items: center;
+}
+.phonepic {
+  width: 25px;
+  height: 25px;
+}
+.numberPhone {
+  font-size: 1.4rem;
+  margin-left: 10px;
+}

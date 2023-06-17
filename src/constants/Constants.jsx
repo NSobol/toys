@@ -4,6 +4,7 @@ export const CHEAPEST = 'Сначала дешевле';
 export const SALE = 'Снижена цена';
 export const RATE = 'Высокий рейтинг';
 export const EXPENSIVE = 'Сначала дороже';
+export const ALL = 'Все';
 
 export const accordionData = [
   {
