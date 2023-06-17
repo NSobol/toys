@@ -22,6 +22,7 @@ import { MainPage } from './pages/mainPage/MainPage';
 import { AdminPage } from './pages/adminPage/AdminPage';
 import localData from './data/data.json';
 import localUserData from './data/userData.json';
+import 'react-tooltip/dist/react-tooltip.css';
 
 function App() {
   //установка начальных состояний

@@ -30,6 +30,14 @@
   gap: 40px;
 }
 
+.field-form-div-pass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  gap: 40px;
+}
+
 .button-form-duble {
   display: flex;
   justify-content: space-between;
@@ -62,4 +70,12 @@
   display: flex;
   justify-content: space-between;
   margin: 0 50px 0 50px;
+}
+
+.form__pass__icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
 }

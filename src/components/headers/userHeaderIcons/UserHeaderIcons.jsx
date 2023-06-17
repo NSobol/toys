@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import s from './UserHeaderIcons.module.css';
 import { Link } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
 import { ReactComponent as FavoritIcon } from './../../../images/heart.svg';
 import { ReactComponent as BasketIcon } from './../../../images/basket_icon.svg';
 import { ReactComponent as UserIcon } from './../../../images/user.svg';
@@ -16,29 +17,51 @@ export const HeaderIcons = () => {
     <div className={s.header__icons}>
       <Link to={`/selectes`}>
         <div className={s.favorit__container}>
-          <FavoritIcon className={s.favoritIcon} />
+          <FavoritIcon
+            className={s.favoritIcon}
+            data-tooltip-id='favorit'
+            data-tooltip-content='Избранное'
+          />
           {!!selected.length && (
             <span className={s[`${numberLike}`]}>{selected.length}</span>
           )}
         </div>
       </Link>
+      <Tooltip id='favorit' place='top' variant='info' />
       <Link to={'/basket'}>
         <div>
-          <BasketIcon className={s.basketIcon} />
+          <BasketIcon
+            className={s.basketIcon}
+            data-tooltip-id='basket'
+            data-tooltip-content='Корзина'
+          />
         </div>
       </Link>
+      <Tooltip id='basket' place='top' variant='info' />
       <Link to={'/profile'}>
         <div>
-          <UserIcon className={s.userIcon} />
+          <UserIcon
+            className={s.userIcon}
+            data-tooltip-id='profile'
+            data-tooltip-content='Профиль пользователя'
+          />
         </div>
       </Link>
+      <Tooltip id='profile' place='top' variant='info' />
       {admin && (
         <Link to={'/admin'} data-tooltip='Админская'>
           <div>
-            <img src={AdminIcon} alt='Иконка админа' className={s.userIcon} />
+            <img
+              src={AdminIcon}
+              alt='Иконка админа'
+              className={s.userIcon}
+              data-tooltip-id='admin'
+              data-tooltip-content='Администраторская'
+            />
           </div>
         </Link>
       )}
+      <Tooltip id='admin' place='top' variant='info' />
     </div>
   );
 };

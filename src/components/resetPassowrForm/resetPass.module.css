@@ -1,56 +1,74 @@
 .formContainer {
-    color: black;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-    min-width: 400px;
-  }
-  
-  .formTitle {
-    margin-bottom: 20px;
-    text-align: center;
-  }
+  color: black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  min-width: 400px;
+}
 
-  .formSubTitle {
-    margin-bottom: 20px;
-  }
-  
-  .formFieldInput {
-    height: 24px;
-    width: 240px;
-    border-radius: 15px;
-    padding-left: 10px;
-    outline: none;
-	border: none;
-  }
-  
-  .fieldFormDiv {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .formBtn {
-    text-decoration: none;
-    display: inline-block;
-    padding: 0 12px;
-    background: #0087b0;
-    color: white;
-    text-transform: uppercase;
-    font-size: 12px;
-    line-height: 28px;
-    cursor: pointer;
-    border: none;
-    border-radius: 15px;
-    width: 200px;
-    margin-bottom: 10px;
-  }
-  
-  .formBtn:hover {
-    background-color: #ff7a39;
-  }
+.formTitle {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.formSubTitle {
+  margin-bottom: 20px;
+}
+
+.formFieldInput {
+  height: 24px;
+  width: 240px;
+  border-radius: 15px;
+  padding-left: 10px;
+  outline: none;
+  border: none;
+  justify-content: flex-end;
+}
+
+.fieldFormDiv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.formBtn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0 12px;
+  background: #0087b0;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 28px;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.formBtn:hover {
+  background-color: #ff7a39;
+}
+
+.fieldFormDivPass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.formPassIcon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}

@@ -4,8 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import s from './resetPass.module.css';
 import { api } from '../../utils/api';
 import { getNotification } from '../notification/Notification';
+import { ReactComponent as Eye } from './../../images/eye.svg';
+import { ReactComponent as EyeClose } from './../../images/eye_close.svg';
 
 export const ResetPassword = () => {
+  const [type, setType] = useState(false);
   const {
     register,
     handleSubmit,
@@ -64,7 +67,8 @@ export const ResetPassword = () => {
         </div>
         {token ? (
           <>
-            <div>
+            <div className={s.fieldFormDiv}>
+              <label> Ваш токен: </label> <br />
               <input
                 className={s.formFieldInput}
                 type='text'
@@ -73,13 +77,17 @@ export const ResetPassword = () => {
               />
               {errors?.token && <span> {errors?.token.message}</span>}
             </div>
-            <div>
+            <div className={s.fieldFormDivPass}>
+              <label> Ваш пароль: </label> <br />
               <input
                 className={s.formFieldInput}
-                type='password'
+                type={!type ? 'password' : 'text'}
                 {...register('password', { required: true })}
                 placeholder='password'
               />
+              <span onClick={() => setType(!type)} className={s.formPassIcon}>
+                {type ? <Eye /> : <EyeClose />}
+              </span>
               {errors?.password && <span> {errors?.password.message}</span>}
             </div>
           </>

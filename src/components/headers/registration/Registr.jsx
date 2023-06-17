@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
 import { Link, useNavigate } from 'react-router-dom';
 import { getNotification } from '../../notification/Notification';
-
+import { ReactComponent as Eye } from './../../../images/eye.svg';
+import { ReactComponent as EyeClose } from './../../../images/eye_close.svg';
 import './registrStyle.css';
 
 export const Registr = () => {
@@ -13,7 +14,7 @@ export const Registr = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const [type, setType] = useState(true);
+  const [type, setType] = useState(false);
   const onSubmit = async (data) => {
     try {
       await api.getRegisteredUser(data);
@@ -46,7 +47,7 @@ export const Registr = () => {
           )}
         </div>
         <br />
-        <div className='field-form-div'>
+        <div className='field-form-div-pass'>
           <label className='text-form-div'> Пароль: </label>
           <input
             className='form-field-input'
@@ -56,8 +57,12 @@ export const Registr = () => {
             placeholder='Пароль'
             {...register('password', { required: true })}
           />
-          <span onClick={() => setType(!type)} className={`form__pass__icon`}>
-            {type ? '0' : 'X'}
+          <span onClick={() => setType(!type)} className='form__pass__icon'>
+            {type ? (
+              <Eye />
+            ) : (
+              <EyeClose />
+            )}
           </span>
         </div>
         <br />
