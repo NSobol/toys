@@ -45,8 +45,6 @@ function App() {
     !!localStorage.getItem('myToken')
   );
   //для корзины
-  const [goods, setGoods] = useState([]);
-  const [visibleGoods, setVisibleGoods] = useState(goods);
   const [basket, setBasket] = useState(
     localStorage.getItem('basket')
       ? JSON.parse(localStorage.getItem('basket'))
@@ -156,6 +154,7 @@ function App() {
     setSearch,
     selected,
     user,
+    setUser,
     admin,
     setCurrentPage,
     setProductPerPage,
@@ -168,10 +167,6 @@ function App() {
     setProducts,
     isAuthorized,
     setIsAuthorized,
-    goods,
-    setGoods,
-    visibleGoods,
-    setVisibleGoods,
     basket,
     setBasket,
   };

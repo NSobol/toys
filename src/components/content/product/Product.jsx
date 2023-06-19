@@ -6,16 +6,13 @@ import { FormReview } from '../../formReview/FormReview';
 import { ProductsContext } from '../../../context/productsContext';
 import { getCorrectWordEnding } from '../../../utils/function';
 import { Rate } from '../../Rate/Rate';
+import {getDiscountPrice} from './../../../utils/function'
 
 export const Product = ({ product, setProduct, reviews, getLiks }) => {
-  const { active, setActive, productRating, user } =
+  const { active, setActive, productRating, user, basket, setBasket } =
     useContext(ProductsContext);
 
-  const getDiscountPrice = (discount, price) => {
-    return (price - Math.floor((price * discount) / 100)).toFixed(0);
-  };
-
-  const minus = () => {
+ const minus = () => {
     console.log('click -');
   };
 
@@ -30,6 +27,23 @@ export const Product = ({ product, setProduct, reviews, getLiks }) => {
   };
 
   const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
+
+  const buy = (e) => {
+     setBasket((prev) => {
+      const test = prev.filter((el) => el.id === product._id);
+      if (test.length) {
+        return prev.map((el) => {
+          if (el.id === product._id) {
+            el.cnt++;
+          }
+          return el;
+        });
+      } else {
+        return [...prev, { id: product._id, product: product, cnt: 1 }];
+      }
+    });
+    localStorage.setItem('basket', JSON.stringify(basket));
+  };
 
   return (
     <div className={s.cardProduct__container}>
@@ -93,7 +107,9 @@ export const Product = ({ product, setProduct, reviews, getLiks }) => {
                 <span className={s.plusText}>+</span>
               </button>
             </div>
-            <button className={s.inCaseBasket}>В корзину</button>
+            <button className={s.inCaseBasket} onClick={() => buy()}>
+              В корзину
+            </button>
           </div>
         </div>
       </div>

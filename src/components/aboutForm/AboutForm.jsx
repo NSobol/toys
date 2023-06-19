@@ -6,7 +6,7 @@ import s from './aboutForm.module.css';
 import { ProductsContext } from '../../context/productsContext';
 
 export const AboutForm = () => {
-  const { setActive } = useContext(ProductsContext);
+  const { setUser, setActive } = useContext(ProductsContext);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
@@ -16,9 +16,10 @@ export const AboutForm = () => {
         about: data.about,
       });
       const res = api.getMyUserInfo();
-      getNotification('success', 'Успешно', `${res.message}`);
+      getNotification('success', 'Успешно', "Данные успешно изменены");
       setActive(false);
-      return res;
+      setUser(res);
+      return;
     } catch (error) {
       getNotification('error', 'Ошибка', `${error.message}`);
     }

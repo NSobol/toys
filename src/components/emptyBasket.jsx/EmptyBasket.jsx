@@ -6,9 +6,6 @@ import style from './emptyBasket.module.css';
 export const EmptyBasket = () => {
   return (
     <div className={style.container}>
-      <div className={style.header}>
-        <span className={style.count}>0 товаров</span> в корзине
-      </div>
       <Smile className={style.smile} />
       <p className={style.title}>В корзине нет товаров</p>
       <p className={style.subTitle}>
