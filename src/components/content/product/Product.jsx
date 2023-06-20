@@ -20,8 +20,8 @@ export const Product = ({ product, setProduct, reviews, getLiks }) => {
 
   const plus = () => {
     setCount((prev) => prev + 1);
-  };
-
+	};
+	
   let isСhosen = product.likes.some((e) => e === user._id);
 
   const getClickLiks = () => {
@@ -116,19 +116,20 @@ export const Product = ({ product, setProduct, reviews, getLiks }) => {
               <button
                 className={s.inCaseMinus}
                 disabled={count <= 0 ? true : false}
-                onClick={minus}
+                onClick={() => minus()}
               >
                 <span className={s.minusText}>-</span>
               </button>
               <span className={s.caseText}>{count}</span>
               <button
                 className={s.inCasePlus}
-                onClick={plus}
-                disabled={count === product.stock ? true : false}
+                onClick={() => plus()}
+                // disabled={item.cnt !== item.stock ? false : true}
               >
                 <span className={s.plusText}>+</span>
               </button>
             </div>
+
             <button className={s.inCaseBasket} onClick={() => buy(count)}>
               В корзину
             </button>
