@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { ProductsContext } from '../../context/productsContext';
 import { getDiscountPrice } from './../../utils/function';
-import s from './basket.module.css'
+import s from './basket.module.css';
 
 export const Basket = () => {
   const { basket, setBasket } = useContext(ProductsContext);
@@ -15,8 +16,9 @@ export const Basket = () => {
       setBasket(gds);
       localStorage.removeItem('basket');
     }
-	};
-	const minus = (id) => {
+  };
+
+  const minus = (id) => {
     setBasket((prev) => {
       const test = prev.filter((el) => el.id === id);
       if (test.length) {
@@ -31,7 +33,7 @@ export const Basket = () => {
   };
 
   const plus = (id) => {
-     setBasket((prev) => {
+    setBasket((prev) => {
       const test = prev.filter((el) => el.id === id);
       if (test.length) {
         return prev.map((el) => {
@@ -52,13 +54,20 @@ export const Basket = () => {
 
       <div className='blockLeft'>
         {basket.map((item) => {
+          let newPrice = 0;
+          let totalPrice = 0;
           return (
             <div key={item.product._id}>
-              <img src={item.product.pictures} alt='' />
+              <img src={item.product.pictures} alt='Картинка' />
               <p>{item.product.name}</p>
               <p>Единицы измерения: {item.product.wight}</p>
               <p>
-                {getDiscountPrice(item.product.discount, item.product.price)}
+                {
+                  (newPrice = getDiscountPrice(
+                    item.product.discount,
+                    item.product.price
+                  ))
+                }
                 &nbsp;p
               </p>
               <div className={s.inCaseControls}>
@@ -78,6 +87,9 @@ export const Basket = () => {
                   <span className={s.plusText}>+</span>
                 </button>
               </div>
+              <div className={s.total}>
+                {(item.totalPrice = item.cnt * newPrice)}
+              </div>
               <div className='del'>
                 <button onClick={() => getRemoveItemFromBasket(item.id)}>
                   Удалить
@@ -87,7 +99,15 @@ export const Basket = () => {
           );
         })}
       </div>
-      <div className='blockRight'></div>
+      <div className='blockRight'>
+        <p className='inTotal'>
+          Всего:&nbsp;
+          {basket.reduce(function (sum, current) {
+            return sum + current.totalPrice;
+          }, 0)}
+          &nbsp;p
+        </p>
+      </div>
     </div>
   );
 };
