@@ -9,7 +9,7 @@ import s from './basket.module.css'
 export const BasketPage = () => {
   const { basket } = useContext(ProductsContext);
   return (
-    <div className={s.container}>
+    <div className={s.containerBasketPage}>
       <ComeBack />
       <div className={s.basket}>
         <p className={s.countProducts}>

@@ -6,7 +6,7 @@ const Paginate = () => {
   const { products, productPerPage, setProductPerPage, setCurrentPage } =
     useContext(ProductsContext);
 
-  const [value, setValue] = useState(8);
+  const [value] = useState(8);
 
   const pageNumber = [];
   const arr = Array.from(products);
