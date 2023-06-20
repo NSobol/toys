@@ -1,0 +1,43 @@
+.inCaseControls {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inCaseMinus {
+  text-decoration: none;
+  display: inline-block;
+  background: #0087b0;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+}
+
+.minusText {
+  font-size: 24px;
+  color: white;
+  line-height: 15px;
+}
+
+.inCasePlus {
+  text-decoration: none;
+  display: inline-block;
+  background: #0087b0;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+}
+.plusText {
+  font-size: 24px;
+  color: white;
+  line-height: 15px;
+}
+
+.caseText {
+  font-size: 25px;
+}
