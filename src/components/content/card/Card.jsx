@@ -16,7 +16,7 @@ export const Card = ({ product }) => {
 
   const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
 
-	const buy = (e) => {
+  const buy = (e) => {
     setBasket((prev) => {
       const test = prev.filter((el) => el.id === product._id);
       if (test.length) {
@@ -29,10 +29,9 @@ export const Card = ({ product }) => {
       } else {
         return [...prev, { id: product._id, product: product, cnt: 1 }];
       }
-	});
-		localStorage.setItem('basket', JSON.stringify(basket));
+    });
   };
-
+  localStorage.setItem('basket', JSON.stringify(basket));
 
   return (
     <div className={style.cardItem}>
@@ -64,10 +63,7 @@ export const Card = ({ product }) => {
         </p>
         <br />
       </div>
-      <button
-        className={style.buttonItem}
-        onClick={() => buy()}
-      >
+      <button className={style.buttonItem} onClick={() => buy()}>
         В корзину
       </button>
     </div>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import s from './Product.module.css';
 import { ReactComponent as Like } from './../../../images/like.svg';
 import { Modal } from './../../modal/Modal';
@@ -6,18 +6,20 @@ import { FormReview } from '../../formReview/FormReview';
 import { ProductsContext } from '../../../context/productsContext';
 import { getCorrectWordEnding } from '../../../utils/function';
 import { Rate } from '../../Rate/Rate';
-import {getDiscountPrice} from './../../../utils/function'
+import { getDiscountPrice } from './../../../utils/function';
+import { getNotification } from '../../notification/Notification';
 
 export const Product = ({ product, setProduct, reviews, getLiks }) => {
+  const [count, setCount] = useState(0);
   const { active, setActive, productRating, user, basket, setBasket } =
     useContext(ProductsContext);
 
- const minus = () => {
-    console.log('click -');
+  const minus = () => {
+    setCount((prev) => prev - 1);
   };
 
   const plus = () => {
-    console.log('click +');
+    setCount((prev) => prev + 1);
   };
 
   let isСhosen = product.likes.some((e) => e === user._id);
@@ -28,22 +30,34 @@ export const Product = ({ product, setProduct, reviews, getLiks }) => {
 
   const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
 
-  const buy = (e) => {
-     setBasket((prev) => {
-      const test = prev.filter((el) => el.id === product._id);
-      if (test.length) {
-        return prev.map((el) => {
-          if (el.id === product._id) {
-            el.cnt++;
-          }
-          return el;
-        });
-      } else {
-        return [...prev, { id: product._id, product: product, cnt: 1 }];
-      }
-    });
-    localStorage.setItem('basket', JSON.stringify(basket));
+  const buy = (count) => {
+    if (count > 0) {
+      setBasket((prev) => {
+        const test = prev.filter((el) => el.id === product._id);
+        if (test.length) {
+          return prev.map((el) => {
+            if (el.id === product._id) {
+              el.cnt += count;
+            }
+            return el;
+          });
+        } else {
+          return [...prev, { id: product._id, product: product, cnt: count }];
+        }
+      });
+    } else {
+      setBasket((prev) => [
+        ...prev,
+        { id: product._id, product: product, cnt: 1 },
+      ]);
+      getNotification(
+        'success',
+        'Успешно',
+        'В корзину добавлен товар в количестве 1шт'
+      );
+    }
   };
+  localStorage.setItem('basket', JSON.stringify(basket));
 
   return (
     <div className={s.cardProduct__container}>
@@ -99,15 +113,23 @@ export const Product = ({ product, setProduct, reviews, getLiks }) => {
           </div>
           <div className={s.inCase}>
             <div className={s.inCaseControls}>
-              <button className={s.inCaseMinus} onClick={minus}>
+              <button
+                className={s.inCaseMinus}
+                disabled={count <= 0 ? true : false}
+                onClick={minus}
+              >
                 <span className={s.minusText}>-</span>
               </button>
-              <span className={s.caseText}>{'0'}</span>
-              <button className={s.inCasePlus} onClick={plus}>
+              <span className={s.caseText}>{count}</span>
+              <button
+                className={s.inCasePlus}
+                onClick={plus}
+                disabled={count === product.stock ? true : false}
+              >
                 <span className={s.plusText}>+</span>
               </button>
             </div>
-            <button className={s.inCaseBasket} onClick={() => buy()}>
+            <button className={s.inCaseBasket} onClick={() => buy(count)}>
               В корзину
             </button>
           </div>

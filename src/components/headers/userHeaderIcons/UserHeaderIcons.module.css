@@ -58,17 +58,34 @@
   margin-left: -31px;
 }
 
-[data-tooltip]::after {
-  content: attr(data-tooltip);
-  opacity: 0;
-  transition: 1s;
-  border: 1px solid grey;
-  position: absolute;
-  top: 0;
-  left: 65px;
+.numberLike_standart {
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  margin-top: 5px;
+  margin-left: -25px;
 }
 
-.userIcon[data-tooltip]:hover::after {
-  opacity: 1;
-  top: 2em;
+.numberLike_more {
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  margin-top: 3px;
+  margin-left: -31px;
+}
+
+.basket__container {
+  position: relative;
+}
+
+.basket {
+  position: absolute;
+  color: #fff;
+  background-color: #ff7a39;
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  text-align: center;
+  left: 20px;
 }
