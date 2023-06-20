@@ -3,7 +3,7 @@ import { ComeBack } from './../../components/comeBack/ComeBack';
 import { Product } from '../../components/content/product/Product';
 import { useParams } from 'react-router-dom';
 import { api } from '../../utils/api';
-import './productpage.css';
+import s from './Productpage.module.css';
 import { ReviewsList } from '../../components/reviewsList/reviewsList';
 import { ProductsContext } from '../../context/productsContext';
 
@@ -37,10 +37,10 @@ export const ProductPage = () => {
     [product._id]
   );
   return (
-    <div className='container'>
+    <div className={s.container}>
       <ComeBack />
       {Object.keys(product).length && (
-        <div className='product__page'>
+        <div className={s.product__page}>
           <Product
             product={product}
             setProduct={setProduct}
