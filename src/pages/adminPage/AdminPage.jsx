@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComeBack } from '../../components/comeBack/ComeBack';
 import { AdminHeaderIcons } from './../../components/headers/adminHeaderIcons/AdminHeaderIcons';
+import { Chart } from '../../components/chart/Chart';
 
 export const AdminPage = () => {
+  const [metrics, setMetrics] = useState({});
   const getAnalytics = async () => {
     const result = await fetch(
       `https://api-metrika.yandex.net/stat/v1/data/bytime?metrics=ym:s:hits&date1=30daysAgo&date2=today&group=day&id=94010807`,
@@ -16,7 +18,7 @@ export const AdminPage = () => {
         ? res.json()
         : res.json().then((data) => Promise.reject(data));
     });
-    return result;
+    setMetrics(result);
   };
 
   return (
@@ -36,6 +38,7 @@ export const AdminPage = () => {
             <p>Статистика посещений: &nbsp;</p>
             <button onClick={() => getAnalytics()}>Получить аналитику</button>
           </div>
+          <div className='graph'>{!!Object.keys(metrics).length && <Chart metrics={metrics} />}</div>
         </div>
       </div>
     </div>
