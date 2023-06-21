@@ -8,6 +8,7 @@
   color: #1a1a1a;
   padding: 14px 20px;
   border: 1px solid transparent;
+  margin-left: 170px;
 }
 
 .search__input:focus {
