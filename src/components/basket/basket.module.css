@@ -26,6 +26,7 @@
   align-items: center;
   width: 90%;
   justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 .blockKey p {
@@ -51,6 +52,7 @@
 
 .leftBar {
   font-size: 20px;
+  width: 400px;
 }
 
 .rightBar {

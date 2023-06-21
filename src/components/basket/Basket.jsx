@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { ProductsContext } from "../../context/productsContext";
 import { getDiscountPrice } from "./../../utils/function";
 import s from "./basket.module.css";
-import Close from "./../../images/close.png"
+import Close from "./../../images/close.png";
 
 export const Basket = () => {
   const { basket, setBasket } = useContext(ProductsContext);
@@ -101,8 +101,15 @@ export const Basket = () => {
                       {(item.totalPrice = item.cnt * newPrice)} &nbsp;p
                     </div>
                     <div>
-                      <button className={s.del} onClick={() => getRemoveItemFromBasket(item.id)}>
-                        <img src={Close} alt="Удалить" className={s.delPictures} />
+                      <button
+                        className={s.del}
+                        onClick={() => getRemoveItemFromBasket(item.id)}
+                      >
+                        <img
+                          src={Close}
+                          alt="Удалить"
+                          className={s.delPictures}
+                        />
                       </button>
                     </div>
                   </div>

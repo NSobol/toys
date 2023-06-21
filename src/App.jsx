@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Header from './components/headers/header/Header.jsx';
-import Footer from './components/footers/footer/Footer.jsx';
-import { api } from './utils/api';
-import { useScan } from './hooks/Hooks';
-import { filteredProducts, productRating } from './utils/function';
-import { ProductsContext } from './context/productsContext';
-import { Route, Routes } from 'react-router-dom';
-import { CatalogPage } from './pages/catalogPage/CatalogPage';
-import { BasketPage } from './pages/basketPage/BasketPage';
-import { FavoritesPage } from './pages/favoritesPage/FavoritesPage';
-import { OrUsPage } from './pages/orUsPage/OrUsPage';
-import { ProductPage } from './pages/productPage/ProductPage';
-import { ProfilePage } from './pages/profilePage/ProfilePage';
-import { NotFound } from './components/notFound/NotFound';
-import { QuestionsAndAnswers } from './pages/questionsAndAnswers/QuestionsAndAnswers';
-import { RegistrationPage } from './pages/registrationPage/RegistrationPage';
-import { AutorizedPage } from './pages/autorizedPage/AutorizedPage';
-import { ResetPassPage } from './pages/resetPassPage/ResetPassPage';
-import { MainPage } from './pages/mainPage/MainPage';
-import { AdminPage } from './pages/adminPage/AdminPage';
-import localData from './data/data.json';
-import localUserData from './data/userData.json';
-import 'react-tooltip/dist/react-tooltip.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Header from "./components/headers/header/Header.jsx";
+import Footer from "./components/footers/footer/Footer.jsx";
+import { api } from "./utils/api";
+import { useScan } from "./hooks/Hooks";
+import { filteredProducts, productRating } from "./utils/function";
+import { ProductsContext } from "./context/productsContext";
+import { Route, Routes } from "react-router-dom";
+import { CatalogPage } from "./pages/catalogPage/CatalogPage";
+import { BasketPage } from "./pages/basketPage/BasketPage";
+import { FavoritesPage } from "./pages/favoritesPage/FavoritesPage";
+import { OrUsPage } from "./pages/orUsPage/OrUsPage";
+import { ProductPage } from "./pages/productPage/ProductPage";
+import { ProfilePage } from "./pages/profilePage/ProfilePage";
+import { NotFound } from "./components/notFound/NotFound";
+import { QuestionsAndAnswers } from "./pages/questionsAndAnswers/QuestionsAndAnswers";
+import { RegistrationPage } from "./pages/registrationPage/RegistrationPage";
+import { AutorizedPage } from "./pages/autorizedPage/AutorizedPage";
+import { ResetPassPage } from "./pages/resetPassPage/ResetPassPage";
+import { MainPage } from "./pages/mainPage/MainPage";
+import { AdminPage } from "./pages/adminPage/AdminPage";
+import localData from "./data/data.json";
+import localUserData from "./data/userData.json";
+import "react-tooltip/dist/react-tooltip.css";
 
 function App() {
   //установка начальных состояний
@@ -42,12 +42,12 @@ function App() {
   //для поиска
   const scanValueInApp = useScan(search);
   const [isAuthorized, setIsAuthorized] = useState(
-    !!localStorage.getItem('myToken')
+    !!localStorage.getItem("myToken")
   );
   //для корзины
   const [basket, setBasket] = useState(
-    localStorage.getItem('basket')
-      ? JSON.parse(localStorage.getItem('basket'))
+    localStorage.getItem("basket")
+      ? JSON.parse(localStorage.getItem("basket"))
       : []
   );
 
@@ -71,39 +71,39 @@ function App() {
   const getSorted = (sortId) => {
     let newProduts = [];
     switch (sortId) {
-      case 'Без сортировки':
+      case "Без сортировки":
         newProduts = products;
         setProducts([...newProduts]);
         break;
 
-      case 'Сначала дешевле':
+      case "Сначала дешевле":
         newProduts = products.sort((a, b) => a.price - b.price);
         setProducts([...newProduts]);
         break;
 
-      case 'Сначала дороже':
+      case "Сначала дороже":
         newProduts = products.sort((a, b) => b.price - a.price);
         setProducts([...newProduts]);
         break;
 
-      case 'Популярные':
+      case "Популярные":
         newProduts = products.sort((a, b) => b.likes.length - a.likes.length);
         setProducts([...newProduts]);
         break;
 
-      case 'Новинки':
+      case "Новинки":
         newProduts = products.sort(
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
         setProducts([...newProduts]);
         break;
 
-      case 'Снижена цена':
+      case "Снижена цена":
         newProduts = products.sort((a, b) => b.discount - a.discount);
         setProducts([...newProduts]);
         break;
 
-      case 'Высокий рейтинг':
+      case "Высокий рейтинг":
         newProduts = products.sort(
           (a, b) => productRating(b.reviews) - productRating(a.reviews)
         );
@@ -128,8 +128,8 @@ function App() {
         );
         setSelected(selected);
         if (
-          user._id === '6442d2653291d790b3fcf266' ||
-          user._id === '6442bd8d3291d790b3fce3c6'
+          user._id === "6442d2653291d790b3fcf266" ||
+          user._id === "6442bd8d3291d790b3fce3c6"
         ) {
           setAdmin(true);
         }
@@ -172,36 +172,36 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div className="App">
       <ProductsContext.Provider value={productsValue}>
         <Header />
-        <div className='content'>
+        <div className="content">
           {isAuthorized ? (
             <Routes>
-              <Route path='/' element={<CatalogPage />} />
-              <Route path='/selectes' element={<FavoritesPage />} />
-              <Route path='/product/:id' element={<ProductPage />} />
-              <Route path='/basket' element={<BasketPage />} />
-              <Route path='/orus' element={<OrUsPage />} />
-              <Route path='/profile' element={<ProfilePage />} />
-              <Route path='/admin' element={<AdminPage />} />
+              <Route path="/" element={<CatalogPage />} />
+              <Route path="/selectes" element={<FavoritesPage />} />
+              <Route path="/product/:id" element={<ProductPage />} />
+              <Route path="/basket" element={<BasketPage />} />
+              <Route path="/orus" element={<OrUsPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/admin" element={<AdminPage />} />
               <Route
-                path='/questionsAndAnswers'
+                path="/questionsAndAnswers"
                 element={<QuestionsAndAnswers />}
               />
-              <Route path='*' element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           ) : (
             <Routes>
-              <Route path='/' element={<MainPage />} />
-              <Route path='/orus' element={<OrUsPage />} />
+              <Route path="/" element={<MainPage />} />
+              <Route path="/orus" element={<OrUsPage />} />
               <Route
-                path='/questionsAndAnswers'
+                path="/questionsAndAnswers"
                 element={<QuestionsAndAnswers />}
               />
-              <Route path='/registr' element={<RegistrationPage />} />
-              <Route path='/login' element={<AutorizedPage />} />
-              <Route path='/passReset' element={<ResetPassPage />} />
+              <Route path="/registr" element={<RegistrationPage />} />
+              <Route path="/login" element={<AutorizedPage />} />
+              <Route path="/passReset" element={<ResetPassPage />} />
             </Routes>
           )}
         </div>
