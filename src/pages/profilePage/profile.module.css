@@ -1,8 +1,7 @@
 .container {
   width: 92%;
-  height: 100vh;
   padding: 40px 50px 40px 60px;
-  height: calc(100vh - 387.5px);
+  min-height: calc(100vh - 387.5px);
 }
 
 .title {
@@ -37,7 +36,6 @@
   border: none;
   border-radius: 5px;
   margin-left: auto;
-
 }
 
 .btnChange {

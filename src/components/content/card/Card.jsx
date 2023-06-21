@@ -4,6 +4,7 @@ import style from './Card.module.css';
 import { ProductsContext } from '../../../context/productsContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { getNotification } from '../../notification/Notification';
 
 export const Card = ({ product }) => {
   const { handlerLiks, user, basket, setBasket } = useContext(ProductsContext);
@@ -24,9 +25,11 @@ export const Card = ({ product }) => {
           if (el.id === product._id) {
             el.cnt++;
           }
+          getNotification('success', 'Успешно', 'Товар добавлен в корзину');
           return el;
         });
       } else {
+        getNotification('success', 'Успешно', 'Товар добавлен в корзину');
         return [...prev, { id: product._id, product: product, cnt: 1 }];
       }
     });
