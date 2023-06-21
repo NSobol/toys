@@ -3,14 +3,10 @@ import { ProductsContext } from '../../../context/productsContext';
 import s from './paginate.module.css';
 
 const Paginate = () => {
-  const {
-    products,
-    productPerPage,
-    setProductPerPage,
-    setCurrentPage,
-  } = useContext(ProductsContext);
+  const { products, productPerPage, setProductPerPage, setCurrentPage } =
+    useContext(ProductsContext);
 
-  const [value, setValue] = useState(8);
+  const [value] = useState(8);
 
   const pageNumber = [];
   const arr = Array.from(products);
@@ -20,12 +16,17 @@ const Paginate = () => {
     pageNumber.push(i);
   }
 
+  const selectValue = [];
+  for (let i = productPerPage; i <= 25; i += productPerPage) {
+    selectValue.push(i);
+  }
+
   const navigate = (numb) => {
     setCurrentPage(numb);
   };
 
   function handleChange(event) {
-    setValue(event.target.value);
+    // setValue(event.target.value);
     setProductPerPage(event.target.value);
   }
 
@@ -47,9 +48,11 @@ const Paginate = () => {
           value={value}
           onChange={handleChange}
         >
-          <option value='8'>8</option>
-          <option value='16'>16</option>
-          <option value='24'>24</option>
+          {selectValue.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
         </select>
         <p> товаров</p>
       </div>

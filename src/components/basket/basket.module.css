@@ -1,0 +1,128 @@
+.containerBasket {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding-left: 40px;
+}
+
+.containerSum {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  width: 100%;
+}
+
+.basketText {
+  text-align: center;
+}
+
+.blockLeft {
+  width: 100%;
+}
+
+.blockKey {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.blockKey p {
+  font-size: 20px;
+}
+
+.imgBar {
+  width: 180px;
+  height: 180px;
+}
+
+.blockPictures {
+  width: 180px;
+  height: 180px;
+}
+
+.allBar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 30px;
+}
+
+.leftBar {
+  font-size: 20px;
+}
+
+.rightBar {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.total {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.del {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+}
+
+.inTotal {
+  font-size: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.delPictures {
+  width: 30px;
+  height: 30px;
+}
+
+.inCaseControls {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inCaseMinus {
+  text-decoration: none;
+  display: inline-block;
+  background: #0087b0;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+}
+
+.minusText {
+  font-size: 24px;
+  color: white;
+  line-height: 15px;
+}
+
+.inCasePlus {
+  text-decoration: none;
+  display: inline-block;
+  background: #0087b0;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+}
+.plusText {
+  font-size: 24px;
+  color: white;
+  line-height: 15px;
+}
+
+.caseText {
+  font-size: 25px;
+}

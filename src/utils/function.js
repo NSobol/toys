@@ -36,3 +36,7 @@ export const productRating = (reviews) => {
   const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
   return Math.floor(res / reviews.length);
 };
+
+export const getDiscountPrice = (discount, price) => {
+   return (price - Math.floor((price * discount) / 100)).toFixed(0);
+ };

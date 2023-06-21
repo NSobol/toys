@@ -8,7 +8,7 @@
   display: flex;
   gap: 70px;
   font-size: 20px;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .leftBar {
@@ -24,6 +24,7 @@
 
 .rightBar {
   padding-top: 50px;
+  width: 40%;
 }
 
 .cardDesc {
@@ -58,13 +59,6 @@
   margin-top: 30px;
 }
 
-.inCaseControls {
-  width: 120px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .inCaseBasket {
   text-decoration: none;
   display: inline-block;
@@ -81,8 +75,11 @@
   border-radius: 15px;
 }
 
-.inCaseBasket:hover {
-  background-color: #ff7a39;
+.inCaseControls {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .inCaseMinus {
@@ -95,10 +92,6 @@
   border: none;
   border-radius: 50%;
 }
-
-/* .inCaseMinus:hover {
-  background-color: #ff7a39;
-} */
 
 .minusText {
   font-size: 24px;
@@ -116,11 +109,6 @@
   border: none;
   border-radius: 50%;
 }
-
-/* .inCasePlus:hover {
-  background-color: #ff7a39;
-} */
-
 .plusText {
   font-size: 24px;
   color: white;
@@ -128,7 +116,11 @@
 }
 
 .caseText {
-  font-size: 50px;
+  font-size: 25px;
+}
+
+.inCaseBasket:hover {
+  background-color: #ff7a39;
 }
 
 .product__title {
@@ -218,6 +210,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  padding: 20px 0;
 }
 
 .card__сhosen {

@@ -5,6 +5,7 @@ import style from './reviewsList.module.css';
 export const ReviewsList = ({
   productId,
   getDeleteReview,
+  user,
   reviews = [],
 }) => {
   return (
@@ -14,10 +15,12 @@ export const ReviewsList = ({
         .map((item) => (
           <div className={style.review__item} key={item._id}>
             <Review productId={productId} review={item} />
-            <button
-              onClick={() => getDeleteReview(item._id)}
-              className={style.delReview}
-            ></button>
+            {user?._id === item.author._id && (
+              <button
+                onClick={() => getDeleteReview(item._id)}
+                className={style.delReview}
+              ></button>
+            )}
           </div>
         ))}
     </div>

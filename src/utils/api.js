@@ -10,8 +10,8 @@ const baseData = {
 const freshHeaders = () => {
   return {
     headers: {
-      'Content-Type': 'application/json',
       authorization: localStorage.getItem('myToken'),
+      'Content-Type': 'application/json',
     },
   };
 };

@@ -1,13 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ProductsContext } from '../../context/productsContext';
 import { ComeBack } from '../../components/comeBack/ComeBack';
 import { Tooltip } from 'react-tooltip';
 import { ReactComponent as Pensil } from './../../images/edit.svg';
 import s from './profile.module.css';
+import { Modal } from '../../components/modal/Modal';
+import { AvatarForm } from './../../components/avatarForm/AvatarForm';
+import { AboutForm } from './../../components/aboutForm/AboutForm';
 
 export const ProfilePage = () => {
-  const { user } = useContext(ProductsContext);
+  const { user, active, setActive } = useContext(ProductsContext);
   const { avatar, name, about, email } = user;
+  const [type, setType] = useState('avatar');
 
   return (
     <div className={s.container}>
@@ -16,7 +20,13 @@ export const ProfilePage = () => {
       <div className={s.block}>
         <div className={s.avatarBox}>
           <img src={avatar} alt='Аватар' className={s.avatar} />
-          <button className={s.change} onClick={() => console.log('Click')}>
+          <button
+            className={s.change}
+            onClick={() => {
+              setType('avatar');
+              setActive(true);
+            }}
+          >
             <Pensil
               className={s.btnChange}
               data-tooltip-id='btnChangeAvatar'
@@ -32,7 +42,10 @@ export const ProfilePage = () => {
 
           <button
             className={s.changeAbout}
-            onClick={() => console.log('Click')}
+            onClick={() => {
+              setType('about');
+              setActive(true);
+            }}
           >
             <Pensil
               className={s.btnChange}
@@ -43,6 +56,11 @@ export const ProfilePage = () => {
           <Tooltip id='btnChangeAbout' place='top' variant='info' />
         </div>
       </div>
+      {active && (
+        <Modal active={active} setActive={setActive}>
+          {type === 'avatar' ? <AvatarForm /> : <AboutForm />}
+        </Modal>
+      )}
     </div>
   );
 };

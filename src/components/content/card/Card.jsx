@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 export const Card = ({ product }) => {
-  const { handlerLiks, user } = useContext(ProductsContext);
+  const { handlerLiks, user, basket, setBasket } = useContext(ProductsContext);
 
   let isСhosen = product.likes.some((e) => e === user._id);
 
@@ -15,14 +15,30 @@ export const Card = ({ product }) => {
   };
 
   const сhosen = isСhosen ? 'card__сhosen_active' : 'card__сhosen';
+
+  const buy = (e) => {
+    setBasket((prev) => {
+      const test = prev.filter((el) => el.id === product._id);
+      if (test.length) {
+        return prev.map((el) => {
+          if (el.id === product._id) {
+            el.cnt++;
+          }
+          return el;
+        });
+      } else {
+        return [...prev, { id: product._id, product: product, cnt: 1 }];
+      }
+    });
+  };
+  localStorage.setItem('basket', JSON.stringify(basket));
+
   return (
     <div className={style.cardItem}>
       <div className={style.cardHeader}>
         <div className={style.cardTegs}>
           {!!product.discount && (
-            <div className={style.cardDiscount}>
-              -{product.discount}%
-            </div>
+            <div className={style.cardDiscount}>-{product.discount}%</div>
           )}
           {/* {product.tags.map(e => <span className={`tag tag_type_${e}`} key={e}>{e}</span>)} */}
         </div>
@@ -47,7 +63,9 @@ export const Card = ({ product }) => {
         </p>
         <br />
       </div>
-      <button className={style.buttonItem}>В корзину</button>
+      <button className={style.buttonItem} onClick={() => buy()}>
+        В корзину
+      </button>
     </div>
   );
 };
