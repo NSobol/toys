@@ -71,9 +71,9 @@ function App() {
   const getSorted = (sortId) => {
     let newProduts = [];
     switch (sortId) {
-      case 'Без сортировки':
-        newProduts = products;
-        setProducts([...newProduts]);
+      case 'Все':
+        // newProduts = products;
+        setProducts(products);
         break;
 
       case 'Сначала дешевле':
@@ -156,6 +156,7 @@ function App() {
     user,
     setUser,
     admin,
+    currentPage,
     setCurrentPage,
     setProductPerPage,
     productPerPage,
@@ -202,6 +203,7 @@ function App() {
               <Route path='/registr' element={<RegistrationPage />} />
               <Route path='/login' element={<AutorizedPage />} />
               <Route path='/passReset' element={<ResetPassPage />} />
+              <Route path='*' element={<NotFound />} />
             </Routes>
           )}
         </div>

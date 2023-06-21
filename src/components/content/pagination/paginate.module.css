@@ -37,11 +37,11 @@
   font-size: 22px;
   text-decoration: none;
   padding: 10px 20px;
-  border: 1px solid transparent;
   background-color: #0087b0;
   cursor: pointer;
   color: #ff7a39;
   border: 1px solid #ff7a39;
+  border-radius: 50%;
 }
 
 

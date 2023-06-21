@@ -3,10 +3,15 @@ import { ProductsContext } from '../../../context/productsContext';
 import s from './paginate.module.css';
 
 const Paginate = () => {
-  const { products, productPerPage, setProductPerPage, setCurrentPage } =
-    useContext(ProductsContext);
-
-  const [value] = useState(8);
+  const {
+    products,
+    productPerPage,
+    setProductPerPage,
+    setCurrentPage,
+    currentPage,
+  } = useContext(ProductsContext);
+console.log(currentPage);
+  const [value, setValue] = useState(8);
 
   const pageNumber = [];
   const arr = Array.from(products);
@@ -17,7 +22,7 @@ const Paginate = () => {
   }
 
   const selectValue = [];
-  for (let i = productPerPage; i <= 25; i += productPerPage) {
+  for (let i = 8; i <= 25; i += 8) {
     selectValue.push(i);
   }
 
@@ -26,7 +31,7 @@ const Paginate = () => {
   };
 
   function handleChange(event) {
-    // setValue(event.target.value);
+    setValue(event.target.value);
     setProductPerPage(event.target.value);
   }
 
@@ -36,7 +41,7 @@ const Paginate = () => {
   const nextPage = () => {
     setCurrentPage((prev) => prev + 1);
   };
-
+  console.log(currentPage);
   return (
     <div className={s.paginationSelect}>
       <div className={s.select}>
@@ -61,15 +66,25 @@ const Paginate = () => {
           &#8249; Предыдущая
         </button>
         <ul className={s.selectNumber}>
-          {pageNumber.map((number) => (
-            <li
-              key={number}
-              className={s['page-item']}
-              onClick={() => navigate(number)}
-            >
-              {number}
-            </li>
-          ))}
+          {pageNumber.map((number) =>
+            number === currentPage ? (
+              <li
+                key={number}
+                className={s.activate}
+                onClick={() => navigate(number)}
+              >
+                {number}
+              </li>
+            ) : (
+              <li
+                key={number}
+                className={s['page-item']}
+                onClick={() => navigate(number)}
+              >
+                {number}
+              </li>
+            )
+          )}
         </ul>
         <button className={s.bntPaginate} onClick={nextPage}>
           Следующая &#8250;

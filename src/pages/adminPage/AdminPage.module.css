@@ -1,0 +1,40 @@
+.adminContainer {
+    min-height: calc(100vh - 327.5px);
+}
+.adminComeBack {
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.adminText {
+    text-align: center;
+}
+
+.adminOne {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 40px;
+    font-size: 30px;
+}
+
+.adminTwo {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 40px;
+    font-size: 30px;
+}
+
+.adminButton {
+        padding: 10px;
+        color: #0087b0;
+        font-size: 24px;
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 700;
+        border: #0087b0;
+        border-radius: 20px;
+        cursor: pointer;
+}
+
