@@ -71,9 +71,9 @@ function App() {
   const getSorted = (sortId) => {
     let newProduts = [];
     switch (sortId) {
-      case "Без сортировки":
-        newProduts = products;
-        setProducts([...newProduts]);
+      case "Все":
+        // newProduts = products;
+        setProducts(products);
         break;
 
       case "Сначала дешевле":
