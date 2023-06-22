@@ -10,7 +10,7 @@ const Paginate = () => {
     setCurrentPage,
     currentPage,
   } = useContext(ProductsContext);
-console.log(currentPage);
+
   const [value, setValue] = useState(8);
 
   const pageNumber = [];
@@ -41,7 +41,7 @@ console.log(currentPage);
   const nextPage = () => {
     setCurrentPage((prev) => prev + 1);
   };
-  console.log(currentPage);
+
   return (
     <div className={s.paginationSelect}>
       <div className={s.select}>
