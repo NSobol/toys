@@ -40,8 +40,6 @@ export const getProducts = createAsyncThunk(
 export const fetchChangeProductLike = createAsyncThunk(
   'products/fetchChangeProductLike',
   async function (data, arg) {
-    // here will be in data -> { product: product, wasLiked: isLiked }
-    console.log({ data });
     try {
       const updatedCard = await api.changeProductLike(
         data.product._id,

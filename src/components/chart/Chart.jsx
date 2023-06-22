@@ -4,10 +4,8 @@ import s from './chart.module.css';
 import * as echarts from 'echarts';
 
 export const Chart = ({ metrics }) => {
-  const arrDays = metrics.time_intervals;
+	const arrDays = metrics.time_intervals;
   const arrValues = metrics?.data[0].metrics;
-  // console.log(arrValues)
-  // console.log(arrDays);
   useEffect(() => {
     const option = {
       title: {
