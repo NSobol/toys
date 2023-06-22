@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
-import { ProductsContext } from "../../context/productsContext";
-import { getDiscountPrice } from "./../../utils/function";
-import s from "./basket.module.css";
-import Close from "./../../images/close.png";
+import React, { useContext } from 'react';
+import { ProductsContext } from '../../context/productsContext';
+import { getDiscountPrice } from './../../utils/function';
+import s from './basket.module.css';
+import Close from './../../images/close.png';
 
 export const Basket = () => {
   const { basket, setBasket } = useContext(ProductsContext);
@@ -12,10 +12,10 @@ export const Basket = () => {
     const gds = basket.filter((el) => el.id !== id);
     if (basket.length > 1) {
       setBasket(gds);
-      localStorage.setItem("basket", JSON.stringify(basket));
+      localStorage.setItem('basket', JSON.stringify(basket));
     } else {
       setBasket(gds);
-      localStorage.removeItem("basket");
+      localStorage.removeItem('basket');
     }
   };
 
@@ -47,7 +47,7 @@ export const Basket = () => {
     });
   };
 
-  localStorage.setItem("basket", JSON.stringify(basket));
+  localStorage.setItem('basket', JSON.stringify(basket));
 
   return (
     <div className={s.containerBasket}>
@@ -63,7 +63,7 @@ export const Basket = () => {
                   <img
                     className={s.blockPictures}
                     src={item.product.pictures}
-                    alt="Картинка"
+                    alt='Картинка'
                   />
                 </div>
                 <div className={s.allBar}>
@@ -92,7 +92,7 @@ export const Basket = () => {
                       <button
                         className={s.inCasePlus}
                         onClick={() => plus(item.id)}
-                        disabled={item.cnt !== item.stock ? false : true}
+                        disabled={item.cnt === item.stock ? true : false}
                       >
                         <span className={s.plusText}>+</span>
                       </button>
@@ -107,7 +107,7 @@ export const Basket = () => {
                       >
                         <img
                           src={Close}
-                          alt="Удалить"
+                          alt='Удалить'
                           className={s.delPictures}
                         />
                       </button>
