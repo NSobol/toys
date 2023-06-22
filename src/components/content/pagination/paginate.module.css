@@ -39,12 +39,10 @@
   padding: 10px 20px;
   background-color: #0087b0;
   cursor: pointer;
-  color: #ff7a39;
-  border: 1px solid #ff7a39;
+  color: #ffffff;
+  border: 1px solid #ffffff;
   border-radius: 50%;
 }
-
-
 
 .selectNumber {
   display: flex;
