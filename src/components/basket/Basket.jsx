@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { ProductsContext } from '../../context/productsContext';
 import { getDiscountPrice } from './../../utils/function';
@@ -56,7 +55,6 @@ export const Basket = () => {
         <div className={s.blockLeft}>
           {basket.map((item) => {
             let newPrice = 0;
-            let totalPrice = 0;
             return (
               <div className={s.blockKey} key={item.product._id}>
                 <div className={s.imgBar}>
@@ -92,7 +90,7 @@ export const Basket = () => {
                       <button
                         className={s.inCasePlus}
                         onClick={() => plus(item.id)}
-                        disabled={item.cnt === item.stock ? true : false}
+                        disabled={item.cnt === item.product.stock ? true : false}
                       >
                         <span className={s.plusText}>+</span>
                       </button>
