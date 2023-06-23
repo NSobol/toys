@@ -128,8 +128,8 @@ function App() {
         );
         setSelected(selected);
         if (
-          user._id === '6442d2653291d790b3fcf266' ||
-          user._id === '6442bd8d3291d790b3fce3c6'
+          userData._id === '6442d2653291d790b3fcf266' ||
+          userData._id === '6442bd8d3291d790b3fce3c6'
         ) {
           setAdmin(true);
         }
@@ -138,7 +138,7 @@ function App() {
         setProducts(localData);
         setUser(localUserData);
       });
-  }, [user._id]);
+  }, []);
 
   useEffect(() => {
     if (scanValueInApp === undefined) return;
