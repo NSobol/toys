@@ -17,3 +17,27 @@ linkicon > img {
   width: 25px;
   height: 25px;
 }
+
+
+
+@media (min-width: 641px) and (max-width: 1199px){
+
+
+}
+
+@media (max-width: 640px){
+  .iconBlock {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: stretch;
+    margin-bottom: 15px;
+  }
+ 
+  .phonepic {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -8,5 +8,21 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
+@media (min-width: 641px) and (max-width: 1199px){
+  .container {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px){
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .container:nth-child(1){
+    order:2;
+  }
+}

@@ -3,3 +3,9 @@
   color: white;
   padding: 10px 0 15px;
 }
+
+@media (min-width: 641px) and (max-width: 1199px){
+  .header {
+    width: 100vw;
+  }
+}

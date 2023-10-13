@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { api } from './../../../utils/api';
-import './autoriz.css';
+import s from './autoriz.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { getNotification } from '../../notification/Notification';
 import { ProductsContext } from '../../../context/productsContext';
@@ -30,13 +30,13 @@ export const Autoriz = () => {
     }
   };
   return (
-    <div className='createModalForm'>
-      <h2 className='createModalFormTitle'>Вход</h2>
-      <form className='modalForm' onSubmit={handleSubmit(onSubmit)}>
-        <div className='field-form-div'>
-          <label className='text-form-div'> Ваш email: </label> <br />
+    <div className={s.createModalForm}>
+      <h2 className={s.createModalFormTitle}>Вход</h2>
+      <form className={s.modalForm} onSubmit={handleSubmit(onSubmit)}>
+        <div className={s['field-form-div']}>
+          <label className={s['text-form-div']}> Ваш email: </label> <br />
           <input
-            className='form-field-input'
+            className={s['form-field-input']}
             type='email'
             id='email'
             name='email'
@@ -49,10 +49,10 @@ export const Autoriz = () => {
           )}
         </div>
         <br />
-        <div className='field-form-div-pass'>
-          <label className='text-form-div'> Пароль: </label> <br />
+        <div className={s['field-form-div-pass']}>
+          <label className={s['text-form-div']}> Пароль: </label> <br />
           <input
-            className='form-field-input'
+            className={s['form-field-input']}
             type={!type ? 'password' : 'text'}
             id='password'
             name='password'
@@ -60,26 +60,26 @@ export const Autoriz = () => {
             required
             {...register('password')}
           />
-          <span onClick={() => setType(!type)} className='form__pass__icon'>
+          <span onClick={() => setType(!type)} className={s['form__pass__icon']}>
             {type ? <Eye /> : <EyeClose />}
           </span>
         </div>
         <br />
-        <div className='button-form-duble-two'>
-          <button type='submit' className='btn button-form-submit'>
+        <div className={s['button-form-duble-two']}>
+          <button type='submit' className={s['btn button-form-submit']}>
             Ok
           </button>
-          <button type='reset' className='btn button-form-close'>
+          <button type='reset' className={s['btn button-form-close']}>
             Очистить
           </button>
         </div>
       </form>
-      <div className='relocation'>
-        <span>Нет аккаунта?</span>{' '}
+      <div className={s.relocation}>
+        <span>Нет аккаунта?</span>
         <Link to={'/registr'}>Зарегистрироваться</Link>
       </div>
-      <div className='relocation'>
-        <span>Забыт пароль?</span>{' '}
+      <div className={s.relocation}>
+        <span>Забыт пароль?</span>
         <Link to={'/passReset'}>Восстановление пароля</Link>
       </div>
     </div>
