@@ -1,13 +1,13 @@
 import React from 'react';
 import { Logo } from '../logo/Logo.jsx';
 import { Search } from './../search/Search.jsx';
-import style from './headerMain.module.css';
+import s from './headerMain.module.css';
 import { HeaderIcons } from '../userHeaderIcons/UserHeaderIcons.jsx';
 
 export const HeaderMain = () => {
   return (
-    <div className={style.headerMain}>
-        <div className={style.container}>
+    <div className={s.headerMain}>
+        <div className={s.container}>
           <Logo />
           <Search />
           <HeaderIcons />

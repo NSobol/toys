@@ -3,7 +3,6 @@
   background-color: #ffffff;
   width: 400px;
   height: 20px;
-  caret-color: #ffe44d;
   font-size: 16px;
   color: #1a1a1a;
   padding: 14px 20px;
@@ -13,4 +12,16 @@
 .search__input:focus {
   background-color: #ffffff;
   outline: 1px solid #ffe44d;
+}
+
+@media (min-width: 641px) and (max-width: 1199px){
+  .search__input {
+    width: 40%;
+  }
+}
+
+@media (max-width: 640px){
+  .search__input {
+    width: 30%;
+  }
 }

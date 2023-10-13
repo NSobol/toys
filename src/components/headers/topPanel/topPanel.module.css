@@ -36,3 +36,14 @@
   width: 30px;
   cursor: pointer;
 }
+
+
+@media (min-width: 641px) and (max-width: 1199px){
+  .topPanel{
+    font-size: 16px;
+  }
+
+  .registrBtn {
+    font-size: 16px;
+  }
+}

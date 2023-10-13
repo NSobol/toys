@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getNotification } from '../../notification/Notification';
 import { ReactComponent as Eye } from './../../../images/eye.svg';
 import { ReactComponent as EyeClose } from './../../../images/eye_close.svg';
-import './registrStyle.css';
+import s from './registr.module.css';
 
 export const Registr = () => {
   const {
@@ -29,13 +29,13 @@ export const Registr = () => {
     }
   };
   return (
-    <div className='createModalForm'>
-      <h2 className='createModalFormTitle'>Регистрация</h2>
-      <form className='modalForm' onSubmit={handleSubmit(onSubmit)}>
-        <div className='field-form-div'>
-          <label className='text-form-div'> Ваш email: </label>
+    <div className={s.createModalForm}>
+      <h2 className={s.createModalFormTitle}>Регистрация</h2>
+      <form className={s.modalForm} onSubmit={handleSubmit(onSubmit)}>
+        <div className={s['field-form-div']}>
+          <label className={s['text-form-div']}> Ваш email: </label>
           <input
-            className='form-field-input'
+            className={s['form-field-input']}
             type='email'
             id='email'
             name='email'
@@ -47,43 +47,48 @@ export const Registr = () => {
           )}
         </div>
         <br />
-        <div className='field-form-div-pass'>
-          <label className='text-form-div'> Пароль: </label>
+        <div className={s['field-form-div-pass']}>
+          <label className={s['text-form-div']}> Пароль: </label>
           <input
-            className='form-field-input'
+            className={s['form-field-input']}
             type={!type ? 'password' : 'text'}
             id='password'
             name='password'
             placeholder='Пароль'
             {...register('password', { required: true })}
           />
-          <span onClick={() => setType(!type)} className='form__pass__icon'>
-            {type ? (
-              <Eye />
-            ) : (
-              <EyeClose />
-            )}
+          <span
+            onClick={() => setType(!type)}
+            className={s['form__pass__icon']}
+          >
+            {type ? <Eye /> : <EyeClose />}
           </span>
         </div>
         <br />
         <input
-          className='hidden'
+          className={s.hidden}
           type='text'
           id='group'
           name='group'
           value='group-12'
           {...register('group')}
         />
-        <div className='button-form-duble-two'>
-          <button type='submit' className='btn button-form-submit'>
+        <div className={s['button-form-duble-two']}>
+          <button
+            type='submit'
+            className={[s['btn'], s['button-form-submit']].join('')}
+          >
             Ok
           </button>
-          <button type='reset' className='btn button-form-close'>
+          <button
+            type='reset'
+            className={[s['btn'], s['button-form-close']].join('')}
+          >
             Очистить
           </button>
         </div>
       </form>
-      <div className='relocation'>
+      <div className={s.relocation}>
         <span>Есть аккаунт?</span> <Link to={'/login'}>Войти</Link>
       </div>
     </div>

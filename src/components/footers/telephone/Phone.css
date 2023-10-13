@@ -1,0 +1,14 @@
+.phonepic {
+    width: 25px;
+    height: 25px;
+}
+
+.phoneBlock {
+display: flex;
+align-items: center;
+}
+
+.numberPhone {
+    font-size: 1.4rem;
+    margin-left: 10px;
+}

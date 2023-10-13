@@ -5,3 +5,18 @@
 	padding: 0 80px;
 }
 
+@media (min-width: 641px) and (max-width: 1199px){
+    .content {
+           flex-direction: row;
+        justify-content: space-between;
+        padding: 0 80px;
+    }
+  }
+  
+  @media (max-width: 640px){
+    .content {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 20px;
+    }
+  }
